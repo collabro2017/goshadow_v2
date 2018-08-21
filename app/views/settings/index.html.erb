@@ -1,0 +1,62 @@
+<main class="main u-container">
+  <h1 class="page-title">Your Organization Settings</h1>
+  <p class="page-subtitle">Update your <%= @organization.name %> details</p>
+  <section class="grid_primary">
+    <%= form_for @organization, class: "form__horizontal u-container" do |f| %>
+      <div class="form__horizontal-group">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+      <div class="form__horizontal-group settings-avatar">
+        <label>Your Logo</label>
+        <%= image_tag @organization.logo_url, class: 'org-avatar' %>
+        <%= f.fields_for :organization_logo do |org_logo| %>
+          <%= org_logo.file_field :attachment, class: "file_upload" %>
+        <% end %>
+      </div>
+      <div class="form__horizontal-group">
+        <label>Your Pricing Plan</label>
+        <% if @organization.stripe_plan_id.present? %>
+          <p>Your organization is current enrolled in the <%= @organization.subscription_plan_name %> subscription<br>
+          <%= link_to 'Modify Your Subscription', edit_organization_subscriptions_path(@organization) %></p>
+          
+        <% else %>
+          <%= link_to 'Select Your Subscription', new_organization_subscription_path(@organization), :class => "" %>
+        <% end %>
+      </div>
+      <div class="form__horizontal-group settings-invoices">
+        <label>Invoicing</label>
+        <p>If your organization requires invoices, GoShadow can generate them on monthly or annual intervals. <a href="mailto:sales@goshadow.org" target="_blank">Contact GoShadow</a> for more information.
+        </p>
+      </div>
+      <div class="form__horizontal-group settings-invoices">
+        <a class="" data-toggle="modal" data-target="#js-add-place-modal">
+          Your are the "Shadowing Coordinator", click here to transfer "Shadowing Coordinator" role to one of your "Shadowers".
+        </a>
+      </div>
+        <%= f.submit 'Update My Settings', :class => "btn btn-primary" %>
+    <% end %>
+  </section>
+</main>
+
+
+<!-- Modal -->
+<div class="modal fade" id="js-add-place-modal" tabindex="-1" role="dialog" aria-labelledby="js-add-segment-modalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="js-add-segment-modalLabel">Transfer Coordinator Role to Shadower</h4>
+      </div>
+      <div class="modal-body">
+        <div class='alert notice form-message-container'></div>
+        <%= form_tag "/transfer_coordinator/#{@organization.id}", remote: true, method: 'patch', id: 'transferCoordinator' do %>
+          <div class="form-group">
+            <%= select_tag 'new_coordinator_id', options_for_select(@users.map { |user| [ "#{user.name} - #{user.email}", user.id ] }), include_blank: 'Select Shadower' %>
+          </div>
+          <%= submit_tag 'Transfer Coordinator Status', class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div><!-- /modal-content-->
+  </div><!-- /modal-dialogue-->
+</div>

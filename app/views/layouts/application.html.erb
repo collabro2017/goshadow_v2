@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <%= render 'shared/head' %>
+  <body>
+	  <nav class="nav-primary" itemscope itemtype="http://schema.org/SiteNavigationElement">
+          <div class="u-container">
+            <div class="site-brand">
+              <%= link_to(root_path) do %>
+                <%= image_tag 'logo_white.svg', class: 'nav-primary__brand', alt: 'GoShadow Logo' %>
+              <% end %>
+            </div>
+            <a class="navbar-toggle u-show-mobile">
+              <svg class="icon icon-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 112.5"><path fill="#ffffff" d="M9 39h72v12H9zM9 60h72v12H9zM9 18h72v12H9z"/></svg>
+            </a>
+            <% if user_signed_in? %>
+	            <div class="js-nav-collapse">
+	              <ul class="nav-items nav-items__right">
+	                <li class="nav-item">
+	                  <a href="http://goshadow.org/support">Support</a>
+	                </li>
+	                <li class="nav-item nav-item__has-dropdown">
+	                    <a href='#' class='js-dropdown-toggle dropdown-toggle u-hide-mobile' role='button' aria-haspopup='true' aria-expanded='false'>
+	                      <%= image_tag current_user.avatar_url, class: 'nav-item__avatar u-hide-mobile' %>
+	                      <%= current_user.name %> <span class='caret'></span>
+	                    </a>
+	                    <ul class="nav-item__dropdown">
+	                      <li class="nav-item">
+	                        <%= link_to 'Your Settings', edit_user_path(current_user) %>
+	                      </li>
+	                      <% if current_user.organizations.count > 1 %>
+	                        <li class="nav-item">
+	                          <%= link_to 'Change Organization', root_path %>
+	                        </li>
+	                      <% end %>
+	                      <li class="nav-item"><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+	                    </ul>
+	                </li>
+	              </ul>
+	            </div><!-- js-nav-collapse-->
+	        <% end %>
+          </div><!-- u-container-->
+        </nav>
+		<%= yield %>
+	    <footer class="footer u-container u-text-center">
+	      &copy; <%= Time.now.year %> GoShadow LLC and AMD3 Consulting. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Support</a>
+	    </footer>
+	</body>
+</html>

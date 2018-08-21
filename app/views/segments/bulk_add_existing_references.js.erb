@@ -1,0 +1,12 @@
+$('input[type=checkbox]').each(function () {
+  if (this.checked) {
+    this.closest('.checkbox-container').remove();
+  }
+});
+
+<% @newly_added_references.each do |reference| %>
+  var references = $('.reference-row');
+  $(references[references.length -1]).after("<%= escape_javascript( render 'reference_row', reference: reference, segment: @segment) %>");
+<% end %>
+
+$('.bulk-add-references-message-container').html('<div class="alert notice">Successfully Added to Segment!</div>')

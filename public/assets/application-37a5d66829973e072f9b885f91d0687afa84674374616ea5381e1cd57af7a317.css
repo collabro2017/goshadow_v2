@@ -1,0 +1,4061 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+
+ */
+@charset "UTF-8";
+/* GRID
+Our mixin and grid libraries. These must be imported at the beginning
+of the file.
+==================================================================== */
+/* line 4, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/neat-1.7.4/app/assets/stylesheets/grid/_box-sizing.scss */
+html {
+  box-sizing: border-box;
+}
+
+/* line 9, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/neat-1.7.4/app/assets/stylesheets/grid/_box-sizing.scss */
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+
+/* BASE 
+Base styles include variables, mixins, and any other code that does not
+directly output SCSS.
+==================================================================== */
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS and IE text size adjust after device orientation change,
+ *    without disabling user zoom.
+ */
+/* line 9, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+/* line 19, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+body {
+  margin: 0;
+  position: relative;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+/* line 34, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+/* line 55, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+/* line 68, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.
+ */
+/* line 78, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+[hidden],
+template {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+/* line 90, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+a {
+  background-color: transparent;
+}
+
+/**
+ * Improve readability of focused elements when they are also in an
+ * active/hover state.
+ */
+/* line 99, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+a:active,
+a:hover {
+  outline: 0;
+  cursor: pointer;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+/* line 112, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+/* line 120, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+b,
+strong {
+  font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+/* line 129, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+/* line 138, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+/* line 147, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+/* line 156, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+/* line 164, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+/* line 172, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+sup {
+  top: -0.5em;
+}
+
+/* line 176, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+sub {
+  bottom: -0.25em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+/* line 187, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+img {
+  border: 0;
+}
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+/* line 195, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+/* line 206, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+figure {
+  margin: 0px;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+/* line 214, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+hr {
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Contain overflow in all browsers.
+ */
+/* line 223, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+pre {
+  overflow: auto;
+}
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+/* line 231, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+/* line 254, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+}
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+/* line 268, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+button {
+  overflow: visible;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+/* line 279, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+/* line 292, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+/* line 304, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+/* line 313, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+/* line 324, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+input {
+  line-height: normal;
+}
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+/* line 336, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+/* line 348, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.
+ */
+/* line 358, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  box-sizing: content-box;
+  /* 2 */
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+/* line 369, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+/* line 378, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+/* line 389, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+/* line 398, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+/* line 407, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+optgroup {
+  font-weight: bold;
+}
+
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+/* line 418, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 423, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/base/_normalize.scss */
+td,
+th {
+  padding: 0;
+}
+
+/* David Ensinger's Rem Mixin, which translates any pixel, percentage, or "auto" value into rems with a px fallback for lt IE9: http://davidensinger.com/2013/03/using-rems-with-sass/
+**/
+/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/* Typography */
+/* Shadows */
+/* Animations */
+/* Dialog */
+/* COMPONENTS 
+Component styles handle commonly repeated UI elements like input fields,
+buttons, tables, etc.
+==================================================================== */
+/* ALERTS 
+All flash messages
+==================================================================== */
+/* line 5, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_alerts.scss */
+.alert {
+  padding: 20px;
+  padding: 1.25rem;
+  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
+  border-radius: 5px;
+  color: #ffffff;
+}
+/* line 10, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_alerts.scss */
+.alert.alert {
+  background-color: #B4272D;
+}
+/* line 13, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_alerts.scss */
+.alert.notice {
+  background-color: #0ba7d0;
+}
+
+/* BUTTONS 
+All button-related styles
+==================================================================== */
+/* line 6, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_buttons.scss */
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+.btn {
+  font-size: 20px;
+  font-size: 1.25rem;
+  padding: 10px 40px;
+  padding: 0.625rem 2.5rem;
+  -webkit-transition: background-color 0.15s ease-out;
+  -moz-transition: background-color 0.15s ease-out;
+  transition: background-color 0.15s ease-out;
+  border-radius: 5px;
+  border: 0px;
+  color: #ffffff;
+  display: inline-block;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none !important;
+}
+/* line 23, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_buttons.scss */
+button:active, button:focus,
+input[type="button"]:active,
+input[type="button"]:focus,
+input[type="reset"]:active,
+input[type="reset"]:focus,
+input[type="submit"]:active,
+input[type="submit"]:focus,
+.btn:active,
+.btn:focus {
+  outline: 0;
+}
+
+/* line 29, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_buttons.scss */
+.btn.btn-primary {
+  background-color: #0ba7d0;
+  color: #ffffff;
+}
+/* line 32, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_buttons.scss */
+.btn.btn-primary:hover, .btn.btn-primary:focus, .btn.btn-primary:active {
+  background-color: #0a94b8;
+  color: #ffffff;
+  outline: 0;
+}
+
+/* line 41, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_buttons.scss */
+.btn.btn-outline {
+  border: 1px solid #0ba7d0;
+  color: #0ba7d0;
+}
+/* line 44, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_buttons.scss */
+.btn.btn-outline:hover, .btn.btn-outline:focus, .btn.btn-outline:active {
+  border: 1px solid #0a94b8;
+  color: #0a94b8;
+  outline: 0;
+}
+
+/* line 53, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_buttons.scss */
+[role="button"] {
+  cursor: pointer;
+}
+
+/* line 57, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_buttons.scss */
+.close {
+  font-size: 36px;
+  font-size: 2.25rem;
+  right: 10px;
+  right: 0.625rem;
+  -webkit-transition: opacity 0.15s linear;
+  -moz-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
+  color: #000000;
+  filter: alpha(opacity=20);
+  font-weight: bold;
+  line-height: 1;
+  opacity: 0.2;
+  position: absolute;
+  text-shadow: 0 1px 0 #ffffff;
+}
+
+/* line 70, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_buttons.scss */
+.close:hover,
+.close:focus {
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+
+/* line 79, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_buttons.scss */
+button.close {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+}
+
+/* ICONS 
+All icon-related styles
+==================================================================== */
+/* line 5, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_icons.scss */
+svg.icon path,
+svg.icon rect,
+svg.icon circle,
+svg.icon polygon {
+  -webkit-transition: fill 0.2s linear;
+  -moz-transition: fill 0.2s linear;
+  transition: fill 0.2s linear;
+}
+
+/* Master Hover */
+/* line 13, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_icons.scss */
+svg.icon:hover path,
+svg.icon:hover rect,
+svg.icon:hover polygon {
+  fill: #0ba7d0;
+}
+
+/* line 19, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_icons.scss */
+.icon__caret-left {
+  height: 11px;
+  height: 0.6875rem;
+  width: 6px;
+  width: 0.375rem;
+  display: inline-block;
+  margin-left: 3px;
+  margin-left: 0.1875rem;
+}
+
+/* line 26, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_icons.scss */
+.icon__delete-color,
+.icon__accolade-outline,
+.icon__accolade-solid,
+.icon__opportunity-solid,
+.icon__opportunity-outline,
+.icon__delete-white {
+  height: 22px;
+  width: 20px;
+}
+@media screen and (max-width: 768px) {
+  /* line 26, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_icons.scss */
+  .icon__delete-color,
+  .icon__accolade-outline,
+  .icon__accolade-solid,
+  .icon__opportunity-solid,
+  .icon__opportunity-outline,
+  .icon__delete-white {
+    height: 25px;
+    width: 25px;
+  }
+}
+
+/* line 40, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_icons.scss */
+.icon__delete-color path {
+  fill: #d6302f;
+}
+
+/* line 44, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_icons.scss */
+.icon__delete-white path,
+.icon__delete-white:hover path {
+  fill: #ffffff;
+}
+
+/* line 49, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_icons.scss */
+.icon__accolade-outline path {
+  fill: #7eb347;
+}
+
+/* line 53, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_icons.scss */
+.icon__opportunity-outline path {
+  fill: #f1831f;
+}
+
+/* line 57, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_icons.scss */
+.icon__edit {
+  height: 22px;
+  width: 22px;
+}
+
+/* line 62, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_icons.scss */
+.icon__draggable {
+  height: 15px;
+  width: 21px;
+}
+
+/* line 67, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_icons.scss */
+.icon__published {
+  width: 36px;
+  width: 2.25rem;
+  height: 36px;
+  height: 2.25rem;
+}
+
+/* INPUTS 
+All input- and form-related styles
+==================================================================== */
+/* line 5, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_inputs.scss */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select,
+textarea {
+  border: 0px;
+  border-radius: 5px;
+  width: 100%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 12px 20px;
+  padding: 0.75rem 1.25rem;
+  font-size: 16px;
+  font-size: 1rem;
+  -webkit-transition: box-shadow 0.1s linear;
+  -moz-transition: box-shadow 0.1s linear;
+  transition: box-shadow 0.1s linear;
+}
+/* line 4, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/bourbon-4.2.6/app/assets/stylesheets/css3/_placeholder.scss */
+input[type="text"]::-webkit-input-placeholder,
+input[type="password"]::-webkit-input-placeholder,
+input[type="email"]::-webkit-input-placeholder,
+select::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #a7a9ac;
+  font-weight: 300;
+}
+/* line 4, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/bourbon-4.2.6/app/assets/stylesheets/css3/_placeholder.scss */
+input[type="text"]::-moz-placeholder,
+input[type="password"]::-moz-placeholder,
+input[type="email"]::-moz-placeholder,
+select::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: #a7a9ac;
+  font-weight: 300;
+}
+/* line 4, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/bourbon-4.2.6/app/assets/stylesheets/css3/_placeholder.scss */
+input[type="text"]:-moz-placeholder,
+input[type="password"]:-moz-placeholder,
+input[type="email"]:-moz-placeholder,
+select:-moz-placeholder,
+textarea:-moz-placeholder {
+  color: #a7a9ac;
+  font-weight: 300;
+}
+/* line 4, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/bourbon-4.2.6/app/assets/stylesheets/css3/_placeholder.scss */
+input[type="text"]:-ms-input-placeholder,
+input[type="password"]:-ms-input-placeholder,
+input[type="email"]:-ms-input-placeholder,
+select:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: #a7a9ac;
+  font-weight: 300;
+}
+/* line 21, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_inputs.scss */
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus {
+  outline: 0;
+  box-shadow: 0px 0px 10px #06a7d0;
+}
+
+/* line 27, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_inputs.scss */
+select {
+  height: 44px;
+  height: 2.75rem;
+}
+
+/* line 32, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_inputs.scss */
+.checkbox-inline, .radio-inline {
+  position: relative;
+  display: inline-block;
+  padding-left: 20px;
+  margin-bottom: 0;
+  font-weight: 400;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+/* line 42, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_inputs.scss */
+.radio-inline input[type=radio] {
+  position: absolute;
+  margin-top: 4px\9;
+  margin-left: -20px;
+}
+
+/* line 48, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_inputs.scss */
+.radio-inline + .radio-inline {
+  margin-top: 0;
+  margin-left: 10px;
+}
+
+/* line 55, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_inputs.scss */
+.form-group {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
+}
+
+/* line 60, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_inputs.scss */
+.form-group input[type="text"] {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+/* line 65, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_inputs.scss */
+.form-group input[type="submit"] {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+/* line 72, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_inputs.scss */
+.form__horizontal-group label {
+  display: block;
+  font-weight: 700;
+}
+@media screen and (min-width: 768px) {
+  /* line 72, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_inputs.scss */
+  .form__horizontal-group label {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 23.23176%;
+  }
+  /* line 89, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/neat-1.7.4/app/assets/stylesheets/grid/_span-columns.scss */
+  .form__horizontal-group label:last-child {
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  /* line 72, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_inputs.scss */
+  .form__horizontal-group label {
+    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* line 83, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_inputs.scss */
+  .form__horizontal-group input:not(.btn),
+  .form__horizontal-group select {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 74.41059%;
+  }
+  /* line 89, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/neat-1.7.4/app/assets/stylesheets/grid/_span-columns.scss */
+  .form__horizontal-group input:not(.btn):last-child,
+  .form__horizontal-group select:last-child {
+    margin-right: 0;
+  }
+}
+
+/* line 90, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_inputs.scss */
+.form__horizontal-group {
+  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
+}
+@media screen and (min-width: 768px) {
+  /* line 90, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_inputs.scss */
+  .form__horizontal-group {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    box-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    -o-align-items: center;
+    align-items: center;
+    -ms-flex-align: center;
+  }
+}
+
+/* line 98, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_inputs.scss */
+.form__horizontal-group p {
+  margin-bottom: 0px;
+}
+@media screen and (min-width: 768px) {
+  /* line 98, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_inputs.scss */
+  .form__horizontal-group p {
+    padding-left: 10px;
+    padding-left: 0.625rem;
+  }
+}
+
+/* line 105, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_inputs.scss */
+.form__horizontal-group-submit,
+.form__horizontal-group-checkbox {
+  display: block;
+  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
+}
+@media screen and (min-width: 768px) {
+  /* line 105, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_inputs.scss */
+  .form__horizontal-group-submit,
+  .form__horizontal-group-checkbox {
+    margin-left: 25.58941%;
+  }
+}
+
+/* line 114, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_inputs.scss */
+.form__horizontal-group-submit input[type="submit"] {
+  margin-bottom: 15px;
+  margin-bottom: 0.9375rem;
+  display: block;
+}
+
+/* line 119, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_inputs.scss */
+.form__horizontal-group-checkbox label {
+  font-weight: 700;
+}
+
+/* line 124, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_inputs.scss */
+.search-form {
+  margin-bottom: 60px;
+  margin-bottom: 3.75rem;
+}
+
+/* line 128, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_inputs.scss */
+.search-form .form-group {
+  margin-bottom: 0px;
+}
+
+/* MODALS 
+All modal-related styles
+==================================================================== */
+/* line 4, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.modal-open {
+  overflow: hidden;
+}
+
+/* line 7, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.modal {
+  display: none;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+}
+
+/* line 19, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.modal.fade .modal-dialog {
+  -webkit-transform: translate(0, -25%);
+  -ms-transform: translate(0, -25%);
+  -o-transform: translate(0, -25%);
+  transform: translate(0, -25%);
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  -o-transition: -o-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+}
+
+/* line 28, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.modal.in .modal-dialog {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+/* line 34, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* line 38, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 10px;
+}
+
+/* line 43, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.modal-content {
+  position: relative;
+  background-color: #ffffff;
+  border: 1px solid #999999;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  outline: 0;
+}
+
+/* line 55, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: #000000;
+}
+
+/* line 64, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.modal-backdrop.fade {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+/* line 68, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.modal-backdrop.in {
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+}
+
+/* line 72, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.modal-header {
+  padding: 15px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* line 76, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.modal-header .close {
+  margin-top: -2px;
+}
+
+/* line 79, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.modal-title {
+  font-size: 22px;
+  font-size: 1.375rem;
+  color: #0ba7d0;
+  line-height: 1.42857143;
+  margin: 0;
+}
+
+/* line 85, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.modal-body {
+  position: relative;
+  padding: 15px;
+}
+
+/* line 89, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.modal-footer {
+  padding: 15px;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* line 94, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.modal-footer .btn {
+  font-size: 16px;
+  font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+  /* line 99, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+  .modal-dialog {
+    width: 600px;
+    margin: 30px auto;
+  }
+
+  /* line 103, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+  .modal-content {
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  }
+
+  /* line 107, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+  .modal-sm {
+    width: 300px;
+  }
+}
+@media (min-width: 992px) {
+  /* line 112, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+  .modal-lg {
+    width: 900px;
+  }
+}
+/* line 116, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.clearfix:before,
+.clearfix:after,
+.modal-header:before,
+.modal-header:after,
+.modal-footer:before,
+.modal-footer:after {
+  content: " ";
+  display: table;
+}
+
+/* line 125, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.clearfix:after,
+.modal-header:after,
+.modal-footer:after {
+  clear: both;
+}
+
+/* line 130, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 135, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.pull-right {
+  float: right !important;
+}
+
+/* line 138, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.pull-left {
+  float: left !important;
+}
+
+/* line 141, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.hide {
+  display: none !important;
+}
+
+/* line 144, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.show {
+  display: block !important;
+}
+
+/* line 147, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.invisible {
+  visibility: hidden;
+}
+
+/* line 150, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.text-hide {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+/* line 157, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.hidden {
+  display: none !important;
+}
+
+/* line 160, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.affix {
+  position: fixed;
+}
+
+/* line 164, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.modal-body .form-group {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  box-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+}
+
+/* line 168, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_modals.scss */
+.modal-body .form-group label {
+  min-width: 150px;
+}
+
+/* NAVIGATION 
+Primary nav components
+==================================================================== */
+/* line 5, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+.nav-primary {
+  padding: 20px;
+  padding: 1.25rem;
+  background-color: #023d4d;
+  z-index: 3;
+}
+
+/* line 11, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+.site-brand {
+  margin-right: 10px;
+  margin-right: 0.625rem;
+  float: left;
+}
+
+/* line 16, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+.nav-primary__brand {
+  height: 35px;
+  height: 2.1875rem;
+  width: 120px;
+  width: 7.5rem;
+}
+
+/* line 21, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+.nav-items {
+  list-style: none;
+  margin: 0px;
+}
+
+/* line 26, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+.nav-items__left {
+  padding: 8px 0;
+  padding: 0.5rem 0;
+}
+@media screen and (min-width: 768px) {
+  /* line 26, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .nav-items__left {
+    float: left;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* line 33, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .nav-items__left a {
+    font-size: 18px;
+    font-size: 1.125rem;
+  }
+}
+
+/* line 39, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+.nav-items__right {
+  padding: 0px;
+}
+@media screen and (min-width: 768px) {
+  /* line 39, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .nav-items__right {
+    float: right;
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    box-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    -o-align-items: center;
+    align-items: center;
+    -ms-flex-align: center;
+  }
+}
+@media screen and (max-width: 768px) {
+  /* line 39, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .nav-items__right {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0px -1px rgba(0, 0, 0, 0.2);
+    padding-top: 5px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* line 53, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .nav-items__right a {
+    font-size: 14px;
+    font-size: 0.875rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* line 59, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .nav-item {
+    display: inline-block;
+    padding: 0 15px;
+    padding: 0 0.9375rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  /* line 59, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .nav-item {
+    padding: 15px 0;
+    padding: 0.9375rem 0;
+  }
+}
+
+/* line 69, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+.nav-item a {
+  color: #ffffff;
+}
+/* line 71, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+.nav-item a:hover {
+  color: #0ba7d0;
+}
+@media screen and (max-width: 768px) {
+  /* line 69, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .nav-item a {
+    font-size: 18px;
+  }
+}
+
+/* line 79, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+.active-nav-item {
+  font-weight: 700;
+}
+
+/* line 83, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+.nav-item__avatar {
+  border-radius: 50%;
+  max-width: 60px;
+  height: auto;
+}
+@media screen and (max-width: 768px) {
+  /* line 83, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .nav-item__avatar {
+    margin: 0 auto 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* line 99, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .dropdown-toggle {
+    display: flex;
+    align-items: center;
+  }
+
+  /* line 104, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .nav-item__has-dropdown {
+    position: relative;
+  }
+
+  /* line 108, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .nav-item__has-dropdown .nav-item__avatar {
+    margin-right: 10px;
+    margin-right: 0.625rem;
+    width: 35px;
+    width: 2.1875rem;
+    height: 35px;
+    height: 2.1875rem;
+  }
+
+  /* line 116, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .nav-item__dropdown {
+    padding: 8px 5px 10px;
+    padding: 0.5rem 0.3125rem 0.625rem;
+    top: 50px;
+    top: 3.125rem;
+    width: 150px;
+    width: 9.375rem;
+    -webkit-transition: opacity 0.15s ease-in-out;
+    -moz-transition: opacity 0.15s ease-in-out;
+    transition: opacity 0.15s ease-in-out;
+    background: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    overflow: visible;
+    position: absolute;
+    right: 0px;
+    text-align: left;
+    visibility: hidden;
+    width: 100%;
+    z-index: 9;
+  }
+
+  /* line 134, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .nav-item__dropdown:after {
+    bottom: 100%;
+    left: 168px;
+    left: 10.5rem;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(255, 255, 255, 0);
+    border-bottom-color: #fff;
+    border-width: 8px;
+    margin-left: -8px;
+  }
+
+  /* line 149, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .caret {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #ffffff;
+    margin-left: 10px;
+    -webkit-transition: border 0.15s linear;
+    -moz-transition: border 0.15s linear;
+    transition: border 0.15s linear;
+  }
+
+  /* line 159, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .nav-item a:hover .caret {
+    border-top: 5px solid #0ba7d0;
+  }
+
+  /* line 163, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .nav-item__dropdown.open {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  /* line 168, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .nav-item__dropdown .nav-item {
+    padding: 5px 10px;
+    padding: 0.3125rem 0.625rem;
+    display: block;
+  }
+
+  /* line 173, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .nav-item__dropdown a {
+    color: #023d4d;
+  }
+}
+@media screen and (max-width: 768px) {
+  /* line 179, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .nav-item__dropdown,
+  .nav-item__has-dropdown {
+    padding: 0px;
+  }
+}
+@media screen and (max-width: 768px) {
+  /* line 192, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .navbar-toggle {
+    width: 30px;
+    height: 25px;
+    float: right;
+  }
+
+  /* line 198, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .js-nav-collapse {
+    display: block;
+    padding: 20px;
+    padding: 1.25rem;
+    background: #444444;
+    box-shadow: inset 5px 0px 8px rgba(0, 0, 0, 0.2);
+    height: 100%;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 200px;
+    -webkit-transform: translate3d(400px, 0, 0);
+    -moz-transform: translate3d(400px, 0, 0);
+    -ms-transform: translate3d(400px, 0, 0);
+    -o-transform: translate3d(400px, 0, 0);
+    transform: translate3d(400px, 0, 0);
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+    text-align: center;
+  }
+
+  /* line 213, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .js-nav-collapse.open {
+    -webkit-transform: translate3d(200px, 0, 0);
+    -moz-transform: translate3d(200px, 0, 0);
+    -ms-transform: translate3d(200px, 0, 0);
+    -o-transform: translate3d(200px, 0, 0);
+    transform: translate3d(200px, 0, 0);
+  }
+
+  /* line 217, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  #outer-wrap {
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* line 222, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  #inner-wrap {
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  /* line 227, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .modal-open #inner-wrap {
+    transform: none;
+  }
+
+  /* line 231, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  #inner-wrap.open {
+    -webkit-transform: translate3d(-200px, 0, 0);
+    -moz-transform: translate3d(-200px, 0, 0);
+    -ms-transform: translate3d(-200px, 0, 0);
+    -o-transform: translate3d(-200px, 0, 0);
+    transform: translate3d(-200px, 0, 0);
+  }
+}
+/* line 243, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+.experience-navigation {
+  padding: 0 20px;
+  padding: 0 1.25rem;
+  background-color: #0ba7d0;
+  color: #ffffff;
+  list-style: none;
+  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  /* line 251, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .experience-navigation .u-container {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -js-display: flex;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+/* line 260, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+.experience-navigation a {
+  padding: 20px;
+  padding: 1.25rem;
+  color: #ffffff;
+  display: inline-block;
+  font-weight: 300;
+}
+/* line 265, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+.experience-navigation a:hover {
+  background-color: #ffffff;
+  color: #0ba7d0;
+}
+@media screen and (min-width: 768px) {
+  /* line 260, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .experience-navigation a {
+    float: left;
+  }
+  /* line 271, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .experience-navigation a:first-child {
+    margin-left: -20px;
+  }
+}
+@media screen and (max-width: 768px) {
+  /* line 260, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+  .experience-navigation a {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -js-flex: 1;
+  }
+}
+
+/* line 281, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_navigation.scss */
+a.active-exper-tab {
+  background-color: #ffffff;
+  color: #0ba7d0;
+  font-weight: 700;
+}
+
+/* SCAFFOLD 
+All primary layout patterns
+==================================================================== */
+/* line 5, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_scaffold.scss */
+.main {
+  padding: 50px 20px;
+  padding: 3.125rem 1.25rem;
+}
+
+@media screen and (min-width: 768px) {
+  /* line 9, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_scaffold.scss */
+  .grid_primary {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 74.41059%;
+  }
+  /* line 89, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/neat-1.7.4/app/assets/stylesheets/grid/_span-columns.scss */
+  .grid_primary:last-child {
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  /* line 9, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_scaffold.scss */
+  .grid_primary {
+    margin-bottom: 50px;
+    margin-bottom: 3.125rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* line 18, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_scaffold.scss */
+  .grid_aside {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 23.23176%;
+  }
+  /* line 89, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/neat-1.7.4/app/assets/stylesheets/grid/_span-columns.scss */
+  .grid_aside:last-child {
+    margin-right: 0;
+  }
+}
+
+/* line 25, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_scaffold.scss */
+.free-trial {
+  background-color: #0ba7d0;
+  color: #ffffff;
+  font-size: 14px;
+  font-size: 0.875rem;
+  padding: 10px 20px;
+  padding: 0.625rem 1.25rem;
+}
+
+/* line 32, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_scaffold.scss */
+.free-trial a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+/* line 35, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_scaffold.scss */
+.free-trial a:hover {
+  color: #d9d9d9;
+  text-decoration: underline;
+}
+
+/* line 42, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_scaffold.scss */
+.footer {
+  color: #a7a9ac;
+  padding: 20px 0;
+  padding: 1.25rem 0;
+}
+
+/* line 51, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_scaffold.scss */
+.exper-sub-nav-content {
+  padding: 0 20px;
+  padding: 0 1.25rem;
+}
+
+/* SIDEBARS 
+All sidebar styles
+==================================================================== */
+/* line 5, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_sidebars.scss */
+.sidebar {
+  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
+}
+
+/* line 9, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_sidebars.scss */
+h3.sidebar__title {
+  font-size: 18px;
+  font-size: 1.125rem;
+  margin: 0 0 10px;
+  margin: 0 0 0.625rem;
+}
+
+/* line 14, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_sidebars.scss */
+.sidebar p:last-child {
+  margin-bottom: 0px;
+}
+
+/* TYPE 
+All typographic baseline styles
+==================================================================== */
+/* line 34, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/bourbon-4.2.6/app/assets/stylesheets/css3/_selection.scss */
+::-moz-selection {
+  background-color: #0ba7d0;
+  color: #ffffff;
+}
+
+/* line 38, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/bourbon-4.2.6/app/assets/stylesheets/css3/_selection.scss */
+::selection {
+  background-color: #0ba7d0;
+  color: #ffffff;
+}
+
+/* line 11, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_type.scss */
+body {
+  font-size: 16px;
+  font-size: 1rem;
+  background-color: #e3e4e6;
+  color: #313741;
+  font-family: "proxima-nova", Helvetica, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* line 18, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_type.scss */
+html {
+  font-size: 100%;
+  /* Sets baseline of 16px for REM calculations */
+}
+@media screen and (max-width: 992px) {
+  /* line 18, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_type.scss */
+  html {
+    font-size: 90%;
+  }
+}
+@media screen and (max-width: 882px) {
+  /* line 18, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_type.scss */
+  html {
+    font-size: 80%;
+  }
+}
+
+/* line 28, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_type.scss */
+h1, h2, h3, h4, h5, h6 {
+  -webkit-font-smoothing: antialiased;
+  clear: both;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* line 35, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_type.scss */
+h1 {
+  font-size: 36px;
+  font-size: 2.25rem;
+  margin: 0 0 25px;
+  margin: 0 0 1.5625rem;
+}
+
+/* line 40, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_type.scss */
+h2 {
+  font-size: 30px;
+  font-size: 1.875rem;
+}
+
+/* line 44, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_type.scss */
+p {
+  margin: 0 0 20px;
+  margin: 0 0 1.25rem;
+  font-weight: 300;
+  line-height: 1.3;
+  font-size: 16px;
+  font-size: 1rem;
+}
+
+/* line 51, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_type.scss */
+dfn, cite, em, i {
+  font-style: italic;
+}
+
+/* line 55, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_type.scss */
+blockquote,
+address {
+  margin: 0 15px;
+  margin: 0 0.9375rem;
+}
+
+/* line 60, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_type.scss */
+code, kbd, tt, var {
+  font-size: 15px;
+  font-size: 0.9375rem;
+  font-family: "Monaco", "Lucida Console", "Consolas", sans-serif;
+}
+
+/* line 65, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_type.scss */
+abbr, acronym {
+  border-bottom: 1px dotted #838383;
+  cursor: help;
+}
+
+/* line 70, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_type.scss */
+a {
+  -webkit-transition: color 0.15s linear, background-color 0.15s linear;
+  -moz-transition: color 0.15s linear, background-color 0.15s linear;
+  transition: color 0.15s linear, background-color 0.15s linear;
+  color: #0ba7d0;
+  text-decoration: none;
+}
+/* line 74, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_type.scss */
+a:hover {
+  color: #0880a0;
+  text-decoration: none;
+}
+
+/* line 80, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_type.scss */
+ul {
+  margin: 0;
+}
+
+/* line 84, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_type.scss */
+hr {
+  border-top: 1px solid #838383;
+}
+
+/* line 88, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_type.scss */
+h1.page-title {
+  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
+}
+
+/* line 92, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_type.scss */
+p.page-subtitle {
+  font-size: 24px;
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
+}
+
+/* SEGMENTS 
+Segment cards
+==================================================================== */
+/* line 4, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+.segment-container {
+  margin-bottom: 60px;
+  margin-bottom: 3.75rem;
+}
+
+/* line 8, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+.segment-single {
+  margin-bottom: 25px;
+  margin-bottom: 1.5625rem;
+}
+@media screen and (min-width: 768px) {
+  /* line 8, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+  .segment-single {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -js-display: flex;
+    -webkit-box-align: start;
+    -moz-box-align: start;
+    box-align: start;
+    -webkit-align-items: flex-start;
+    -moz-align-items: flex-start;
+    -ms-align-items: flex-start;
+    -o-align-items: flex-start;
+    align-items: flex-start;
+    -ms-flex-align: start;
+    -js-align-items: flex-start;
+  }
+}
+@media screen and (max-width: 768px) {
+  /* line 8, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+  .segment-single {
+    text-align: center;
+  }
+}
+
+/* line 21, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+.segment-single__draggable {
+  -webkit-align-self: flex-start;
+  -moz-align-self: flex-start;
+  align-self: flex-start;
+  -ms-flex-item-align: start;
+  margin: 10px 20px 0 0;
+  margin: 0.625rem 1.25rem 0 0;
+}
+
+/* line 26, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+.segment-single__draggable a:hover {
+  cursor: move;
+}
+
+@media screen and (min-width: 768px) {
+  /* line 30, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+  .segment-single__main,
+  .segment-single__actions {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    js-flex: 1;
+  }
+}
+
+/* line 38, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+.segment-single__actions {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+@media screen and (min-width: 768px) {
+  /* line 38, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+  .segment-single__actions {
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    box-direction: normal;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-direction: column;
+    margin: 10px 0;
+    margin: 0.625rem 0;
+    text-align: right;
+  }
+}
+@media screen and (max-width: 768px) {
+  /* line 38, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+  .segment-single__actions {
+    margin: 20px 0 0;
+    margin: 1.25rem 0 0;
+  }
+}
+
+/* line 50, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+a.segment-single__action {
+  margin-bottom: 15px;
+  margin-bottom: 0.9375rem;
+  display: block;
+  color: #111111;
+  line-height: 1;
+}
+/* line 55, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+a.segment-single__action:last-child {
+  margin: 0px;
+}
+/* line 58, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+a.segment-single__action:hover {
+  color: #0ba7d0;
+}
+@media screen and (max-width: 768px) {
+  /* line 50, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+  a.segment-single__action {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    js-flex: 1;
+    color: #0ba7d0;
+    line-height: 1.3;
+    padding: 0px 25px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* line 70, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+  a.segment-single__action svg {
+    display: none;
+  }
+}
+
+/* line 76, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+a.segment-single__action:hover svg.icon path {
+  fill: #0ba7d0;
+}
+
+/* line 80, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+h3.segment-single__title {
+  font-size: 28px;
+  font-size: 1.75rem;
+  margin: 0 0 10px;
+  margin: 0 0 0.625rem;
+}
+
+/* line 85, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+p.segment-single__note-count {
+  font-size: 21px;
+  font-size: 1.3125rem;
+  margin: 0 0 15px;
+  margin: 0 0 0.9375rem;
+  color: #838383;
+}
+
+/* line 91, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+p.segment-single__location {
+  margin: 0 0 5px;
+  margin: 0 0 0.3125rem;
+}
+
+/* line 95, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+.u-card.add-segment {
+  background-color: #E3EEF5;
+  border: 2px dashed #0ba7d0;
+  -webkit-transition: background-color 0.15s linear, border-color 0.15s linear;
+  -moz-transition: background-color 0.15s linear, border-color 0.15s linear;
+  transition: background-color 0.15s linear, border-color 0.15s linear;
+  padding-bottom: 35px;
+  padding-bottom: 2.1875rem;
+}
+
+/* line 102, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+.u-card.add-segment:hover {
+  background-color: #d0e3ee;
+  border: 2px dashed #0a94b8;
+}
+
+/* line 107, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+.add-segment a {
+  color: #0ba7d0;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: block;
+  margin: 0 auto;
+  padding: 0 30px;
+  padding: 0 1.875rem;
+}
+@media screen and (min-width: 768px) {
+  /* line 107, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+  .add-segment a {
+    max-width: 40%;
+  }
+}
+
+/* line 119, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+.add-segment__plus {
+  font-weight: 300;
+  display: block;
+  font-size: 60px;
+  font-size: 3.75rem;
+  line-height: 1;
+}
+
+/* line 131, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+.segment-child__header {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  box-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
+}
+
+/* line 137, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+.segment-child__header h3 {
+  font-size: 28px;
+  font-size: 1.75rem;
+  margin: 0;
+}
+@media screen and (max-width: 768px) {
+  /* line 137, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+  .segment-child__header h3 {
+    padding-right: 20px;
+  }
+}
+
+/* line 145, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+.segment-child__header h3 a {
+  color: #111111;
+}
+/* line 147, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+.segment-child__header h3 a:hover {
+  color: #0a94b8;
+}
+
+/* line 152, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+.segment-child__header .btn {
+  margin-left: auto;
+}
+@media screen and (max-width: 768px) {
+  /* line 152, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+  .segment-child__header .btn {
+    font-size: 14px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: auto;
+  }
+}
+
+/* line 162, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_segments.scss */
+.note-single__shadower {
+  color: #a7a9ac;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+/* UTILITIES 
+Shortcut classes for commonly used styling. Prefix all classes here 
+with "u-", eg. "u-text-center".
+==================================================================== */
+/* line 7, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_utilities.scss */
+.u-center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 11, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_utilities.scss */
+.u-container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 20, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/bourbon-4.2.6/app/assets/stylesheets/addons/_clearfix.scss */
+.u-container::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+/* line 15, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_utilities.scss */
+.u-card {
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  padding: 1.25rem;
+}
+
+/* line 22, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_utilities.scss */
+.u-pull-right {
+  float: right;
+}
+
+/* line 26, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_utilities.scss */
+.u-pull-left {
+  float: left;
+}
+
+/* line 30, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_utilities.scss */
+.u-clearfix {
+  clear: both;
+}
+
+@media screen and (max-width: 768px) {
+  /* line 34, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_utilities.scss */
+  .u-hide-mobile {
+    display: none;
+  }
+}
+
+/* line 40, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_utilities.scss */
+.u-show-mobile {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  /* line 40, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_utilities.scss */
+  .u-show-mobile {
+    display: block;
+  }
+}
+
+/* line 48, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_utilities.scss */
+.u-img-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+/* line 54, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_utilities.scss */
+.u-text-center {
+  text-align: center;
+}
+
+/* line 58, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_utilities.scss */
+.u-text-right {
+  text-align: right;
+}
+
+/* line 62, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_utilities.scss */
+.u-meta-text {
+  font-size: 14px;
+  font-size: 0.875rem;
+  margin: 0 0 20px;
+  margin: 0 0 1.25rem;
+  color: #a7a9ac;
+  font-weight: 300;
+}
+
+/* line 69, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/components/_utilities.scss */
+.u-text-black {
+  color: #111111 !important;
+}
+
+/* PARTIALS 
+Partial styles handle commonly repeated layout elements like navigation,
+headers, footers, etc.
+==================================================================== */
+/* line 4, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-header.scss */
+.experience-header {
+  background: #ffffff;
+  padding: 40px 20px 0;
+  padding: 2.5rem 1.25rem 0;
+}
+
+/* line 9, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-header.scss */
+h2.experience-header__title {
+  color: #023d4d;
+  margin: 0 10px 15px 0;
+  margin: 0 0.625rem 0.9375rem 0;
+}
+@media screen and (max-width: 768px) {
+  /* line 9, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-header.scss */
+  h2.experience-header__title {
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* line 17, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-header.scss */
+  .experience-header__title-group {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    box-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    -o-align-items: center;
+    align-items: center;
+    -ms-flex-align: center;
+  }
+}
+@media screen and (max-width: 768px) {
+  /* line 17, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-header.scss */
+  .experience-header__title-group {
+    margin-bottom: 20px;
+  }
+}
+
+/* line 27, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-header.scss */
+.experience-header .u-meta-text {
+  margin-bottom: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  /* line 31, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-header.scss */
+  .experience-header .experience-card__description {
+    max-width: 70%;
+  }
+}
+
+/* line 37, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-header.scss */
+.experience-header p.experience-card__location {
+  font-size: 18px;
+  font-size: 1.125rem;
+}
+
+/* line 41, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-header.scss */
+.breadcrumb {
+  position: relative;
+  top: -20px;
+  top: -1.25rem;
+}
+
+/* line 5, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-card.scss */
+.experience-loop {
+  -js-display: flex;
+  -js-flex-wrap: wrap;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  box-lines: multiple;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: 0 0 60px;
+  padding: 0 0 3.75rem;
+  display: block;
+}
+
+/* line 14, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-card.scss */
+.experience-card {
+  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
+  padding: 20px 30px;
+  padding: 1.25rem 1.875rem;
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%;
+  background: #ffffff;
+  position: relative;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+/* line 78, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/neat-1.7.4/app/assets/stylesheets/grid/_omega.scss */
+.experience-card:nth-child(2n) {
+  margin-right: 0;
+}
+/* line 83, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/neat-1.7.4/app/assets/stylesheets/grid/_omega.scss */
+.experience-card:nth-child(2n+1) {
+  clear: left;
+}
+/* line 89, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/neat-1.7.4/app/assets/stylesheets/grid/_span-columns.scss */
+.experience-card:last-child {
+  margin-right: 0;
+}
+@media screen and (max-width: 768px) {
+  /* line 14, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-card.scss */
+  .experience-card {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 100%;
+  }
+  /* line 89, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/neat-1.7.4/app/assets/stylesheets/grid/_span-columns.scss */
+  .experience-card:last-child {
+    margin-right: 0;
+  }
+}
+
+/* line 28, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-card.scss */
+h3.experience-card__title {
+  font-size: 28px;
+  font-size: 1.75rem;
+  margin: 0 0 10px;
+  margin: 0 0 0.625rem;
+  line-height: 1.1;
+  padding-right: 30px;
+  padding-right: 1.875rem;
+}
+
+/* line 36, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-card.scss */
+h3.experience-card__title a {
+  color: #023d4d;
+}
+/* line 38, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-card.scss */
+h3.experience-card__title a:hover {
+  color: #0ba7d0;
+}
+
+/* line 43, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-card.scss */
+.experience-card .icon__published {
+  right: 15px;
+  right: 0.9375rem;
+  top: 15px;
+  top: 0.9375rem;
+  position: absolute;
+}
+
+/* line 49, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-card.scss */
+p.experience-card__meta {
+  font-size: 14px;
+  font-size: 0.875rem;
+  margin: 0 0 20px;
+  margin: 0 0 1.25rem;
+  color: #a7a9ac;
+  font-weight: 300;
+}
+
+/* line 56, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-card.scss */
+p.experience-card__location {
+  font-weight: 700;
+  margin: 0 0 20px;
+  margin: 0 0 1.25rem;
+  color: #111111;
+}
+
+/* line 62, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-card.scss */
+p.experience-card__description {
+  font-size: 18px;
+  font-size: 1.125rem;
+  margin-bottom: 50px;
+  margin-bottom: 3.125rem;
+}
+
+/* line 67, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-card.scss */
+.experience-card__footer {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -js-display: flex;
+}
+
+/* line 72, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-card.scss */
+.experience-card__footer-stat {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 1;
+  -moz-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -js-flex: 1;
+  border-right: 1px solid #8EB9D1;
+}
+/* line 76, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-card.scss */
+.experience-card__footer-stat:last-child {
+  border-right: 0px;
+}
+
+/* line 81, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-card.scss */
+.experience-card__footer-stat-number {
+  font-size: 42px;
+  font-size: 2.625rem;
+  display: block;
+  font-weight: 600;
+}
+
+/* line 90, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-card.scss */
+.experience-pagination {
+  clear: both;
+  padding-top: 20px;
+  padding-top: 1.25rem;
+}
+
+/* line 95, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-card.scss */
+.experience-pagination a,
+.experience-pagination span,
+.experience-pagination em {
+  display: inline-block;
+  padding: 0 3px;
+  padding: 0 0.1875rem;
+}
+
+/* line 106, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-card.scss */
+.experience-card.add-experience {
+  background-color: #E3EEF5;
+  border: 2px dashed #0ba7d0;
+  -webkit-transition: background-color 0.15s linear, border-color 0.15s linear;
+  -moz-transition: background-color 0.15s linear, border-color 0.15s linear;
+  transition: background-color 0.15s linear, border-color 0.15s linear;
+  padding: 0;
+}
+
+/* line 113, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-card.scss */
+.experience-card.add-experience:hover {
+  background-color: #d0e3ee;
+  border: 2px dashed #0a94b8;
+}
+
+/* line 118, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-card.scss */
+.add-experience__plus {
+  display: block;
+  font-weight: 300;
+  font-size: 100px;
+  font-size: 6.25rem;
+  line-height: 1;
+}
+
+/* line 125, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-card.scss */
+.add-experience a {
+  color: #0ba7d0;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: block;
+  margin: 0 auto;
+  padding: 0 30px 20px;
+  padding: 0 1.875rem 1.25rem;
+}
+@media screen and (min-width: 768px) {
+  /* line 125, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_experience-card.scss */
+  .add-experience a {
+    max-width: 40%;
+  }
+}
+
+/* line 1, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_shadower-table.scss */
+.shadower-table {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* line 8, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_shadower-table.scss */
+.shadower-table__header {
+  background-color: #023d4d;
+  color: #ffffff;
+}
+
+/* line 13, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_shadower-table.scss */
+.shadower-table thead:nth-of-type(1) th:first-child {
+  border-top-left-radius: 5px;
+}
+
+/* line 17, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_shadower-table.scss */
+.shadower-table thead:nth-of-type(1) th:last-child {
+  border-top-right-radius: 5px;
+}
+
+/* line 21, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_shadower-table.scss */
+.shadower-table th,
+.shadower-table td {
+  text-align: left;
+  padding: 20px;
+  padding: 1.25rem;
+}
+
+/* line 27, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_shadower-table.scss */
+.shadower-table tr:nth-child(2n) {
+  background-color: #f2f2f2;
+}
+
+/* line 31, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_shadower-table.scss */
+.shadower-table tr:last-child td:first-child {
+  border-bottom-left-radius: 5px;
+}
+
+/* line 35, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_shadower-table.scss */
+.shadower-table tr:last-child td:last-child {
+  border-bottom-right-radius: 5px;
+}
+
+/* line 39, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_shadower-table.scss */
+.shadower-table__invited-on {
+  display: block;
+  color: #a7a9ac;
+}
+
+/* line 44, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_shadower-table.scss */
+.add-shadower-message-container .alert {
+  margin: 15px 20px;
+  margin: 0.9375rem 1.25rem;
+}
+
+/* line 48, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_shadower-table.scss */
+.shadower-table .active-row {
+  font-weight: bold;
+}
+
+/* line 52, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/partials/_shadower-table.scss */
+.delete-link {
+  color: #848484;
+}
+
+/* PAGE 
+Page-specific styles handle styles unique to a specific page within the
+app. 
+==================================================================== */
+/* 404 
+Styles for all 404 template.
+==================================================================== */
+/* LOGIN 
+Styles for all public-facing login and signup screens.
+==================================================================== */
+/* line 5, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/org_index.scss */
+.organization-index {
+  background-color: #023d4d;
+  min-height: 500px;
+  min-height: 31.25rem;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  box-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  box-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+}
+
+/* line 13, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/org_index.scss */
+.organization-index__container {
+  margin: 0 auto;
+  padding: 100px 0;
+  padding: 6.25rem 0;
+  display: block;
+  border-radius: 5px;
+}
+
+/* line 20, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/org_index.scss */
+.organization-index__container a {
+  font-size: 28px;
+  font-size: 1.75rem;
+  padding: 50px 150px;
+  padding: 3.125rem 9.375rem;
+  -webkit-transition: background-color 0.15s linear;
+  -moz-transition: background-color 0.15s linear;
+  transition: background-color 0.15s linear;
+  background: #ffffff;
+  border-bottom: 1px solid #8EB9D1;
+  color: #111111;
+  display: block;
+  font-weight: 700;
+  text-align: center;
+}
+/* line 30, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/org_index.scss */
+.organization-index__container a:hover {
+  background-color: #f2f2f2;
+}
+/* line 33, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/org_index.scss */
+.organization-index__container a:first-child {
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+/* line 37, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/org_index.scss */
+.organization-index__container a:last-child {
+  border-bottom: 0px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+/* line 44, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/org_index.scss */
+.organization-index .alert {
+  position: absolute;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1200px;
+  left: 50%;
+  margin-left: -600px;
+}
+
+/* line 5, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/references.scss */
+.reference-tab,
+.bulk-reference-tab {
+  display: inline-block;
+  background: #ffffff;
+  padding: 15px 0 17px 15px;
+  padding: 0.9375rem 0 1.0625rem 0.9375rem;
+  min-width: 40%;
+  position: relative;
+  bottom: -2px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  z-index: 1;
+}
+
+/* line 18, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/references.scss */
+.reference-tab a {
+  color: #111111;
+}
+
+/* line 22, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/references.scss */
+.bulk-reference-tab.active,
+.reference-tab.active {
+  z-index: 3;
+}
+
+/* line 27, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/references.scss */
+.bulk-reference-tab.active a,
+.reference-tab.active a {
+  font-weight: 700;
+  color: #0ba7d0;
+}
+
+/* line 33, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/references.scss */
+.reference-table {
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 2;
+}
+
+/* line 41, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/references.scss */
+.person-container,
+.place-container {
+  padding: 15px;
+  padding: 0.9375rem;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  box-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+}
+
+/* line 48, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/references.scss */
+.reference-actions {
+  margin-left: auto;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* line 53, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/references.scss */
+.reference-actions a:first-child {
+  margin-right: 10px;
+}
+
+/* line 57, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/references.scss */
+.person-container:nth-child(2n),
+.place-container:nth-child(2n) {
+  background-color: #f2f2f2;
+}
+
+/* line 62, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/references.scss */
+.bulk-reference-table {
+  background: #ffffff;
+  position: relative;
+  z-index: 2;
+}
+
+/* line 68, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/references.scss */
+.bulk-reference-tabs {
+  margin: 10px 20px 0;
+  margin: 0.625rem 1.25rem 0;
+}
+
+/* line 72, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/references.scss */
+.bulk-reference-tab {
+  display: inline-block;
+  padding: 10px 0 10px 15px;
+  padding: 0.625rem 0 0.625rem 0.9375rem;
+  min-width: 40%;
+  position: relative;
+  bottom: -1px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  z-index: 1;
+  border: 1px solid #cccccc;
+}
+
+/* line 84, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/references.scss */
+a.bulk-reference-tab.js-active {
+  color: #111111;
+  font-weight: 700;
+  background: #ffffff;
+  border-bottom: 1px solid #ffffff;
+  position: relative;
+  z-index: 9;
+}
+
+/* line 93, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/references.scss */
+.modal-body-tabs {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid #cccccc;
+}
+
+/* line 99, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/references.scss */
+.bulk-add-references-message-container {
+  margin: 15px 15px 0px;
+}
+
+/* Experience Search
+/*
+==================================================================== */
+/* line 5, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/search.scss */
+.clear-search {
+  margin-top: 5px;
+  margin-top: 0.3125rem;
+}
+
+/* line 5, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.note-single {
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  padding: 1.25rem;
+  margin-bottom: 15px;
+  margin-bottom: 0.9375rem;
+}
+@media screen and (min-width: 768px) {
+  /* line 5, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+  .note-single {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+/* line 16, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.note-single__check {
+  padding-right: 30px;
+  padding-right: 1.875rem;
+}
+@media screen and (max-width: 768px) {
+  /* line 16, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+  .note-single__check {
+    float: left;
+  }
+}
+
+/* line 23, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.note-single__meta {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-right: 30px;
+  padding-right: 1.875rem;
+}
+@media screen and (max-width: 768px) {
+  /* line 23, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+  .note-single__meta {
+    padding-bottom: 20px;
+  }
+}
+
+/* line 31, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.note-single__meta-left {
+  padding-right: 20px;
+  padding-right: 1.25rem;
+}
+
+/* line 35, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.note-single__meta-place {
+  color: #0d86a9;
+  margin-top: 10px;
+  margin-top: 0.625rem;
+}
+
+/* line 45, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.note-single__meta-person {
+  color: #06a7d0;
+  margin-top: 10px;
+  margin-top: 0.625rem;
+}
+
+/* line 50, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.note-single__meta-right a,
+.note-single__meta-left a {
+  color: #111111;
+}
+/* line 53, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.note-single__meta-right a:hover,
+.note-single__meta-left a:hover {
+  color: #0ba7d0;
+}
+
+/* line 58, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+p.note-single__shadower {
+  font-size: 15px;
+  color: #a7a9ac;
+  font-weight: 300;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-content: center;
+  -moz-align-content: center;
+  align-content: center;
+  -ms-flex-line-pack: center;
+  margin: 0 0 8px;
+  margin: 0 0 0.5rem;
+}
+
+/* line 67, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+p.note-single__shadower small {
+  margin-left: auto;
+  -webkit-align-self: flex-end;
+  -moz-align-self: flex-end;
+  align-self: flex-end;
+  -ms-flex-item-align: end;
+  display: inline-block;
+}
+
+/* line 74, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.note-single__asset {
+  padding-left: 20px;
+  padding-left: 1.25rem;
+}
+
+/* line 78, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.note-single__asset img {
+  max-width: 200px;
+  max-width: 12.5rem;
+  height: auto;
+  border: 1px solid #e3e4e6;
+  padding: 5px;
+  padding: 0.3125rem;
+  border-radius: 5px;
+  border-radius: 0.3125rem;
+  -webkit-transition: border-color 0.15s linear;
+  -moz-transition: border-color 0.15s linear;
+  transition: border-color 0.15s linear;
+}
+/* line 85, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.note-single__asset img:hover {
+  border: 1px solid #bbbdc2;
+}
+
+/* line 90, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.note-single__note {
+  font-size: 18px;
+  color: #838383;
+  font-weight: 300;
+  line-height: 1.4;
+  flex: 2;
+}
+
+/* line 98, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.note-single__actions {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: auto;
+  padding-left: 20px;
+  padding-left: 1.25rem;
+}
+
+/* line 104, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.note-single__actions a {
+  padding: 0 0 0 20px;
+  padding: 0 0 0 1.25rem;
+}
+@media screen and (max-width: 768px) {
+  /* line 104, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+  .note-single__actions a {
+    flex: 1;
+    text-align: center;
+    margin-top: 20px;
+    padding: 0px;
+  }
+}
+/* line 112, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.note-single__actions a:first-child {
+  padding-left: 0px;
+}
+
+/* line 117, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+svg.icon__accolade-solid {
+  display: none;
+}
+
+/* line 121, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.active-thumb svg.icon__accolade-solid {
+  display: inline-block;
+}
+
+/* line 125, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.active-thumb svg.icon__accolade-outline {
+  display: none;
+}
+
+/* line 129, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+svg.icon__opportunity-solid {
+  display: none;
+}
+
+/* line 133, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.active-thumb svg.icon__opportunity-solid {
+  display: inline-block;
+}
+
+/* line 137, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.active-thumb svg.icon__opportunity-outline {
+  display: none;
+}
+
+/* line 145, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.note-reference {
+  color: #ffffff;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* line 151, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.note-Person {
+  background-color: #0ba7d0;
+}
+
+/* line 155, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.note-Place {
+  background-color: #0d86a9;
+}
+
+/* line 159, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.note-single__icon {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  box-align: start;
+  -webkit-align-items: flex-start;
+  -moz-align-items: flex-start;
+  -ms-align-items: flex-start;
+  -o-align-items: flex-start;
+  align-items: flex-start;
+  -ms-flex-align: start;
+  padding-right: 30px;
+  padding-right: 1.875rem;
+}
+
+/* line 165, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.note-reference__icon-person {
+  width: 38px;
+  width: 2.375rem;
+  height: 30px;
+  height: 1.875rem;
+}
+
+/* line 170, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.note-reference__icon-place {
+  width: 38px;
+  width: 2.375rem;
+  height: 30px;
+  height: 1.875rem;
+}
+
+/* line 175, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.note-single__reference-meta {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-right: 30px;
+  padding-right: 1.875rem;
+}
+
+/* line 180, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.note-single__reference-meta-left {
+  padding-right: 30px;
+  padding-right: 1.875rem;
+}
+
+/* line 184, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.reference__start-time {
+  color: #afd4e8;
+  font-size: 16px;
+  font-size: 1rem;
+  margin: 0px;
+  font-weight: 700;
+}
+
+/* line 191, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+h3.reference__name {
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1.2;
+  color: #ffffff;
+  margin: 5px 0 0;
+  margin: 0.3125rem 0 0;
+}
+
+/* line 198, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+a.reference__duration {
+  color: #ffffff;
+}
+/* line 200, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+a.reference__duration:hover {
+  color: #f2f2f2;
+}
+
+/* line 205, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.note-single__reference-meta-left {
+  width: 130px;
+  width: 8.125rem;
+}
+
+/* line 209, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.reference__icon_duration {
+  width: 15px;
+  width: 0.9375rem;
+  height: 15px;
+  height: 0.9375rem;
+}
+
+/* line 222, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.u-card.add-note {
+  background-color: #E3EEF5;
+  border: 2px dashed #0ba7d0;
+  -webkit-transition: background-color 0.15s linear, border-color 0.15s linear;
+  -moz-transition: background-color 0.15s linear, border-color 0.15s linear;
+  transition: background-color 0.15s linear, border-color 0.15s linear;
+  padding-bottom: 35px;
+  padding-bottom: 2.1875rem;
+  margin: 40px 0;
+  margin: 2.5rem 0;
+}
+
+/* line 230, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.u-card.add-note:hover {
+  background-color: #d0e3ee;
+  border: 2px dashed #0a94b8;
+}
+
+/* line 235, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.add-note a {
+  color: #0ba7d0;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: block;
+  margin: 0 auto;
+  padding: 0 30px;
+  padding: 0 1.875rem;
+}
+@media screen and (min-width: 768px) {
+  /* line 235, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+  .add-note a {
+    max-width: 40%;
+  }
+}
+
+/* line 247, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/segment_notes.scss */
+.add-note__plus {
+  font-weight: 300;
+  display: block;
+  font-size: 60px;
+  font-size: 3.75rem;
+  line-height: 1;
+}
+
+/* line 5, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/settings.scss */
+.settings-avatar img {
+  margin: 0px 20px;
+}
+
+/* line 11, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/settings.scss */
+.pricing-table {
+  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
+}
+@media screen and (min-width: 900px) {
+  /* line 11, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/settings.scss */
+  .pricing-table {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+/* line 18, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/settings.scss */
+.pricing-column {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column;
+  -moz-flex-flow: column;
+  flex-flow: column;
+  background: #ffffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-right: 20px;
+  margin-right: 1.25rem;
+}
+/* line 24, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/settings.scss */
+.pricing-column:last-child {
+  margin-right: 0px;
+}
+@media screen and (min-width: 900px) {
+  /* line 18, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/settings.scss */
+  .pricing-column {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+}
+@media screen and (max-width: 900px) {
+  /* line 18, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/settings.scss */
+  .pricing-column {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+}
+
+/* line 36, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/settings.scss */
+.pricing-column.pricing-active {
+  border: 5px solid #0ba7d0;
+}
+
+/* line 40, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/settings.scss */
+.pricing-plan {
+  background-color: #0ba7d0;
+  color: #ffffff;
+  font-weight: 700;
+  padding: 10px;
+  padding: 0.625rem;
+}
+
+/* line 47, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/settings.scss */
+.pricing-body {
+  padding: 15px;
+  padding: 0.9375rem;
+}
+
+/* line 51, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/settings.scss */
+h3.pricing-license {
+  font-size: 16px;
+  font-size: 1rem;
+  margin: 0 0 15px;
+  margin: 0 0 0.9375rem;
+}
+
+/* line 56, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/settings.scss */
+p.pricing-price {
+  font-size: 24px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0ba7d0;
+  margin: 0px 0px 0px;
+}
+
+/* line 63, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/settings.scss */
+p.pricing-interval {
+  color: #b4b4b4;
+  font-weight: 300;
+  margin-bottom: 15px;
+  margin-bottom: 0.9375rem;
+}
+
+/* line 69, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/settings.scss */
+ul.pricing-features {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+
+/* line 76, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/settings.scss */
+ul.pricing-features li {
+  padding-bottom: 5px;
+  padding-bottom: 0.3125rem;
+}
+
+/* line 80, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/settings.scss */
+.pricing-footer {
+  text-align: center;
+  padding: 0 0 15px;
+  padding: 0 0 0.9375rem;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: center;
+  -moz-align-self: center;
+  align-self: center;
+  -ms-flex-item-align: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  box-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  margin-top: auto;
+}
+
+/* line 89, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/settings.scss */
+.pricing-footer .btn {
+  font-size: 16px;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+/* line 95, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/settings.scss */
+.settings-info {
+  padding-bottom: 20px;
+  padding-bottom: 1.25rem;
+}
+
+/* line 99, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/pages/settings.scss */
+.settings-info h3 {
+  margin: 0 0 5px;
+  margin: 0 0 0.3125rem;
+}
+
+/* Vendor 
+Vendor styles include any third-party plugins or libraries (excluding
+Bourbon/Neat)
+==================================================================== */
+/**
+ * Featherlight – ultra slim jQuery lightbox
+ * Version 1.4.0 - http://noelboss.github.io/featherlight/
+ *
+ * Copyright 2016, Noël Raoul Bossart (http://www.noelboss.com)
+ * MIT Licensed.
+**/
+@media all {
+  /* line 9, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/vendor/featherlight.scss */
+  .featherlight {
+    display: none;
+    /* dimensions: spanning the background from edge to edge */
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2147483647;
+    /* z-index needs to be >= elements on the site. */
+    /* position: centering content */
+    text-align: center;
+    /* insures that the ::before pseudo element doesn't force wrap with fixed width content; */
+    white-space: nowrap;
+    /* styling */
+    cursor: pointer;
+    background: #333;
+    /* IE8 "hack" for nested featherlights */
+    background: transparent;
+  }
+
+  /* support for nested featherlights. Does not work in IE8 (use JS to fix) */
+  /* line 31, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/vendor/featherlight.scss */
+  .featherlight:last-of-type {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  /* line 35, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/vendor/featherlight.scss */
+  .featherlight:before {
+    /* position: trick to center content vertically */
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em;
+  }
+
+  /* line 44, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/vendor/featherlight.scss */
+  .featherlight .featherlight-content {
+    /* make content container for positioned elements (close button) */
+    position: relative;
+    /* position: centering vertical and horizontal */
+    text-align: left;
+    vertical-align: middle;
+    display: inline-block;
+    /* dimensions: cut off images */
+    overflow: auto;
+    padding: 25px 25px 0;
+    border-bottom: 25px solid transparent;
+    /* dimensions: handling large content */
+    margin-left: 5%;
+    margin-right: 5%;
+    max-height: 95%;
+    /* styling */
+    background: #fff;
+    cursor: auto;
+    /* reset white-space wrapping */
+    white-space: normal;
+  }
+
+  /* contains the content */
+  /* line 72, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/vendor/featherlight.scss */
+  .featherlight .featherlight-inner {
+    /* make sure its visible */
+    display: block;
+  }
+
+  /* line 77, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/vendor/featherlight.scss */
+  .featherlight .featherlight-close-icon {
+    /* position: centering vertical and horizontal */
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+    right: 0;
+    /* dimensions: 25px x 25px */
+    line-height: 25px;
+    width: 25px;
+    /* styling */
+    cursor: pointer;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background: #fff;
+    /* Set the background in case it overlaps the content */
+    background: rgba(255, 255, 255, 0.3);
+    color: #000;
+  }
+
+  /* line 98, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/vendor/featherlight.scss */
+  .featherlight .featherlight-image {
+    /* styling */
+    width: 100%;
+  }
+
+  /* line 104, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/vendor/featherlight.scss */
+  .featherlight-iframe .featherlight-content {
+    /* removed the border for image croping since iframe is edge to edge */
+    border-bottom: 0;
+    padding: 0;
+  }
+
+  /* line 110, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/vendor/featherlight.scss */
+  .featherlight iframe {
+    /* styling */
+    border: none;
+  }
+}
+/* handling phones and small screens */
+@media only screen and (max-width: 1024px) {
+  /* line 118, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/vendor/featherlight.scss */
+  .featherlight .featherlight-content {
+    /* dimensions: maximize lightbox with for small screens */
+    margin-left: 10px;
+    margin-right: 10px;
+    max-height: 98%;
+    padding: 10px 10px 0;
+    border-bottom: 10px solid transparent;
+  }
+}
+/* line 4, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/neat-1.7.4/app/assets/stylesheets/grid/_box-sizing.scss */
+html {
+  box-sizing: border-box;
+}
+
+/* line 9, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/neat-1.7.4/app/assets/stylesheets/grid/_box-sizing.scss */
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+
+/* David Ensinger's Rem Mixin, which translates any pixel, percentage, or "auto" value into rems with a px fallback for lt IE9: http://davidensinger.com/2013/03/using-rems-with-sass/
+**/
+/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/* Typography */
+/* Shadows */
+/* Animations */
+/* Dialog */
+/* REPORTS 
+==================================================================== */
+/* line 12, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+body.report {
+  background: #ffffff;
+}
+
+/* line 17, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.report-title {
+  font-size: 24px;
+  color: #024d60;
+  margin-bottom: 10px;
+}
+
+/* line 23, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+small.report-exported_on {
+  color: #a8aaad;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 300;
+  margin-left: 10px;
+}
+
+/* line 31, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.report-logo {
+  width: 160px;
+  height: 48px;
+  float: right;
+}
+
+/* line 39, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.report-meta {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+/* line 20, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/bourbon-4.2.6/app/assets/stylesheets/addons/_clearfix.scss */
+.report-meta::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+/* line 44, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.report-meta__column {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%;
+}
+/* line 89, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/neat-1.7.4/app/assets/stylesheets/grid/_span-columns.scss */
+.report-meta__column:last-child {
+  margin-right: 0;
+}
+
+/* line 48, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.report-meta__column p {
+  font-weight: 400;
+}
+
+/* line 54, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.report-body {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f2f2f2;
+  border-top: 1px solid #c7c8c9;
+  padding: 25px;
+}
+/* line 20, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/bourbon-4.2.6/app/assets/stylesheets/addons/_clearfix.scss */
+.report-body::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+/* line 63, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.report-footer {
+  border-top: 1px solid #cccccc;
+  padding-top: 15px;
+  margin-top: 15px;
+  color: #939598;
+}
+
+/* line 72, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.time-study__column {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%;
+}
+/* line 89, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/neat-1.7.4/app/assets/stylesheets/grid/_span-columns.scss */
+.time-study__column:last-child {
+  margin-right: 0;
+}
+
+/* line 76, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.time-study__column-header {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0px 15px 0px 0px;
+}
+
+/* line 81, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+h3.report-subtitle {
+  color: #024d60;
+  margin: 0px 0px 10px;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 1;
+  -moz-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+/* line 87, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+h3.time-study__total-time {
+  margin: 0px auto 10px 0px;
+  color: #024d60;
+  align-self: flex-end;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 1;
+  -moz-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-align: right;
+}
+
+/* line 95, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.time-study__column-body {
+  border: 1px solid #dddddd;
+}
+
+/* line 99, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.time-study__column-row {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  box-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  border-bottom: 1px solid #dddddd;
+  color: #04b3dc;
+  font-weight: 700;
+  padding: 15px 0;
+}
+/* line 106, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.time-study__column-row:first-child {
+  padding-top: 5px;
+}
+/* line 109, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.time-study__column-row:last-child {
+  border-bottom: 0px;
+  padding-bottom: 5px;
+}
+
+/* line 115, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.time-study__column-row img {
+  margin: 0 10px 0 0;
+}
+
+/* line 119, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.time-study__column-row div {
+  margin: 0px;
+}
+
+/* line 123, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.time-study__column-row div.time {
+  margin: 0px auto 0px 0px;
+  text-align: right;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 1;
+  -moz-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+/* line 130, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.report-icon__person {
+  height: 20px;
+  width: 40px;
+}
+
+/* line 135, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.report-icon__place {
+  height: 22px;
+  width: 40px;
+}
+
+/* line 142, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.report-body__header {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+/* line 147, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.report-body__header p,
+.report-body__footer p {
+  font-size: 10px;
+  color: #5e5f5f;
+}
+
+/* line 153, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.report-body__footer {
+  margin-top: 30px;
+}
+
+/* line 157, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.report-icon__opportunity {
+  width: 40px;
+  height: 20px;
+}
+
+/* line 162, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.opp-report__single {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  page-break-before: auto;
+  page-break-inside: avoid;
+}
+/* line 20, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/bourbon-4.2.6/app/assets/stylesheets/addons/_clearfix.scss */
+.opp-report__single::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+/* line 171, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.opp-report__meta {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  box-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  margin-bottom: 5px;
+}
+
+/* line 177, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.opp-report__time {
+  font-weight: 700;
+  color: #024d60;
+  font-size: 14px;
+  margin-right: 0;
+  margin-right: 0;
+}
+
+/* line 184, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.opp-report__duration {
+  font-size: 14px;
+  color: #848484;
+}
+
+/* line 189, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.report-icon__duration {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  margin-right: 2px;
+}
+
+/* line 196, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.opp-report__duration .report-icon__opportunity {
+  width: 24px;
+  height: 12px;
+  display: inline-block;
+  margin-right: 2px;
+}
+
+/* line 203, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.opp-report__asset {
+  float: left;
+  padding: 0px 20px 10px 0px;
+}
+
+/* line 209, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.opp-report__asset img {
+  width: 200px;
+  height: auto;
+}
+
+/* line 214, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.opp-report__note {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 57.35098%;
+  font-size: 14px;
+  color: #111111;
+  line-height: 1.5;
+}
+/* line 89, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/neat-1.7.4/app/assets/stylesheets/grid/_span-columns.scss */
+.opp-report__note:last-child {
+  margin-right: 0;
+}
+
+/* line 221, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.opp-report__references {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 40.29137%;
+}
+/* line 89, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/neat-1.7.4/app/assets/stylesheets/grid/_span-columns.scss */
+.opp-report__references:last-child {
+  margin-right: 0;
+}
+
+/* line 225, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.opp-report__reference-icon {
+  margin-right: 10px;
+}
+
+/* line 229, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.opp-report__reference-time span {
+  margin-right: 20px;
+}
+
+/* line 233, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.report-icon__duration-svg {
+  height: 10px;
+  width: 16px;
+}
+
+/* line 238, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.opp-report__reference {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  box-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: #ffffff;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+/* line 244, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.opp-report__reference:last-child {
+  margin-bottom: 0px;
+}
+
+/* line 249, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.opp-report__reference.Person {
+  background-color: #03a7d1;
+}
+
+/* line 253, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.opp-report__reference.Place {
+  background-color: #1486aa;
+}
+
+/* line 257, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.opp-report__reference-label {
+  margin-top: 5px;
+  font-weight: 700;
+}
+
+/* line 264, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.cefm-person__group,
+.cefm-place__group {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 20, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/bourbon-4.2.6/app/assets/stylesheets/addons/_clearfix.scss */
+.cefm-person__group::after,
+.cefm-place__group::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+/* line 269, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.cefm-place {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%;
+  background-color: #014d6c;
+  padding: 20px 0;
+  width: 50%;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 3;
+  margin-top: 20px;
+}
+/* line 89, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/neat-1.7.4/app/assets/stylesheets/grid/_span-columns.scss */
+.cefm-place:last-child {
+  margin-right: 0;
+}
+
+/* line 281, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.cefm-group:nth-of-type(1) .cefm-place {
+  margin-top: 0px;
+}
+
+/* line 285, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.cefm-person {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%;
+  background-color: #04b3dc;
+}
+/* line 89, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/neat-1.7.4/app/assets/stylesheets/grid/_span-columns.scss */
+.cefm-person:last-child {
+  margin-right: 0;
+}
+
+/* line 290, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.cefm-person__group:last-child .cefm-person {
+  margin-bottom: 0px;
+}
+
+/* line 294, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.cefm-person__bg-arrows {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMzMuODggMjgiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojYzdjOGM5O308L3N0eWxlPjwvZGVmcz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMzAuNiAxOS4zNmgtMTQuNDdWNS42MWguNXYxMy4yNWgxMy45N3YuNU0xMzMuODggMTkuMTFsLTMuMjggMy4yOHYtNi41NWwzLjI4IDMuMjdNNjcuMjUtNC4zOWguNXY0MC4yM2gtLjV6Ii8%2BPC9zdmc%2B);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 80px;
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%;
+  position: relative;
+  z-index: 1;
+  page-break-before: auto;
+  page-break-inside: avoid;
+}
+/* line 89, /Users/cameronscott/.rvm/gems/ruby-2.2.2/gems/neat-1.7.4/app/assets/stylesheets/grid/_span-columns.scss */
+.cefm-person__bg-arrows:last-child {
+  margin-right: 0;
+}
+
+/* line 308, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.cefm-person__group:last-child .cefm-person__bg-arrows {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMzMuODggMjgiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojYzdjOGM5O308L3N0eWxlPjwvZGVmcz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMzAuNiAxOS4zNmgtMTQuNDdWNS42MWguNXYxMy4yNWgxMy45N3YuNXpNMTMzLjg4IDE5LjExbC0zLjI4IDMuMjh2LTYuNTVsMy4yOCAzLjI3ek02Ny4yNS00LjM5aC41djI4LjExaC0uNXpNNjcuNSAyN2wtMy4yOC0zLjI4aDYuNTZMNjcuNSAyN3oiLz48L3N2Zz4%3D);
+}
+
+/* line 313, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.cefm-group:last-child .cefm-person__bg-arrows {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMzMuOSAyOCI%2BPHN0eWxlPi5zdDB7ZmlsbDojQzdDOEM5O308L3N0eWxlPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik0xMzAuNiAxOS40aC0xNC41VjUuNmguNXYxMy4zaDE0ek0xMzMuOSAxOS4xbC0zLjMgMy4zdi02LjZ6Ii8%2BPC9zdmc%2BCg%3D%3D);
+}
+
+/* line 317, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.cefm-place h2,
+.cefm-person h2 {
+  padding: 0px 0px 0px 10px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0px;
+}
+
+/* line 326, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.cefm-person,
+.cefm-place {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  box-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  margin-top: 20px;
+  padding: 15px 0;
+  page-break-before: auto;
+  page-break-inside: avoid;
+}
+
+/* line 338, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.page .cefm-person__bg-arrows:first-child {
+  background-color: blue;
+}
+
+/* line 342, /Users/cameronscott/Sites/goshadow_v2/app/assets/stylesheets/reports.css.scss.erb */
+.cefm-person img,
+.cefm-place img {
+  margin-left: 10px;
+}

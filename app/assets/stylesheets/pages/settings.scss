@@ -1,0 +1,106 @@
+//
+// User Settings
+// --------------------------------------------------
+
+.settings-avatar img{
+	margin: 0px 20px;
+}
+
+.settings-invoices label{
+	@include rem(min-width, 200px);
+	@include rem(margin-right, 5px);
+}
+
+// Pricing Grid
+
+.pricing-table{
+	@include rem(margin-bottom, 40px);
+	@include media(min-width $screen-lg){
+		@include display(flex);
+	}
+}
+
+.pricing-column{
+	@include display(flex);
+	@include flex-flow(column);
+	background: #ffffff;
+	box-shadow: $box-shadow;
+	@include rem(margin-right, 20px);
+	&:last-child{
+		margin-right: 0px;
+	}
+	@include media(min-width $screen-lg){
+		@include flex(1);
+	}
+	@include media(max-width $screen-lg){
+		margin-bottom: 30px;
+		text-align: center;
+	}
+}
+
+.pricing-column.pricing-active{
+	border: 5px solid $brand-green-light;
+}
+
+.pricing-plan{
+	background-color: $brand-green-light;
+	color: #ffffff;
+	font-weight: 700;
+	@include rem(padding, 10px);
+}
+
+.pricing-body{
+	@include rem(padding, 15px);
+}
+
+h3.pricing-license{
+	@include rem(font-size, 16px);
+	@include rem(margin, 0px 0px 15px);
+}
+
+p.pricing-price{
+	@include rem(font-size, 24px);
+	font-weight: 700;
+	color: $brand-green-light;
+	margin: 0px 0px 0px;
+}
+
+p.pricing-interval{
+	color: #b4b4b4;
+	font-weight: 300;
+	@include rem(margin-bottom, 15px);
+}
+
+ul.pricing-features{
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+	@include rem(font-size, 14px);
+}
+
+ul.pricing-features li{
+	@include rem(padding-bottom, 5px);
+}
+
+.pricing-footer{
+	text-align: center;
+	@include rem(padding, 0px 0px 15px);
+	@include display(flex);
+	@include align-self(center);
+	@include align-items(center);
+	margin-top: auto;
+}
+
+.pricing-footer .btn{
+	font-size: 16px;
+	padding: 10px 20px;
+	width: 100%;
+}
+
+.settings-info{
+	@include rem(padding-bottom, 20px);
+}
+
+.settings-info h3{
+	@include rem(margin, 0px 0px 5px);
+}

@@ -1,0 +1,2 @@
+class PlaceGroup < Group
+end

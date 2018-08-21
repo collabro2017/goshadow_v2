@@ -1,0 +1,165 @@
+<div class="u-container">
+	<div class="segment-child__header">
+		<h3><%= link_to "« Back to Segments", experience_segments_path(segment.experience), remote: true %></h3>
+	</div>
+  <div class='note-list'>
+    <%= render 'segments/note_list', notes: notes, segment: segment, new_note: false %>
+  </div>
+  <div class="u-container">
+    <div class="u-card add-note u-text-center">
+      <a href="#" class="" data-toggle="modal" data-target="#js-add-place-modal">
+        <span class="add-note__plus">+</span>
+        Add Place
+      </a>
+    </div>
+  	<div class="u-card add-note u-text-center">
+  		<a href="#" class="" data-toggle="modal" data-target="#js-add-person-modal">
+  			<span class="add-note__plus">+</span>
+  			Add Person
+  		</a>
+  	</div>
+    <div class="u-card add-note u-text-center">
+      <a href="#" class="" data-toggle="modal" data-target="#js-add-note-modal">
+        <span class="add-note__plus">+</span>
+        Add Note
+      </a>
+    </div>
+  </div><!-- /u-container-->
+</div>
+
+
+<!-- New Note Modal -->
+<div class="modal fade" id="js-add-note-modal" tabindex="-1" role="dialog" aria-labelledby="js-add-note-modalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="js-add-segment-modalLabel">Add new note</h4>
+      </div>
+      <div class="modal-body">
+        <div class='alert notice note-form-message-container'></div>
+      	<%= form_for [ segment, Note.new(created_at: DateTime.now - 4.hours ) ], remote: true, class: "form__horizontal" do |f| %>
+  				<%= f.hidden_field :user_id, value: current_user.id %>
+  				<%= f.hidden_field :segment_id, value: segment.id %>
+        	<div class="form-group">
+          	<%= f.text_field :text, placeholder: "Note text" %>
+        	</div>
+          <div class="form-group">
+            <%= f.label :created_at, "Time added" %>
+          </div>
+          <div class="form-group">
+            <%= f.datetime_select :created_at, ampm: true %>
+          </div>
+        	<div class="modal-footer">
+          	<%= f.submit 'Create Note', class: "btn btn-primary" %>
+        	</div>
+      	<% end %>
+      </div>
+    </div><!-- /modal-content-->
+  </div><!-- /modal-dialogue-->
+</div><!-- /modal-->
+
+<!-- New Person Modal -->
+<div class="modal fade" id="js-add-person-modal" tabindex="-1" role="dialog" aria-labelledby="js-add-person-modalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="js-add-segment-modalLabel">Create New Person</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_tag create_reference_segment_path(@segment), method: 'post', remote: true do %>
+          <div class='new-reference-message-container alert notice'></div>
+          <%= hidden_field_tag 'sent_from_notes', true %>
+          <%= hidden_field_tag 'organization_id', current_org.id %>
+          <%= hidden_field_tag 'reference_type', 'Person' %>
+          <div class="form-group">
+            <%= text_field_tag 'name', nil, class: 'reference-name', placeholder: "Name Your Person" %>
+          </div>
+          <div class="modal-footer">
+            <%= submit_tag "Create Person", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="modal-header">
+        <h4 class="modal-title" id="js-add-segment-modalLabel">Add Person to Segment</h4>
+      </div>
+      <div class="modal-body">
+        <div class='alert notice note-form-message-container'></div>
+      	<%= form_for [ segment, Note.new(created_at: DateTime.now - 4.hours ) ], remote: true, class: "form__horizontal", url: create_person_place_segment_notes_path(segment) do |f| %>
+          <%= hidden_field_tag 'type', 'Person' %>
+  				<%= f.hidden_field :user_id, value: current_user.id %>
+  				<%= f.hidden_field :segment_id, value: segment.id %>
+        	<div class="form-group">
+            <%= f.select :reference_id, @persons.map { |person| [ person.name, person.id ] }, { include_blank: 'Select Person' }, { class: 'person-id' } %>
+        	</div>
+          <div class="form-group">
+            <%= f.label :created_at, "Time added" %>
+          </div>
+          <div class="form-group">
+            <%= f.datetime_select :created_at, ampm: true %>
+          </div>
+        	<div class="form-group">
+          	<%= f.text_field :seconds, placeholder: "Seconds", class: 'note-seconds' %>
+        	</div>
+        	<div class="modal-footer">
+          	<%= f.submit 'Add Person to Segment', class: "btn btn-primary" %>
+        	</div>
+      	<% end %>
+      </div>
+    </div><!-- /modal-content-->
+  </div><!-- /modal-dialogue-->
+</div><!-- /modal-->
+
+<!-- New Place Modal -->
+<div class="modal fade" id="js-add-place-modal" tabindex="-1" role="dialog" aria-labelledby="js-add-place-modalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="js-add-segment-modalLabel">Create New Place</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_tag create_reference_segment_path(@segment), method: 'post', remote: true do %>
+          <div class='new-reference-message-container alert notice'></div>
+          <%= hidden_field_tag 'sent_from_notes', true %>
+          <%= hidden_field_tag 'organization_id', current_org.id %>
+          <%= hidden_field_tag 'reference_type', 'Place' %>
+          <div class="form-group">
+            <%= text_field_tag 'name', nil, class: 'reference-name', placeholder: "Name Your Place" %>
+          </div>
+          <div class="modal-footer">
+            <%= submit_tag "Create Place", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="js-add-segment-modalLabel">Add Place to Segment</h4>
+      </div>
+      <div class="modal-body">
+        <div class='alert notice note-form-message-container'></div>
+      	<%= form_for [ segment, Note.new(created_at: DateTime.now - 4.hours ) ], remote: true, class: "form__horizontal", url: create_person_place_segment_notes_path(segment) do |f| %>
+          <%= hidden_field_tag 'type', 'Place' %>
+  				<%= f.hidden_field :user_id, value: current_user.id %>
+  				<%= f.hidden_field :segment_id, value: segment.id %>
+  				<div class="form-group">
+           	<%= f.select :reference_id, @places.map { |place| [ place.name, place.id ] }, {  include_blank: 'Select Place' }, { class: 'place-id' } %>
+        	</div>
+          <div class="form-group">
+            <%= f.label :created_at, "Time added" %>
+          </div>
+          <div class="form-group">
+            <%= f.datetime_select :created_at, ampm: true %>
+          </div>
+        	<div class="form-group">
+          	<%= f.text_field :seconds, placeholder: "Seconds", class: 'note-seconds' %>
+        	</div>
+        	<div class="modal-footer">
+          	<%= f.submit 'Create Place', class: "btn btn-primary" %>
+        	</div>
+      	<% end %>
+      </div>
+    </div><!-- /modal-content-->
+  </div><!-- /modal-dialogue-->
+</div><!-- /modal-->

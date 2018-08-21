@@ -1,0 +1,51 @@
+<main class="main u-container">
+
+  <%= form_tag search_organizations_path, class: 'search-form', method: 'get' do %>
+    <div class="form-group">
+      <%= text_field_tag :search_term, params['search_term'], placeholder: 'Search for an organization' %>
+      <%= submit_tag 'Search' %>
+    </div>
+    <%= link_to 'Clear Search', admin_index_path, class: "u-pull-right clear-search" %>
+  <% end %>
+
+  <table class="shadower-table">
+    <thead>
+      <tr class="shadower-table__header">
+        <th>ID</th>
+        <th>Oranization Name</th>
+        <th>Payment Plan</th>
+        <th>Users</th>
+        <th>Experiences</th>
+        <th>Date Created</th>
+        <th>Last Activity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @organizations.each do |organization| %>
+        <tr class='shadower-row'>
+          <td>
+            <%= organization.id %>
+          </td>
+          <td>
+            <%= link_to organization.name, experiences_organization_path(organization) %>
+          </td>
+          <td>
+            <%= organization.subscription_plan_name %>
+          </td>
+          <td>
+            <%= organization.users.count %>
+          </td>
+          <td>
+            <%= organization.experiences.count %>
+          </td>
+          <td>
+            <%= organization.created_at.localtime.strftime("%m/%d/%y") %>
+          </td>
+          <td>
+            <%= organization.last_activity_time.localtime.strftime("%-I:%M%p on %m/%d/%y") rescue '-' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</main>

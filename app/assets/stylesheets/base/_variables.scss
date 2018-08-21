@@ -1,0 +1,45 @@
+// Media // --------------------------------------------------
+$screen-sm: 400px;
+$screen-md: 630px;
+$screen-break: 768px;
+$screen-lg: 900px;
+
+// Colors // --------------------------------------------------
+$brand-green-darkest: #023d4d;
+$brand-green-dark: #024d60;
+$brand-green-mid: #0685a8;
+$brand-green-light: #0ba7d0;
+$brand-green-lightest: #E3EEF5;
+
+$brand-gray-text: #838383;
+$brand-gray-background: #e3e4e6;
+$brand-gray-placeholder: #a7a9ac;
+
+$brand-text: #313741;
+
+$brand-red: #d62f2f;
+
+$brand-border: #8EB9D1;
+
+$brand-dark-blue: #22528b;
+$brand-white: #ffffff;
+$brand-gray: #5d5d5d;
+$brand-black: #111111;
+$brand-red: #B4272D;
+
+
+// Type // --------------------------------------------------
+$font-family: "proxima-nova", Helvetica, "Helvetica Neue", Arial, sans-serif;
+$font-size-base: 16px;
+
+// Border Radius // --------------------------------------------------
+$border-radius: 5px;
+
+// Box Shadow Radius // --------------------------------------------------
+$box-shadow: 0px 0px 10px rgba(0,0,0,.1);
+
+// Z-Index // --------------------------------------------------
+$z-base: 1;
+$z-map: $z-base;
+$z-guide: 2;
+$z-nav: 3;

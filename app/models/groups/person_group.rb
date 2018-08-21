@@ -1,0 +1,2 @@
+class PersonGroup < Group
+end

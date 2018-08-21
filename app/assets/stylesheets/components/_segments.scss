@@ -1,0 +1,178 @@
+/* SEGMENTS 
+Segment cards
+==================================================================== */
+.segment-container{
+	@include rem(margin-bottom, 60px);
+}
+
+.segment-single{
+	@include rem(margin-bottom, 25px);
+	@include media(min-width $screen-break){
+		@include display(flex);
+		-js-display: flex;
+		@include align-items(flex-start);
+		-js-align-items: flex-start;
+	}
+	@include media(max-width $screen-break){
+		text-align: center;
+	}
+}
+
+.segment-single__draggable{
+	@include rem(margin, 10px 20px 0px 0px);
+	@include media(min-width $screen-break){
+		@include align-self(flex-start);
+	}
+	@include media(max-width $screen-break){
+		position: absolute;
+	}
+}
+
+.segment-single__draggable a:hover{
+	cursor: move;
+}
+
+.segment-single__main,
+.segment-single__actions{
+	@include media(min-width $screen-break){
+		@include flex(1);
+		js-flex: 1;	
+	}
+}
+
+.segment-single__actions{
+	@include media(min-width $screen-break){
+		@include display(flex);
+		@include flex-direction(column);
+		@include rem(margin, 10px 0);
+		text-align: right;
+	}
+	@include media(max-width $screen-break){
+		@include rem(margin, 20px 0 0);
+		display: inline-block;
+	}
+}
+
+a.segment-single__action{
+	@include rem(margin-bottom, 15px);
+	display: block;
+	color: $brand-black;
+	line-height: 1;
+	&:last-child{
+		margin: 0px;
+	}
+	&:hover{
+		color: $brand-green-light;
+	}
+	@include media(max-width $screen-break){
+		@include flex(1);
+		js-flex: 1;	
+		color: $brand-green-light;
+		line-height: 1.3;
+		padding: 0px 25px;
+	}
+}
+
+a.segment-single__action svg{
+	@include media(max-width $screen-break){
+		display: none;
+	}
+}
+
+a.segment-single__action:hover svg.icon path{
+	fill: $brand-green-light;
+}
+
+h3.segment-single__title{
+	@include rem(font-size, 28px);
+	@include rem(margin, 0px 0px 10px);
+	@include media(max-width $screen-break){
+		padding: 0px 25px;
+	}
+}
+
+p.segment-single__note-count{
+	@include rem(font-size, 21px);
+	@include rem(margin, 0px 0px 15px);
+	color: $brand-gray-text;
+}
+
+p.segment-single__location{
+	@include rem(margin, 0px 0px 5px);
+}
+
+.u-card.add-segment{
+	background-color: $brand-green-lightest;
+	border: 2px dashed $brand-green-light;
+	@include transition(background-color .15s linear, border-color .15s linear);
+	@include rem(padding-bottom, 35px);
+	@include rem(margin-bottom, 25px);
+}
+
+.u-card.add-segment:hover{
+	background-color: darken($brand-green-lightest, 5%);
+	border: 2px dashed darken($brand-green-light, 5%);
+}
+
+.add-segment a{
+	color: $brand-green-light;
+	text-transform: uppercase;
+	font-weight: 600;
+	display: block;
+	margin: 0 auto;
+	@include rem(padding, 0px 30px);
+	@include media(min-width $screen-break){
+		max-width: 40%;
+	}
+}
+
+.add-segment__plus{
+	font-weight: 300;
+	display: block;
+	@include rem(font-size, 60px);
+	line-height: 1;
+}
+
+
+//
+// Segment Children
+// ----------------------------------------
+
+.segment-child__header{
+	@include align-items(center);
+	@include display(flex);
+	@include rem(margin-bottom, 20px);
+}
+
+.segment-child__header h3{
+	@include rem(font-size, 28px);
+	margin: 0;
+	@include media(max-width $screen-break){
+		padding-right: 20px;
+	}
+}
+
+.segment-child__header h3 a{
+	color: $brand-black;
+	&:hover{
+		color: darken($brand-green-light, 5%);
+	}
+}
+
+.segment-child__header .btn{
+	margin-left: auto;
+	@include media(max-width $screen-break){
+		font-size: 14px;
+		padding-left: 10px;
+		padding-right: 10px;
+		margin-left: auto;
+	}
+}
+
+.note-single__shadower{
+	color: #a7a9ac;
+	font-size: 15px;
+	font-weight: 300;
+}
+
+

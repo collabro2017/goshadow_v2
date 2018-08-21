@@ -1,0 +1,269 @@
+//
+// Notes
+// --------------------------------------------------
+
+.note-single{
+	background: #ffffff;
+	border-radius: $border-radius;
+	box-shadow: $box-shadow;
+	@include rem(padding, 20px);
+	@include rem(margin-bottom, 15px);
+	@include media(min-width $screen-break){
+		@include display(flex);
+	}
+}
+
+.note-single__check{
+	@include rem(padding-right, 30px);
+	@include media(max-width $screen-break){
+		float: left;
+	}
+}
+
+.note-single__meta{
+	@include display(flex);
+	@include rem(padding-right, 30px);
+	@include media(max-width $screen-break){
+		padding-bottom: 20px;
+	}
+}
+
+.note-single__meta-left{
+	@include rem(padding-right, 20px);
+}
+
+.note-single__meta-place{
+	color: #0d86a9;
+	@include rem(margin-top, 10px);
+}
+
+.note-single__meta-right,
+.note-single__reference-meta-right{
+	//@include rem(padding-right, 20px);
+}
+
+.reference__duration .test{
+	max-width: 150px;
+	color: $brand-black;
+
+}
+
+.reference__duration .best_in_place form:after{
+	content: "Enter time in seconds";
+	color: #ffffff;
+	display: block;
+	text-align: right;
+}
+
+.note-single__meta-person{
+	color: #06a7d0;
+	@include rem(margin-top, 10px);
+}
+
+.note-single__meta-right a,
+.note-single__meta-left a{
+	color: $brand-black;
+	&:hover{
+		color: $brand-green-light;
+	}
+}
+
+p.note-single__shadower{
+	font-size: 15px;
+	color: #a7a9ac;
+	font-weight: 300;
+	@include display(flex);
+	@include align-content(center);
+	@include rem(margin, 0px 0px 8px);
+}
+
+p.note-single__shadower small{
+	margin-left: auto;
+	@include align-self(flex-end);
+	display: inline-block;
+}
+
+
+.note-single__asset{
+	@include rem(padding-left, 20px);	
+}
+
+.note-single__asset img{
+	@include rem(max-width, 200px);
+	height: auto;
+	border: 1px solid $brand-gray-background;
+	@include rem(padding, 5px);
+	@include rem(border-radius, 5px);
+	@include transition(border-color .15s linear);
+	&:hover{
+		border: 1px solid darken($brand-gray-background, 15%);
+	}
+}
+
+.note-single__note{
+	font-size: 18px;
+	color: $brand-gray-text;
+	font-weight: 300;
+	line-height: 1.4;
+	flex: 2;
+}
+
+.note-single__actions{
+	@include display(flex);
+	margin-left: auto;
+	@include rem(padding-left, 20px);
+}
+
+.note-single__actions a{
+	@include rem(padding, 0px 0px 0px 20px);
+	@include media(max-width $screen-break){
+		flex: 1;
+		text-align: center;
+		margin-top: 20px;
+		padding: 0px;
+	}
+	&:first-child{
+		padding-left: 0px;
+	}
+}
+
+svg.icon__accolade-solid{
+	display: none;
+}
+
+.active-thumb svg.icon__accolade-solid{
+	display: inline-block;
+}
+
+.active-thumb svg.icon__accolade-outline{
+	display: none;
+}
+
+svg.icon__opportunity-solid{
+	display: none;
+}
+
+.active-thumb svg.icon__opportunity-solid{
+	display: inline-block;
+}
+
+.active-thumb svg.icon__opportunity-outline{
+	display: none;
+}
+
+//
+// References
+// -----------------------------------
+
+.note-reference{
+	color: #ffffff;
+	@include display(flex);
+}
+
+
+.note-Person{
+	background-color: $brand-green-light;
+}
+
+.note-Place{
+	background-color: #0d86a9;
+}
+
+.note-single__icon{
+	@include display(flex);
+	@include align-items(flex-start);
+	@include rem(padding-right, 30px);
+}
+
+.note-reference__icon-person{
+	@include rem(width, 38px);
+	@include rem(height, 30px);
+}
+
+.note-reference__icon-place{
+	@include rem(width, 38px);
+	@include rem(height, 30px);
+}
+
+.note-single__reference-meta{
+	@include display(flex);
+	@include rem(padding-right, 30px);
+}
+
+.note-single__reference-meta-left{
+	@include rem(padding-right, 30px);
+}
+
+.reference__start-time{
+	color: #afd4e8;
+	@include rem(font-size, 16px);
+	margin: 0px;
+	font-weight: 700;
+}
+
+h3.reference__name{
+	@include rem(font-size, 18px);
+	line-height: 1.2;
+	color: #ffffff;
+	@include rem(margin, 5px 0px 0px);
+}
+
+a.reference__duration{
+	color: #ffffff;
+	&:hover{
+		color: darken(#ffffff, 5%);
+	}
+}
+
+.note-single__reference-meta-left{
+	@include rem(width, 130px);
+}
+
+.reference__icon_duration{
+	@include rem(width, 15px);
+	@include rem(height, 15px);
+}
+
+.icon__delete-white{
+
+}
+
+//
+// Add a note if there aren't any yet.
+// --------------------------------------------------
+
+.u-card.add-note{
+	background-color: $brand-green-lightest;
+	border: 2px dashed $brand-green-light;
+	@include transition(background-color .15s linear, border-color .15s linear);
+	@include rem(padding-bottom, 35px);
+	@include rem(margin, 40px 0px);
+	@include span-columns(4);
+	@include media(max-width $screen-break){
+		@include span-columns(12);
+	}
+}
+
+.u-card.add-note:hover{
+	background-color: darken($brand-green-lightest, 5%);
+	border: 2px dashed darken($brand-green-light, 5%);
+}
+
+.add-note a{
+	color: $brand-green-light;
+	text-transform: uppercase;
+	font-weight: 600;
+	display: block;
+	margin: 0 auto;
+	@include rem(padding, 0px 30px);
+	@include media(min-width $screen-break){
+		max-width: 40%;
+	}
+}
+
+.add-note__plus{
+	font-weight: 300;
+	display: block;
+	@include rem(font-size, 60px);
+	line-height: 1;
+}

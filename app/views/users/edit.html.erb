@@ -1,0 +1,41 @@
+<main class="main u-container">
+  <h1 class="page-title">Your Settings</h1>
+  <p class="page-subtitle">Update your account details</p>
+  <section class="grid_primary">
+    <%= form_for @user, class: "form__horizontal u-container" do |f| %>
+      <div class="form__horizontal-group">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name %>
+      </div>
+      <div class="form__horizontal-group">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+      </div>
+      <div class="form__horizontal-group">
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+      </div>
+      <div class="form__horizontal-group">
+        <label>Your Password</label>
+        <%= link_to 'Change Password', edit_password_users_path %>
+      </div>
+      <div class="form__horizontal-group settings-avatar">
+        <label>Your Photo</label>
+        <%= image_tag @user.avatar_url, class: 'nav-item__avatar' %>
+        <%= f.fields_for :avatar do |avatar| %>
+          <%= avatar.file_field :attachment, class: "file_upload", id: "avatar" %>
+        <% end %>
+      </div>
+
+      <% if is_coordinator %>
+        <div class="form__horizontal-group">
+          <label>Your Organization</label>
+          <%= link_to 'Manage Your Organizational Settings', organization_settings_path(@organization) %>
+        </div>
+      <% end %>
+      <%= f.submit 'Update My Settings', :class => "btn btn-primary" %><br><br>
+      <%= link_to 'Create A New Organization', new_organization_path %>
+    <% end %>
+  </section>
+
+</main>

@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+      <title>GoShadow | <%= @report.name %></title>
+    <%= wicked_pdf_stylesheet_link_tag 'application' %>
+  </head>
+  <body class="report">
+    <header class="report-header">
+        <%= wicked_pdf_image_tag 'logo_report.png', class: "report-logo" %>
+
+      <h1 class="report-title">
+        <%= @report.name %>
+        <small class="report-exported_on">
+          Exported on <%= date_time_to_date(@report.created_at) %>
+        </small>
+      </h1>
+
+      <p>
+        <strong>Location: </strong>
+        <%= @experience.location %>
+      </p>
+
+      <div class="report-meta">
+        <div class="report-meta__column">
+          <p>
+            <strong>Experience Description:</strong>
+            <%= @experience.description %>
+          </p>
+        </div>
+        <div class="report-meta__column">
+          <p>
+            <strong>Report Description:</strong>
+            A comprehensive record of the time spent within each place and with each person encountered during an experience.
+          </p>
+        </div>
+      </div>
+    </header>
+
+
+    <section class="report-body">
+
+
+      <% @report.data['segments'].each do |segment| %>
+        
+        <div class="cefm-place__group-header margin-bottom">
+          <h2 class="cefm__segment-name"><%= segment['segment_name'] %></h2>
+          <p class="cefm__segment-meta">
+            <%= "Started at #{segment['created_at_time']} on #{segment['created_at_date']}" %>
+          </p>
+        </div>
+
+        <% segment['notes'].each do |note| %>
+          <div class="comp__note <%= note['type'] %>">
+            <% if note['type'] == 'Note' %>
+
+              <div class="comp__note-meta">
+                <div class="comp__note-meta--times">
+                  <span class="comp__note-meta--created">
+                    <%= "#{note['created_at_time']}" %> on <%= "#{note['created_at_date']}" %>
+                  </span>
+                  <% if note['status'] == 'Positive' %>
+                    <%= wicked_pdf_image_tag 'icon_accolade-outlined.svg', class: 'report-icon__opportunity' %>
+                  <% elsif note['status'] == 'Negative' %>
+                    <%= wicked_pdf_image_tag 'icon_opportunity-outlined.svg', class: 'report-icon__opportunity' %>
+                  <% end %>
+                </div>
+                <div class="comp__note-meta--refs">
+                  <div>
+                    <h4 class="ref-people"> People</h4>
+                    <% note['text_note_persons'].each do |person| %>
+                      <%= person %><br>
+                    <% end %>
+                  </div>
+                  <div>
+                    <h4 class="ref-place">Places</h4>
+                    <% note['text_note_places'].each do |place| %>
+                      <%= place %><br>
+                    <% end %>
+                  </div>
+                </div><!-- /refs -->
+              </div>
+
+              <div class="comp__note-text">
+                <span class="comp__note-citation">
+                  <%= "Shadowed by #{note['created_by']}" %>
+                </span>
+                <p>
+                  <%= "#{note['text']}" %>
+                </p>
+              </div>
+
+              <div class="comp__note-image">
+                <% if note['image_url'] %>
+                  <%= wicked_pdf_image_tag note['image_url'] %>
+                <% end %>
+              </div>
+
+            <% elsif note['type'] == 'Person' %>
+              <div class="comp__icon">
+                <%= wicked_pdf_image_tag 'icon_report-person--white.svg', class: 'report-icon__person' %>
+              </div>
+              <div class="comp__body">
+                <div class="comp__time">
+                  <span class="comp__time-created">
+                    <%= "#{note['created_at_time']}" %> on <%= "#{note['created_at_date']}" %>
+                  </span>
+                  <span class="comp__time-duration">
+                    <%= wicked_pdf_image_tag 'icon_report-duration--white.png', class: 'report-icon__duration' %>
+                    <%= "#{note['duration']}" %>
+                  </span>
+                </div>
+                <div class="comp__content">
+                  <%= "#{note['reference']}" %>
+                </div><!-- /comp__content-->
+              </div><!-- /comp__body-->
+
+            <% elsif note['type'] == 'Place' %>
+              <div class="comp__icon">
+                <%= wicked_pdf_image_tag 'icon_report-place--white.svg', class: 'report-icon__place' %>
+              </div>
+              <div class="comp__body">
+                <div class="comp__time">
+                  <span class="comp__time-created">
+                    <%= "#{note['created_at_time']}" %> on <%= "#{note['created_at_date']}" %>
+                  </span>
+                  <span class="comp__time-duration">
+                    <%= wicked_pdf_image_tag 'icon_report-duration--white.png', class: 'report-icon__duration' %>
+                    <%= "#{note['duration']}" %>
+                  </span>
+                </div>
+                <div class="comp__content">
+                  <%= "#{note['reference']}" %>
+                </div><!-- /comp__content-->
+              </div><!-- /comp__body-->
+            <% end %>
+          </div><!-- /comp__note -->
+        <% end %>
+      <% end %>
+    </section>
+    <footer class="report-footer">
+        &copy; <%= Time.now.year %> GoShadow LLC and AMD3 Consulting. All Rights Reserved. Learn more at <a href="http://goshadow.org">GoShadow.org</a>.
+    </footer>
+  </body>
+</html>

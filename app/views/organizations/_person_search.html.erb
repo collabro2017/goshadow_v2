@@ -1,0 +1,7 @@
+<%= form_tag search_persons_path(@organization), class: 'search-form', method: 'get' do %>
+	<div class="form-group">
+		<%= text_field_tag :search_term, params['search_term'], placeholder: 'Search your organization for a person' %>
+		<%= submit_tag 'Search' %>
+	</div>
+	<%= link_to 'Clear Search', persons_organization_path(@organization), class: "u-pull-right clear-search" %>
+<% end %>

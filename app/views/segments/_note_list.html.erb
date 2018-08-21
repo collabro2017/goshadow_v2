@@ -1,0 +1,12 @@
+<%= javascript_include_tag 'notes' %>
+<%= javascript_include_tag 'init_best_in_place' %>
+
+<!-- DO NOTE DELETE BELOW DIV NEED IN CASE OF NO NOTES PRESENT FOR THE SEGMENT -->
+<div class="note-single hide"></div>
+<% notes.each do |note| %>
+ <% if note.text_note? %>
+		<%= render 'segments/note_tile', note: note, segment: segment, new_note: new_note %>
+	<% else %>
+	 <%= render 'segments/person_place_tile', note: note, segment: segment, new_note: new_note %>
+	<% end %> <!-- note.text.present? -->
+<% end %><!-- notes.each? -->

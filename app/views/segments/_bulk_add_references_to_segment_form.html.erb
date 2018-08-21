@@ -1,0 +1,67 @@
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="js-bulk-add-references-modal" tabindex="-1" role="dialog" aria-labelledby="js-add-segment-modalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="js-add-segment-modalLabel">Add Another Person</h4>
+      </div>
+      <%= form_tag create_reference_segment_path(@segment), method: 'post', id: 'newSegmentReference', remote: true do %>
+        <div class="modal-body">
+          <div class='new-reference-message-container'>
+          </div>
+          <%= hidden_field_tag 'organization_id', current_org.id %>
+          <%= hidden_field_tag 'reference_type', type %>
+          <div class="form-group">
+            <%= text_field_tag 'name', nil, class: 'reference-name', placeholder: "Name Your #{type}" %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <%= submit_tag "Create #{type}", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+
+
+      <div class="modal-header">
+        <h4 class="modal-title" id="js-add-segment-modalLabel">Or Choose From An Existing List</h4>
+      </div>
+
+      <%= form_tag bulk_add_existing_references_segment_path(@segment), method: 'post', id: 'bulkAddReferencesToSegment', remote: true do %>
+        <div class="bulk-reference-tabs">
+            <a href="#" id="js-bulk-add-reference-tab" class="bulk-reference-tab js-tag-control js-active">All People</a>
+            <a href="#" id="js-bulk-add-group-tab" class="bulk-reference-tab js-tag-control">Organizational Groups</a>
+        </div>
+        <div class="modal-body-tabs">
+          <div class="bulk-reference-table" id="js-bulk-add-references">
+            <% @references.each do |reference| %>
+              <div class='checkbox-container person-container'>
+                <div class="reference-label">
+                  <%= check_box_tag 'reference_ids[]', reference.id, false %> <%= reference.name %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <div class="bulk-reference-table" id="js-bulk-reference-group-section" style="display: none">
+            <% @groups.each do |group| %>
+              <div class='checkbox-container person-container'>
+                <div class="reference-label">
+                  <%= check_box_tag 'group_ids[]', group.id, false %> <%= group.name %>
+                </div><!-- /reference-label-->
+              </div><!-- checkbox-container-->
+            <% end %>
+            <%= hidden_field_tag 'reference_type', type %>
+          </div>
+          <div class='bulk-add-references-message-container'>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <%= submit_tag 'Add To Segment', class: "btn btn-primary" %>
+        </div>
+      <% end %>
+
+    </div><!-- /modal-content-->
+  </div><!-- /modal-dialogue-->
+</div><!-- /modal-->

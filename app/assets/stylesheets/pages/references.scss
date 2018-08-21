@@ -1,0 +1,140 @@
+.reference-tabs{
+
+}
+
+.reference-tab,
+.bulk-reference-tab{
+	display: inline-block;
+	background: #ffffff;
+	@include rem(padding, 15px 0 17px 15px);
+	min-width: 40%;
+	position: relative;
+	bottom: -2px;
+	border-top-right-radius: $border-radius;
+	border-top-left-radius: $border-radius;
+	z-index: 1;
+}
+
+.reference-tab a{
+	color: $brand-black;
+}
+
+.bulk-reference-tab.active,
+.reference-tab.active{
+	z-index: 3;
+}
+
+.bulk-reference-tab.active a,
+.reference-tab.active a{
+	font-weight: 700;
+	color: $brand-green-light;
+}
+
+.reference-table{
+	background: #ffffff;
+	border-radius: $border-radius;
+	box-shadow: $box-shadow;
+	position: relative;
+	z-index: 2;
+}
+
+.person-container,
+.place-container{
+	@include rem(padding, 15px);
+	@include display(flex);
+	@include align-items(center);
+	width: 100%;
+}
+
+.person-container.group-list-item,
+.place-container.group-list-item{
+	@include flex-flow(column);
+}
+
+.group-list-item__header{
+	@include display(flex);
+	@include align-items(center);
+	width: 100%;
+}
+
+.group-list-item__references{
+	display: none;
+	text-align: left;
+	width: 100%;
+	margin-top: 5px;
+}
+
+.group-list-item__reference{
+	padding: 15px 0px 15px 10px;
+	@include display(flex);
+	@include justify-content(space-between);
+	border-bottom: 1px solid #cccccc;
+	&:last-child{
+		border-bottom: 0px;
+	}
+}
+
+.reference-actions{
+	margin-left: auto;
+	@include display(flex);
+}
+
+.js-group-toggle:hover{
+	cursor: pointer;
+}
+
+.reference-actions a:first-child{
+	margin-right: 10px;
+}
+
+.person-container:nth-child(2n),
+.place-container:nth-child(2n){
+	background-color: #f2f2f2;
+}
+
+.bulk-reference-table{
+	background: #ffffff;
+	position: relative;
+	z-index: 2;
+}
+
+.bulk-reference-tabs{
+	@include rem(margin, 10px 20px 0px);
+}
+
+.bulk-reference-tab{
+	display: inline-block;
+	@include rem(padding, 10px 0px 10px 15px);
+	min-width: 40%;
+	position: relative;
+	bottom: -1px;
+	border-top-right-radius: $border-radius;
+	border-top-left-radius: $border-radius;
+	z-index: 1;
+	border: 1px solid #cccccc;
+}
+
+a.bulk-reference-tab.js-active{
+	color: $brand-black;
+	font-weight: 700;
+	background: #ffffff;
+	border-bottom: 1px solid #ffffff;
+	position: relative;
+	z-index: 9;
+}
+
+.modal-body-tabs{
+	position: relative;
+	z-index: 2;
+	border-top: 1px solid #cccccc;
+}
+
+.bulk-add-references-message-container{
+	margin: 15px 15px 0px;
+}
+
+.add-new-place,
+.add-new-person,
+.add-new-group{
+	background-color: #f2f2f2;
+}

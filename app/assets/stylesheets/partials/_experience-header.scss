@@ -1,0 +1,64 @@
+//
+// Experience Header
+// --------------------------------------------------
+.experience-header{
+	background: #ffffff;
+	@include rem(padding, 40px 20px 0px);
+}
+
+h2.experience-header__title{
+	color: $brand-green-darkest;
+	@include rem(margin, 0 10px 5px 0);
+	@include media(max-width $screen-break){
+		margin-bottom: 5px;
+	}
+}
+
+
+h2.experience-header__title a.inline-edit-link,
+p.experience-card__location a.inline-edit-link,
+p.experience-card__description a.inline-edit-link,
+h3.segment-single__title a.inline-edit-link,
+p.segment-single__location a.inline-edit-link{
+	@include rem(margin-left, 3px);
+	display: inline-block;
+	font-size: 14px;
+	font-weight: 400;
+}
+
+h2.experience-header__title input[type="text"],
+p.experience-card__location input[type="text"],
+p.experience-card__description input[type="text"]{
+	max-width: 400px !important;
+}
+
+.experience-header__title-group{
+	@include rem(margin-bottom, 20px);
+}
+
+.experience-header .u-meta-text{
+	margin-bottom: 15px;
+}
+
+.experience-header .experience-card__description{
+	@include media(min-width $screen-break){
+		max-width: 70%;
+	}
+}
+
+.experience-header p.experience-card__location{
+	@include rem(font-size, 18px);
+}
+
+.coordinator-edit-link{
+	.best_in_place{
+		color: $brand-green-light;
+		&:hover{
+			cursor: pointer;
+		}
+	}
+}
+.breadcrumb{
+	position: relative;
+	@include rem(top, -20px);
+}

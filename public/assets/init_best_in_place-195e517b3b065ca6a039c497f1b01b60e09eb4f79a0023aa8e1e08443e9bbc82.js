@@ -1,0 +1,1 @@
+$(document).ready(function(){$(".best_in_place").best_in_place(),$(".best_in_place").bind("ajax:error",function(e,n,a){alert("Value count not be saved - "+JSON.parse(n.responseText))})});

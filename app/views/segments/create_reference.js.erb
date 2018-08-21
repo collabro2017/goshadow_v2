@@ -1,0 +1,18 @@
+<% if @error %>
+  $('.new-reference-message-container').html("<%= escape_javascript(@error) %>");
+<% elsif @sent_from_notes == "true" %>
+  <% if @reference.type == "Person" %>
+    $('.person-id').prepend("<option value='" + "<%= @reference.id.to_s %>" + "'>" + "<%= @reference.name %>" + "</option>");
+    $('.person-id').val($('.person-id option:first').val())
+  <% else %>
+    $('.place-id').prepend("<option value='" + "<%= @reference.id.to_s %>" + "'>" + "<%= @reference.name %>" + "</option>");
+    $('.place-id').val($('.place-id option:first').val())
+  <% end %>
+    $('.reference-name').val('');
+    $('.new-reference-message-container').html("<%= @reference.type %> " + "created, use the form below to add it to this Segment.");
+<% else %>
+  var references = $('.reference-row');
+  $(references[references.length -1]).after("<%= escape_javascript( render 'reference_row', reference: @reference, segment: @segment) %>");
+  $('.new-reference-message-container').html('<div class="alert notice">Successfully Added to Segment!</div>')
+  $('.reference-name').val('');
+<% end %>

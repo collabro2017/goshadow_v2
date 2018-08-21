@@ -1,0 +1,70 @@
+/* ICONS 
+All icon-related styles
+==================================================================== */
+
+svg.icon path,
+svg.icon rect,
+svg.icon circle,
+svg.icon polygon{
+	@include transition(fill .2s linear);
+}
+
+/* Master Hover */
+svg.icon:hover path,
+svg.icon:hover rect,
+svg.icon:hover polygon{
+	fill: $brand-green-light;
+}
+
+.icon__caret-left{
+	@include rem(height, 11px);
+	@include rem(width, 6px);
+	display: inline-block;
+	@include rem(margin-left, 3px);
+}
+
+.icon__delete-color,
+.icon__accolade-outline,
+.icon__accolade-solid,
+.icon__opportunity-solid,
+.icon__opportunity-outline,
+.icon__delete-white {
+	height: 22px;
+	width: 20px;
+	@include media(max-width $screen-break){
+		height: 25px;
+		width: 25px;
+	}
+}
+
+.icon__delete-color path{
+	fill: #d6302f;
+}
+
+.icon__delete-white path,
+.icon__delete-white:hover path{
+	fill: #ffffff;
+}
+
+.icon__accolade-outline path{
+	fill: #7eb347;
+}
+
+.icon__opportunity-outline path{
+	fill: #f1831f;
+}
+
+.icon__edit{
+	height: 22px;
+	width: 22px;
+}
+
+.icon__draggable{
+	height: 15px;
+	width: 21px;
+}
+
+.icon__published{
+	@include rem(width, 36px);
+	@include rem(height, 36px);
+}

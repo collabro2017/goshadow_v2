@@ -1,0 +1,29 @@
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<%= javascript_tag "Stripe.publishableKey = '#{Rails.configuration.stripe[:publishable_key]}';", type: 'text/javascript' %>
+
+<main class="main u-container">
+  <h1 class="page-title">Your Subscription</h1>
+  <p class="page-subtitle">Update your GoShadow subscription details</p>
+  <section class="grid_primary">
+    <%= render 'shared/flash_message' %>
+
+    <%= form_tag( organization_subscriptions_path(@organization), class: "u-container form__horizontal", id: 'newSubscriptionForm' ) do |f| %>
+
+      <div class="form__horizontal-group">
+        <label>Your Subscription Plan</label>
+        <%= select_tag 'plan_id', options_for_select(@subscription_plans, @organization.stripe_plan_id), class: 'select2-dropdown plan', include: 'blank' %>
+      </div>
+
+      <div class="form__horizontal-group">
+        <label>Your Billing Email</label>
+        <%= text_field_tag 'billing_email', @organization.billing_email, class: 'form-control billing-email', placeholder: 'Billing Email' %>
+      </div>
+
+      <div class="form__horizontal-group-submit">
+        <%= button_tag 'Update', class: 'btn register-button btn-block btn-lg submit-payment' %><br><br>
+        <%= link_to 'Cancel Subscription', cancel_organization_subscriptions_path(@organization), method: 'delete' %>
+      </div>
+
+    <% end %>
+  </section>
+</main>

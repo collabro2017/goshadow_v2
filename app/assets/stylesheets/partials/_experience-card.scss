@@ -1,0 +1,135 @@
+//
+// Experience Card
+// --------------------------------------------------
+
+.experience-loop{
+	-js-display: flex;
+	-js-flex-wrap: wrap;
+	@include display(flex);
+	@include flex-wrap(wrap);
+	@include rem(padding, 0px 0 60px);
+	display: block;
+}
+
+.experience-card{
+	//@include flex(1);
+	@include omega(2n);
+	@include rem(margin-bottom, 20px);
+	@include rem(padding, 20px 30px);
+	@include span-columns(6);
+	background: #ffffff;
+	position: relative;
+	box-shadow: $box-shadow;
+	@include media(max-width $screen-break){
+		@include span-columns(12);
+	}
+}
+
+h3.experience-card__title{
+	@include rem(font-size, 28px);
+	@include rem(margin, 0px 0px 10px);
+	line-height: 1.1;
+	//extra padding to keep title from running into the publish icon
+	@include rem(padding-right, 30px);
+}
+
+h3.experience-card__title a{
+	color: $brand-green-darkest;
+	&:hover{
+		color: $brand-green-light;
+	}
+}
+
+.experience-card .icon__published{
+	@include rem(right, 15px);
+	@include rem(top, 15px);
+	position: absolute;
+}
+
+p.experience-card__meta{
+	@include rem(font-size, 14px);
+	@include rem(margin, 0 0 20px);
+	color: $brand-gray-placeholder;
+	font-weight: 300;
+}
+
+p.experience-card__location{
+	font-weight: 700;
+	@include rem(margin, 0 0 20px);
+	color: $brand-black;
+}
+
+p.experience-card__description{
+	@include rem(font-size, 18px);
+	@include rem(margin-bottom, 50px);
+}
+
+.experience-card__footer{
+	@include display(flex);
+	-js-display: flex;
+}
+
+.experience-card__footer-stat{
+	@include flex(1);
+	-js-flex: 1;
+	border-right: 1px solid $brand-border;
+	&:last-child{
+		border-right: 0px;
+	}
+}
+
+.experience-card__footer-stat-number{
+	@include rem(font-size, 42px);
+	display: block;
+	font-weight: 600;
+}
+
+//
+// Pagination
+// --------------------------------------------------
+.experience-pagination{
+	clear: both;
+	@include rem(padding-top, 20px);
+}
+
+.experience-pagination a,
+.experience-pagination span,
+.experience-pagination em{
+	display: inline-block;
+	@include rem(padding, 0px 3px);
+}
+
+//
+// Add New Experience
+// --------------------------------------------------
+
+.experience-card.add-experience{
+	background-color: $brand-green-lightest;
+	border: 2px dashed $brand-green-light;
+	@include transition(background-color .15s linear, border-color .15s linear);
+	padding: 0;
+}
+
+.experience-card.add-experience:hover{
+	background-color: darken($brand-green-lightest, 5%);
+	border: 2px dashed darken($brand-green-light, 5%);
+}
+
+.add-experience__plus{
+	display: block;
+	font-weight: 300;
+	@include rem(font-size, 100px);
+	line-height: 1;
+}
+
+.add-experience a{
+	color: $brand-green-light;
+	text-transform: uppercase;
+	font-weight: 600;
+	display: block;
+	margin: 0 auto;
+	@include rem(padding, 0px 30px 20px);
+	@include media(min-width $screen-break){
+		max-width: 40%;
+	}
+}

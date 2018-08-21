@@ -1,0 +1,60 @@
+<main class="main u-container">
+  <h1><%= @organization.name %> Place Groups</h1>
+
+  <%= render 'organizations/place_search' %>
+
+  <div class="reference-tabs">
+    <div class="reference-tab">
+      <%= link_to 'Places', places_organization_path(@organization) %>
+    </div><!-- reference-tab-->
+    <div class="reference-tab active">
+      <%= link_to 'Groups', place_groups_organization_path(@organization) %>
+    </div><!-- reference-tab-->
+  </div>
+
+  <div class='persons-data-container'>
+    <div class="reference-table">
+      <div class="person-container add-new-group">
+        <a class="" data-toggle="modal" data-target="#js-add-group-modal">
+              Add Group
+        </a>
+      </div>
+      <!-- DO NOT DELETE THE BELOW DIV NEED IN CASE OF NO PLACE GROUPS CREATED FOR THE ORGANIZATION! -->
+      <div class='group-list-item'></div>
+     
+      <% @place_groups.each do |group| %>
+        <%= render 'group_item', group: group %>
+      <% end %>
+    </div>
+  </div>
+  <script>
+    $( document ).ready( function() {
+      $('.nav-item-places').addClass('active-nav-item');
+    });
+  </script>
+
+
+</main>
+
+<!-- Modal -->
+<div class="modal fade" id="js-add-group-modal" tabindex="-1" role="dialog" aria-labelledby="js-add-segment-modalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="js-add-segment-modalLabel">Create a New Group</h4>
+      </div>
+      <div class="modal-body">
+        <div class='message-container alert notice'></div>
+        <%= form_for @new_group, remote: true do |f| %>
+          <%= f.hidden_field :organization_id, value: @organization.id %>
+          <%= f.hidden_field :type, value: PlaceGroup.name %>
+          <div class="form-group">
+            <%= f.text_field :name, placeholder: "Name Your Group" %>
+          </div>
+          <%= f.submit 'Create Group', class: "btn btn-primary" %>
+        <% end %>
+      </div><!-- modal-body-->
+    </div><!-- /modal-content-->
+  </div><!-- /modal-dialogue-->
+</div><!-- /modal-->

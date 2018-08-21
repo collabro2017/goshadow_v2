@@ -1,0 +1,59 @@
+<%= javascript_include_tag 'segments' %>
+
+  <div class="u-container">
+    <div class="grid_primary">
+
+		<div class="segment-child__header">
+			<h3><%= link_to "« Back to Segments", experience_segments_path(segment.experience), remote: true %></h3>
+		</div>
+
+		<div class="reference-tabs">
+			<div class="reference-tab active">
+			  <%= link_to 'People', persons_experience_segment_path(segment.experience, segment), remote: true %>
+			</div><!-- reference-tab-->
+			<div class="reference-tab">
+			  <%= link_to 'Places', places_experience_segment_path(segment.experience, segment), remote: true %>
+			</div><!-- reference-tab-->
+		</div>	
+
+
+		<div class='persons-data-container'>
+			<div class="reference-table">
+		        <div class="person-container add-new-person">
+		          <a class="" data-toggle="modal" data-target="#js-bulk-add-references-modal">
+		                Add Person
+		          </a>
+		        </div>
+        		<!-- DO NOT DELETE THE BELOW DIV NEED IN CASE OF NO PERSONS CREATED FOR THE SEGMENT! -->
+        		<div class='reference-row'>
+				</div>
+				<% unless persons.blank? %>
+					<% persons.each do |person| %>
+					  <%= render 'reference_row', reference: person, segment: segment %>
+					<% end %>
+				<% else %>
+					<div class='person-container reference-row'>
+						<div class="reference-label">
+							<span class="u-meta-text">
+								No people have been added to this segment yet. <a class="" data-toggle="modal" data-target="#js-bulk-add-references-modal"> Add your first person »</a>
+							</span>
+						</div>
+					</div>
+				<% end %>
+			</div><!-- /reference-table-->
+		</div>
+
+		<%= render 'bulk_add_references_to_segment_form', type: 'Person' %>
+	</div><!-- /grid-primary-->
+    <aside class="grid_aside">
+      <div class="sidebar sidebar__login u-card">
+        <h3 class="sidebar__title">Who are People?</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mattis turpis eu nulla feugiat, vitae tempor velit finibus. Curabitur eget dapibus erat.
+        </p>
+        <p>
+          <a href="#">Learn more about timing people in your segments »</a>
+        </p>
+      </div>
+    </aside>
+</div><!-- u-container-->

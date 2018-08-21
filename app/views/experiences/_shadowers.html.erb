@@ -1,0 +1,170 @@
+<%= javascript_include_tag 'shadowers' %>
+  <div class="u-container">
+    <div class="grid_primary">
+      <table class="shadower-table">
+        <thead>
+          <tr class="shadower-table__header">
+            <th>Shadower's Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% unless shadowers.blank? %>
+            <% shadowers.each do |shadower| %>
+              <tr class='shadower-row'>
+                <td>
+                  <%= shadower.name %>
+                </td>
+                <td>
+                  <%= shadower.email %>
+                </td>
+                <td>
+                  <%= shadower.org_role(current_org) %>
+                </td>
+                <td>
+                  <% if !shadower.shadowing_coordinator?(@organization) %>
+                    <%= link_to '✕', remove_experience_shadower_path(@experience, shadower), method: 'delete', remote: true, class: 'delete-link remove-shadower', data: { confirm: 'Are you sure you want remove this Shadower' } %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+              <tr>
+                <td>
+                  <!-- Button trigger modal -->
+                  <a href="#" class="" data-toggle="modal" data-target="#js-add-shadower-modal">
+                    Add Shadower
+                  </a>
+                </td>
+                <td><!--/spacer--></td>
+                <td><!--/spacer--></td>
+                <td><!--/spacer--></td>
+               <!-- <td></td><!-->
+              </tr>
+          <% else %>
+            <tr class='shadower-row'>
+              <td>
+                No Shadowers have been added to this segment yet.<a class="" data-toggle="modal" data-target="#js-add-shadower-modal">
+                  Add the first Shadower »
+                </a>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+        <% unless @invites.blank? %>
+          <thead>
+            <tr class="shadower-table__header">
+              <th>Invited Shadower's Name</th>
+              <th>Email</th>
+              <!--<th>Role</th>-->
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @invites.each do |invite| %>
+              <tr class='shadower-row'>
+                <td>
+                  <%= invite.name %>
+                  <span class="shadower-table__invited-on">
+                    Invited on <%= invite.updated_at.strftime("%-m/%-d/%Y") %>
+                  </span>
+                </td>
+                <td><%= invite.email %></td>
+                <td><%= link_to '✕', invite_path(invite), method: 'delete', remote: true, class: 'delete-link remove-shadower', data: { confirm: 'Are you sure you want to delete this Invite? The invited person will no longer be able to access your organization.' } %></td>
+              </tr>
+            <% end %>
+            <tr>
+              <td>
+                <!-- Button trigger modal -->
+                <a href="#" class="" data-toggle="modal" data-target="#js-add-shadower-modal">
+                  Add Shadower
+                </a>
+              </td>
+              <td><!--/spacer--></td>
+              <td><!--/spacer--></td>
+            </tr>
+          </tbody>
+        <% end %> <!-- unless invites.blank? %>-->
+      </table>
+
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="js-add-shadower-modal" tabindex="-1" role="dialog" aria-labelledby="js-add-shadower-modalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <% if is_coordinator %>
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="js-add-shadower-modalLabel">Add a New Shadower to this Experience</h4>
+              </div>
+              <%= form_for invite, remote: true do |f| %>
+                <%= f.hidden_field :organization_role, value: UserOrganization::SHADOWER %>
+                <div class="modal-body">
+                  <div class='invite-message-container alert notice'></div>
+                  <%= f.hidden_field :organization_id, value: current_org.id %>
+                  <%= f.hidden_field :invited_by_id, value: current_user.id %>
+                  <%= f.hidden_field :experience_id, value: experience.id %>
+                  <%= f.hidden_field :token, value: SecureRandom.urlsafe_base64 %>
+                  <div class="form-group">
+                    <%= f.text_field :name, placeholder: "Enter Your Shadower's Name" %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.text_field :email, placeholder: "Enter Your Shadower's Email Adddress"%>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <%= f.submit 'Invite New Shadower to Organization', class: "btn btn-primary" %>
+                </div>
+              <% end %>
+            <% end %>
+            <%= form_for experience, remote: true, html: { id: 'add_shadowers_to_experience', class: "form__horizontal" } do |f| %>
+              <div class="modal-header">
+                <% if is_coordinator %>
+                  <h4 class="modal-title" id="js-add-shadower-modalLabel">Or choose from an exisiting list...</h4>
+                <% else %>
+                  <h4 class="modal-title" id="js-add-shadower-modalLabel">Add Shadower to this Experience.</h4>
+                <% end %>
+              </div>
+                <div class='add-shadower-message-container alert notice'></div>
+                <table class="shadower-table">
+                  <tbody>
+                    <%= f.fields_for :user_experiences, new_user_experiences do |ux| %>
+                      <tr class='js-existing-shadower-invite' user-id='<%= ux.object.user_id %>' style='cursor: pointer'>
+                        <td>
+                          <%= ux.object.user.name %>
+                          <%= ux.hidden_field :user_id, value: nil, class: 'user-id-ux-field' %>
+                          <%= ux.hidden_field :experience_id %>
+                        </td>
+                        <td>
+                          <%= ux.object.user.email %>
+                        </td>
+                      </td>
+                    <% end %>
+                  </tbody>
+                </table>
+                <div class="modal-footer">
+                  <%= f.submit 'Add Shadowers to Experience', class: "btn btn-primary" %>
+                </div>
+              <% end %>
+
+          </div><!-- /modal-content-->
+        </div><!-- /modal-dialogue-->
+      </div><!-- /modal-->
+
+
+      
+    </div><!-- /grid_primary-->
+    <aside class="grid_aside">
+      <div class="sidebar sidebar__login u-card">
+        <h3 class="sidebar__title">Who is a Shadower?</h3>
+        <p>
+          Anyone can shadow! Students, volunteers, customers, part time employees, anyone with a willingness to listen and an objective viewpoint is able to shadow any process or experience.
+        </p>
+        <p>
+          <a href="#">Learn more about the qualities that make great shadowers »</a>
+        </p>
+      </div>
+    </aside>
+</div>

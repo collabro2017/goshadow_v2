@@ -1,0 +1,66 @@
+/* GRID
+Our mixin and grid libraries. These must be imported at the beginning
+of the file.
+==================================================================== */
+
+@import "bourbon";
+@import "neat";
+
+
+/* BASE 
+Base styles include variables, mixins, and any other code that does not
+directly output SCSS.
+==================================================================== */
+
+@import "base/_normalize.scss";
+@import "base/_variables.scss";
+@import "base/_mixins.scss";
+
+
+/* COMPONENTS 
+Component styles handle commonly repeated UI elements like input fields,
+buttons, tables, etc.
+==================================================================== */
+
+@import "components/_alerts.scss";
+@import "components/_buttons.scss";
+@import "components/_icons.scss";
+@import "components/_inputs.scss";
+@import "components/_modals.scss";
+@import "components/_navigation.scss";
+@import "components/_scaffold.scss";
+@import "components/_sidebars.scss";
+@import "components/_type.scss";
+@import "components/_segments.scss";
+@import "components/_utilities.scss";
+
+
+/* PARTIALS 
+Partial styles handle commonly repeated layout elements like navigation,
+headers, footers, etc.
+==================================================================== */
+
+@import "partials/_experience-header.scss";
+@import "partials/_experience-card.scss";
+@import "partials/_shadower-table.scss";
+
+
+/* PAGE 
+Page-specific styles handle styles unique to a specific page within the
+app. 
+==================================================================== */
+
+@import "pages/404.scss";
+@import "pages/login.scss";
+@import "pages/org_index.scss";
+@import "pages/references.scss";
+@import "pages/search.scss";
+@import "pages/segment_notes.scss";
+@import "pages/settings.scss";
+
+/* Vendor 
+Vendor styles include any third-party plugins or libraries (excluding
+Bourbon/Neat)
+==================================================================== */
+
+@import "vendor/featherlight.scss";

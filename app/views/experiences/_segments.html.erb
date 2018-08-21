@@ -1,0 +1,127 @@
+<%= javascript_include_tag 'segments' %>
+<%= javascript_include_tag 'init_best_in_place' %>
+
+<div class="u-container">
+  <div class="grid_primary">
+    <div class='segment-container'>
+      <div class="u-card add-segment u-text-center">
+        <a class="" data-toggle="modal" data-target="#js-add-segment-modal">
+          <span class="add-segment__plus">+</span>
+              Add a New Segment
+        </a>
+      </div>
+      <% segments.each do |segment| %>
+        <div class="u-card segment-single">
+          <div class="segment-single__draggable" data-id="<%= segment.id %>">
+            <a href="#" class='sort-situation'>
+              <svg class="icon__draggable" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.22 14.65"><defs><style>.cls-1{fill:#d1d3d4;}</style></defs><title>icon_draggable</title><rect class="cls-1" y="12.15" width="21.22" height="2.5"/><rect class="cls-1" y="6.08" width="21.22" height="2.5"/><rect class="cls-1" width="21.22" height="2.5"/></svg>
+            </a>
+          </div>
+          <div class="segment-single__main">
+            <h3 class="segment-single__title">
+              <%= best_in_place segment, :name, as: :input, activator: ("#editSegmentName" + segment.id.to_s), url: experience_segment_path(@experience, segment) %>
+              <% if is_coordinator %>
+                <a href='#' class="inline-edit-link" id="<%= 'editSegmentName' + segment.id.to_s %>">
+                  Edit Name
+                </a>
+              <% end %>
+            </h3>
+            <p class="segment-single__note-count">
+              <%= segment.text_note_count %> | 
+              <%= segment.place_note_count %> | 
+              <%= segment.person_note_count %>
+            </p>
+            <p class="segment-single__location">
+              From: 
+                <strong>
+                  <%= best_in_place segment, :start_location, as: :input, activator: ("#editSegmentStart" + segment.id.to_s), place_holder: 'No location.',  url: experience_segment_path(@experience, segment), place_holder: 'Add start location' %>
+                </strong>
+                <% if is_coordinator %>
+                  <a href='#' class="inline-edit-link" id="<%= 'editSegmentStart' + segment.id.to_s %>">
+                    Edit
+                  </a>
+                <% end %><br>
+                To: 
+                <strong>
+                  <%= best_in_place segment, :end_location, as: :input, activator: ("#editSegmentEnd" + segment.id.to_s), place_holder: 'No location.', url: experience_segment_path(@experience, segment), place_holder: 'Add end location' %>
+                </strong>
+                <% if is_coordinator %>
+                  <a href='#' class="inline-edit-link" id="<%= 'editSegmentEnd' + segment.id.to_s %>">
+                    Edit
+                  </a>
+                <% end %>
+            </p>
+          </div><!-- segment-single__main-->
+          <div class="segment-single__actions">
+            <%= link_to segment_notes_path(segment), remote: true, class: "segment-single__action" do %>
+              Add/Edit Notes
+              <svg class="icon icon__caret-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 11"><path d="M.54 9.75v-8.5a.54.54 0 0 1 .94-.36l3.84 4.25a.54.54 0 0 1 0 .72l-3.84 4.25a.54.54 0 0 1-.94-.36z"/></svg>
+            <% end %>
+            <%= link_to persons_experience_segment_path(segment.experience, segment), remote: true, class: "segment-single__action" do %>
+              Add/Edit People
+              <svg class="icon icon__caret-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 11"><path d="M.54 9.75v-8.5a.54.54 0 0 1 .94-.36l3.84 4.25a.54.54 0 0 1 0 .72l-3.84 4.25a.54.54 0 0 1-.94-.36z"/></svg>
+            <% end %>
+            <%= link_to places_experience_segment_path(segment.experience, segment), remote: true, class: "segment-single__action" do %>
+              Add/Edit Places
+              <svg class="icon icon__caret-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 11"><path d="M.54 9.75v-8.5a.54.54 0 0 1 .94-.36l3.84 4.25a.54.54 0 0 1 0 .72l-3.84 4.25a.54.54 0 0 1-.94-.36z"/></svg>
+            <% end %>
+            <%= link_to shadowers_experience_segment_path(segment.experience, segment), remote: true, class: "segment-single__action" do %>
+              Add/Edit Shadowers
+              <svg class="icon icon__caret-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 11"><path d="M.54 9.75v-8.5a.54.54 0 0 1 .94-.36l3.84 4.25a.54.54 0 0 1 0 .72l-3.84 4.25a.54.54 0 0 1-.94-.36z"/></svg>
+            <% end %>
+            <%= link_to clone_segment_path(segment), method: :patch, class: "segment-single__action" do %>
+              Clone Segment
+              <svg class="icon icon__caret-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 11"><path d="M.54 9.75v-8.5a.54.54 0 0 1 .94-.36l3.84 4.25a.54.54 0 0 1 0 .72l-3.84 4.25a.54.54 0 0 1-.94-.36z"/></svg>
+            <% end %>
+            <%= link_to experience_segment_path(segment.experience, segment), method: :delete, remote: true, class: 'delete-segment segment-single__action', data: { confirm: 'Are you sure you want to delete this segment?  All notes will also be deleted.' } do %>
+              Delete Segment
+              <svg class="icon icon__caret-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 11"><path d="M.54 9.75v-8.5a.54.54 0 0 1 .94-.36l3.84 4.25a.54.54 0 0 1 0 .72l-3.84 4.25a.54.54 0 0 1-.94-.36z"/></svg>
+            <% end %>
+          </div><!-- /segment-single__actions-->
+        </div>
+      <% end %>
+    </div>
+  </div><!-- grid-primary-->
+  <aside class="grid_aside">
+    <div class="sidebar sidebar__login u-card">
+      <h3 class="sidebar__title">What are Segments?</h3>
+      <p>
+        A segment is a simply a subset of your larger Shadowing experience. Segments are a great tool to organize larger experiences, or to assign different Shadowers to different parts of your experience.
+      </p>
+      <p>
+        <a href="#">Learn more about creating segments »</a>
+      </p>
+    </div>
+  </aside>
+</div><!-- u-container-->
+
+
+<!-- Modal -->
+<div class="modal fade" id="js-add-segment-modal" tabindex="-1" role="dialog" aria-labelledby="js-add-segment-modalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="js-add-segment-modalLabel">Create a New Segment</h4>
+      </div>
+      <%= form_for [experience, new_segment], remote: true, class: "form__horizontal" do |f| %>
+        <%= f.hidden_field :created_by_id, value: current_user.id %>
+        <div class="modal-body">
+          <div class='form-message-container alert notice'></div>
+          <div class="form-group">
+            <%= f.text_field :name, placeholder: "Name your segment" %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :start_location, placeholder: "Where does your segment start?" %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :end_location, placeholder: "Where does your segment end?" %>
+          </div>
+          <div class="modal-footer">
+            <%= f.submit 'Create Segment', class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div><!-- /modal-content-->
+  </div><!-- /modal-dialogue-->
+</div><!-- /modal-->

@@ -1,0 +1,53 @@
+/* SCAFFOLD 
+All primary layout patterns
+==================================================================== */
+
+.main{
+	@include rem(padding, 50px 20px);
+}
+
+.grid_primary{
+	@include media(min-width $screen-break){
+		@include span-columns(9);
+	}
+	@include media(max-width $screen-break){
+		@include rem(margin-bottom, 50px);
+	}
+}
+
+.grid_aside{
+	@include media(min-width $screen-break){
+		@include span-columns(3);
+	}
+}
+
+// Trial Bump
+.free-trial{
+	background-color: $brand-green-light;
+	color: #ffffff;
+	@include rem(font-size, 14px);
+	@include rem(padding, 10px 20px);
+}
+
+.free-trial a{
+	color: #ffffff;
+	text-decoration: underline;
+	&:hover{
+		color: darken(#ffffff, 15%);
+		text-decoration: underline;
+	}
+}
+
+// Footer
+.footer{
+	color: $brand-gray-placeholder;
+	@include rem(padding, 20px 0);
+}
+
+//
+//
+// Experience Scaffold
+// ------------------------------------------------
+.exper-sub-nav-content{
+	@include rem(padding, 0px 20px);
+}

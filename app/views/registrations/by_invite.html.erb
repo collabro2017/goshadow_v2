@@ -1,0 +1,48 @@
+<main class="main u-container">
+  <h1 class="page-title">Welcome to Goshadow</h1>
+  <p class="page-subtitle">Create an account and start Shadowing today</p>
+  <%= render 'shared/flash_message' %>
+  <section class="grid_primary">
+    <%= form_for( @user, url: register_from_invite_registrations_path(@user), html: {class: "form__horizontal u-container"} ) do |user_form| %>
+      <%= hidden_field_tag 'token', @invite.token %>
+      <div class="form__horizontal-group">
+        <%= user_form.label :email %>
+        <%= user_form.text_field :email, value: @invite.email %>
+      </div>
+
+      <div class="form__horizontal-group">
+        <%= user_form.label :first_name %>
+        <%= user_form.text_field :first_name %>
+      </div>
+
+      <div class="form__horizontal-group">
+        <%= user_form.label :last_name %>
+        <%= user_form.text_field :last_name %>
+      </div>
+
+      <div class="form__horizontal-group">
+        <%= user_form.label :password %>
+        <%= user_form.password_field :password %>
+      </div>
+
+      <div class="form__horizontal-group">
+        <%= user_form.label :password_confirmation %>
+        <%= user_form.password_field :password_confirmation %>
+      </div>
+
+      <div class="form__horizontal-group-submit">
+          <%= user_form.submit "Create Your Account", :class => "btn btn-primary" %>
+          <%= link_to('Already have a GoShadow Account? Sign in »', new_user_session_path)  %>
+      </div>
+    <% end %>
+  </section>
+  <aside class="grid_aside">
+    <div class="sidebar sidebar__login u-card">
+      <h3 class="sidebar__title">Sign up for a Free Shadowing Demo</h3>
+      <p>
+        Sample content explaining that Shadowing can be applied toany industry and organization, and to help get the most of GoShadow, sign up for a free demo with a Shadowing Specialist.<br>
+        <a href="#">Sign Up Now »</a>
+      </p>
+    </div>
+  </aside>
+</main>

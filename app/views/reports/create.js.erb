@@ -1,0 +1,24 @@
+<% if @errors.present? %>
+
+  $('.form-message-container').html("<%= escape_javascript(raw @errors) %>");
+
+<% else %>
+
+  var firstReport = $('.report-container')[0];
+  $(firstReport).before("<%= escape_javascript( render 'experiences/report_tile', report: @report) %>");
+  $('#report_name').val('');
+  $('#report_type').val('');
+  $('#report_segment_id').val('');
+  var openReport = window.open('/reports/' + <%= @report.id %> + '/open_report.pdf', '_blank');
+  
+  if( openReport ) {
+    //Browser has allowed Report to be opened
+    openReport.focus();
+  } else {
+    //Broswer has blocked it
+    alert('Report Created, you can view it at the top of the reports list.  To automatically download reports after they are created, enable pop-ups for GoShadow in your browser.');
+  }
+  
+  $('#js-add-report-modal').modal('hide');
+  
+<% end %>

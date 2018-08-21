@@ -1,0 +1,76 @@
+//
+// Organization Index
+// --------------------------------------------------
+
+.organization-index{
+	background-color: $brand-green-darkest;
+	@include rem(min-height, 500px);
+	@include display(flex);
+	@include align-items(center);
+	@include justify-content(center);
+}
+
+.organization-index__header{
+	background: #ffffff;
+	text-align: center;
+	@include rem(font-size, 18px);
+	@include rem(padding, 10px 0px);
+	border-top-right-radius: $border-radius;
+	border-top-left-radius: $border-radius;
+	border-bottom: 1px solid $brand-border;
+}
+
+.organization-index__header h3{
+	margin: 0px;
+}
+
+.organization-index__container{
+	margin: 0 auto;
+	@include rem(padding, 100px 0);
+	display: block;
+	border-radius: $border-radius;
+	max-width: 500px;
+}
+
+.organization__container{
+	@include transition(background-color .15s linear);
+	background: #ffffff;
+	text-align: center;
+}
+
+.org-avatar{
+	width: 50px;
+	height: auto;
+	display: block;
+	border-radius: 50%;
+	margin: 0 auto;
+	@include rem(margin-bottom, 10px);
+}
+
+.organization-index__container a{
+	@include rem(font-size, 28px);
+	@include rem(padding, 30px 150px);
+	border-bottom: 1px solid $brand-border;
+	color: $brand-black;
+	display: block;
+	font-weight: 700;
+	text-align: center;
+	&:hover{
+		background-color: darken(#ffffff, 5%);
+	}
+}
+
+.organization__container:last-child a{
+	border-bottom: 0px;
+	border-bottom-right-radius: $border-radius;
+	border-bottom-left-radius: $border-radius;
+}
+
+.organization-index .alert{
+    position: absolute;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1200px;
+    left: 50%;
+    margin-left: -600px;
+}

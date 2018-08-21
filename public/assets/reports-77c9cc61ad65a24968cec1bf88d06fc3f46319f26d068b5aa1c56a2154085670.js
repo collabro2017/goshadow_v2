@@ -1,0 +1,1 @@
+$(document).ready(function(){$("#emailReport").bind("ajax:complete",function(e,t,n){$(".message-container").html(t.responseText)}),$(".delete-report").bind("ajax:complete",function(){$(this).closest(".report-container").remove()}),$(".launch-send-report-modal").click(function(){var e=$(this).attr("report-id");$(".send-report-report-id-hidden").val(e)})});

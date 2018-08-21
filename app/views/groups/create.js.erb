@@ -1,0 +1,13 @@
+<% if @errors.present? %>
+  
+  $('.message-container').html("<%= escape_javascript(@errors) %>");
+
+<% else %>
+
+  $('#group_name').val('');
+  var groups = $('.group-list-item');
+  var lastGroup = groups[groups.length - 1];
+  $(lastGroup).after("<%= escape_javascript( render 'organizations/group_item', group: @group) %>");
+  $('.message-container').html('Group Created.');
+  
+<% end %>

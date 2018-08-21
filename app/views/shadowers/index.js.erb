@@ -1,0 +1,9 @@
+$('.exper-sub-nav').removeClass('active-exper-tab');
+$('.shadower-exper-tab').addClass('active-exper-tab');
+
+$(".exper-sub-nav-content").html("<%= escape_javascript( render 'experiences/shadowers',
+  shadowers: @shadowers, 
+  invite: @invite,
+  experience: @experience,
+  new_user_experiences: @new_user_experiences ) %>"
+);

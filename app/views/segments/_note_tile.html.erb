@@ -1,0 +1,53 @@
+<div class="note-single note-container">
+	<div class="note-single__meta">
+		<div class="note-single__meta-left">
+    	<strong><%= note.created_at.localtime.strftime("%-I:%M%p on %m/%d/%y") %></strong>
+	    <div class="note-single__meta-place">
+	    	<strong>Places:</strong><br>
+	    	<% NoteReferenceCollector.call(segment, note, 'Place', false).each do |reference| %>
+	    		<%= reference.name %><br>
+	    	<% end %>
+	    </div><!-- /meta-place-->
+		</div><!-- /meta-left-->
+		<div class="note-single__meta-right">
+      <span>&nbsp;</span>
+  		<!--<a href='#' id="<%= 'editNoteTimer-' + note.id.to_s %>" style="padding-top: 20px">
+    		<%= best_in_place note, :seconds, activator: "#editNoteTimer-#{note.id}", as: :input, url: segment_note_path(segment, note), display_as: :duration %>
+    	</a>-->
+    	<div class="note-single__meta-person">
+	    	<strong>People:</strong><br>
+	    	<% NoteReferenceCollector.call(segment, note, 'Person', false).each do |reference| %>
+		    	<%= reference.name %><br>
+		    <% end %>
+	    </div><!-- /meta-place-->
+	  </div>
+  </div>
+  <div class="note-single__note">
+  	<p class="note-single__shadower">Shadowed by <%= note.user.name %>
+  		<small>
+  			<a href='#' id="<%= 'editNoteText-' + note.id.to_s %>">Edit Note</a>
+			</small>		    			
+  	</p>
+    <%= best_in_place note, :text, as: :text_area, activator: "#editNoteText-#{note.id}", as: :textarea, url: segment_note_path(segment, note), display_as: :text %>
+  </div>
+  <% if note.note_image.present? %>
+    <div class="note-single__asset">
+    	<a href="#" data-featherlight="<%= note.note_image.attachment.url %>">
+	    	<%= image_tag note.note_image.attachment.url, class: "u-img-responsive" %>
+	    </a>
+    </div>
+  <% end %>
+  <div class="note-single__actions">
+  	<a href="#" class="note-single__accolade <%= 'active-thumb' if note.status == 'Positive' %>" id="<%='noteUp' + note.id.to_s %>" note-id="<%= note.id %>">
+  		<svg class="icon icon__accolade-outline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><path d="M21 13a2.63 2.63 0 0 0-.56-1.47 2.26 2.26 0 0 0-.53-2.63c-1.52-1.39-5.13-.64-5.53-.55l-.78.15a7 7 0 0 1 .53-2.56c.6-1.82.56-3.21-.1-4.14a2.69 2.69 0 0 0-2.16-1 1 1 0 0 0-.8.37 2.94 2.94 0 0 0-.35 2c-.56 1.5-2.16 5.26-3.52 6.3l-.06.06a4.52 4.52 0 0 0-.85 1.29 1.74 1.74 0 0 0-.87-.23H2.79A1.75 1.75 0 0 0 1 12.34v7a1.75 1.75 0 0 0 1.75 1.75h2.67a1.74 1.74 0 0 0 1.06-.36l1 .15a43.28 43.28 0 0 0 5.73.31q.77.06 1.44.06a9.73 9.73 0 0 0 2-.18 3.71 3.71 0 0 0 2.65-1.64 2.59 2.59 0 0 0 .28-1.64 2.72 2.72 0 0 0 .8-3.09A2.53 2.53 0 0 0 21 13zM2.79 20a.67.67 0 0 1-.67-.67v-7a.67.67 0 0 1 .67-.67h2.63A.67.67 0 0 1 6 12a.54.54 0 0 0 .1.25.67.67 0 0 1 0 .12v7a.67.67 0 0 1-.67.67H2.79zm16.53-5.77a.54.54 0 0 0-.07.65 1.68 1.68 0 0 1-.62 2.26.54.54 0 0 0-.19.61 1.52 1.52 0 0 1-.13 1.16A2.73 2.73 0 0 1 16.4 20a11.46 11.46 0 0 1-3.15.1h-.05a42.94 42.94 0 0 1-5.59-.3l-.48-.07a1.75 1.75 0 0 0 0-.4v-7a1.75 1.75 0 0 0-.08-.53 3.64 3.64 0 0 1 .81-1.5c1.92-1.52 3.81-6.68 3.89-6.9a.81.81 0 0 0 0-.27 2.55 2.55 0 0 1 .07-1.29 1.6 1.6 0 0 1 1.27.6c.45.62.43 1.71 0 3.16-.72 2.17-.78 3.31-.22 3.81a.9.9 0 0 0 .9.16l.75-.15h.05c.91-.2 3.61-.56 4.54.29a1.27 1.27 0 0 1 .15 1.62.55.55 0 0 0 .09.69 1.66 1.66 0 0 1 .49 1 1.66 1.66 0 0 1-.52 1.21z"/></svg>
+  		<svg class="icon icon__accolade-solid" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><style>.cls-2{fill:#7eb347;}</style></defs><title>icon_accolade-solid</title><path class="cls-2" d="M21 13a2.63 2.63 0 0 0-.56-1.47 2.26 2.26 0 0 0-.53-2.63c-1.52-1.39-5.13-.64-5.53-.55l-.78.15a7 7 0 0 1 .53-2.56c.6-1.82.56-3.21-.1-4.14a2.69 2.69 0 0 0-2.16-1 1 1 0 0 0-.8.37 2.94 2.94 0 0 0-.35 2c-.56 1.5-2.16 5.26-3.52 6.3l-.06.06a4.52 4.52 0 0 0-.85 1.29 1.74 1.74 0 0 0-.87-.23H2.79A1.75 1.75 0 0 0 1 12.34v7a1.75 1.75 0 0 0 1.75 1.75h2.67a1.74 1.74 0 0 0 1.06-.36l1 .15a43.28 43.28 0 0 0 5.73.31q.77.06 1.44.06a9.73 9.73 0 0 0 2-.18 3.71 3.71 0 0 0 2.65-1.64 2.59 2.59 0 0 0 .28-1.64 2.72 2.72 0 0 0 .8-3.09A2.53 2.53 0 0 0 21 13z"/></svg>
+  	</a>
+  	<a href="#" class="note-single__opportunity <%= 'active-thumb' if note.status == 'Negative' %>" id="<%='noteDown' + note.id.to_s %>" note-id="<%= note.id %>">
+  		<svg class="icon icon__opportunity-outline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><path d="M20.36 7.31a2.72 2.72 0 0 0-.8-3.09 2.59 2.59 0 0 0-.28-1.64A3.71 3.71 0 0 0 16.63.93a9.73 9.73 0 0 0-2-.18q-.67 0-1.44.06a43.28 43.28 0 0 0-5.73.31l-1 .15A1.74 1.74 0 0 0 5.42.92H2.79A1.75 1.75 0 0 0 1 2.67v7a1.75 1.75 0 0 0 1.75 1.75h2.67a1.74 1.74 0 0 0 .87-.23 4.52 4.52 0 0 0 .85 1.29l.06.05c1.36 1 3 4.8 3.52 6.32a2.94 2.94 0 0 0 .35 2 1 1 0 0 0 .8.37 2.69 2.69 0 0 0 2.16-1c.67-.92.7-2.32.1-4.14a7 7 0 0 1-.53-2.56l.72.15c.41.09 4 .85 5.53-.55a2.26 2.26 0 0 0 .53-2.63A2.63 2.63 0 0 0 21 9a2.53 2.53 0 0 0-.64-1.69zM5.42 2a.67.67 0 0 1 .67.67v7a.67.67 0 0 1 0 .12A.54.54 0 0 0 6 10a.67.67 0 0 1-.56.3H2.79a.67.67 0 0 1-.67-.67v-7A.67.67 0 0 1 2.79 2h2.63zm14.45 7a1.66 1.66 0 0 1-.49 1 .55.55 0 0 0-.09.69 1.27 1.27 0 0 1-.15 1.62c-.93.85-3.63.49-4.54.29h-.06l-.75-.15a.9.9 0 0 0-.9.16c-.56.5-.49 1.63.22 3.81.48 1.45.49 2.54 0 3.16a1.6 1.6 0 0 1-1.27.6 2.55 2.55 0 0 1-.07-1.29.81.81 0 0 0 0-.27c-.08-.22-2-5.38-3.89-6.9a3.64 3.64 0 0 1-.81-1.5 1.75 1.75 0 0 0 .08-.53v-7a1.75 1.75 0 0 0 0-.4l.46-.09a42.94 42.94 0 0 1 5.59-.3h.05a11.46 11.46 0 0 1 3.15.1 2.73 2.73 0 0 1 1.92 1.1 1.52 1.52 0 0 1 .13 1.16.54.54 0 0 0 .19.61 1.68 1.68 0 0 1 .62 2.26.54.54 0 0 0 .07.65A1.66 1.66 0 0 1 19.87 9z"/></svg>
+  		<svg class="icon icon__opportunity-solid" cxmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><defs><style>.cls-opp-solid{fill:#f1831f;}</style></defs><title>icon_opportunity-solid</title><path class="cls-opp-solid" d="M20.36 7.31a2.72 2.72 0 0 0-.8-3.09 2.59 2.59 0 0 0-.28-1.64A3.71 3.71 0 0 0 16.63.93a9.73 9.73 0 0 0-2-.18q-.67 0-1.44.06a43.28 43.28 0 0 0-5.73.31l-1 .15A1.74 1.74 0 0 0 5.42.92H2.79A1.75 1.75 0 0 0 1 2.67v7a1.75 1.75 0 0 0 1.75 1.75h2.67a1.74 1.74 0 0 0 .87-.23 4.52 4.52 0 0 0 .85 1.29l.06.05c1.36 1 3 4.8 3.52 6.32a2.94 2.94 0 0 0 .35 2 1 1 0 0 0 .8.37 2.69 2.69 0 0 0 2.16-1c.67-.92.7-2.32.1-4.14a7 7 0 0 1-.53-2.56l.72.15c.41.09 4 .85 5.53-.55a2.26 2.26 0 0 0 .53-2.63A2.63 2.63 0 0 0 21 9a2.53 2.53 0 0 0-.64-1.69z"/></svg>
+  	</a>
+  	<%= link_to segment_note_path(segment, note), method: 'delete', remote: true, class: 'note-single__delete', data: { confirm: 'Are you sure you want to delete this note?' } do %>
+  		<svg class="icon icon__delete-color" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 22"><path d="M17.65 2.76h-4V1.49A1.28 1.28 0 0 0 12.34.21H7.66a1.28 1.28 0 0 0-1.27 1.28v1.27h-4v.85h1l1.49 16.95a1.39 1.39 0 0 0 1.35 1.23h7.65a1.39 1.39 0 0 0 1.35-1.23l1.58-16.95h.84v-.85zM7.24 1.49a.43.43 0 0 1 .43-.43h4.68a.43.43 0 0 1 .43.43v1.27H7.24V1.49zm7.15 19a.53.53 0 0 1-.51.46H6.23a.53.53 0 0 1-.51-.46L4.15 3.61H16z"/><path class="cls-1" d="M9.68 5.42h.85v13.61h-.85zM6.706 5.44l.85-.025.425 13.603-.85.027zM12.222 18.994l.408-13.61.85.025-.408 13.61z"/></svg>
+  	<% end %>
+  </div><!-- /actions-->
+</div>

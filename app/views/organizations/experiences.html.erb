@@ -1,0 +1,120 @@
+<main class="main u-container">
+
+    <h1>My <%= @organization.name %> Experiences</h1>
+
+    <%= form_tag search_experiences_path(@organization), method: 'get', class: "search-form" do %>
+      <div class="form-group">
+        <%= text_field_tag :search_term, params['search_term'], placeholder: 'Search for an Experience' %>
+        <%= submit_tag 'Search' %>
+      </div>
+      <%= link_to 'Clear Search', experiences_organization_path(@organization), class: "u-pull-right clear-search" %>
+    <% end %>
+    <div class="experience-loop u-clearfix">
+      <% @experiences.each do |experience| %>
+        <div class="experience-card">
+          <h3 class="experience-card__title">
+            <%= link_to experience.name, experience_path(experience, tab: 'segments') %>
+          </h3>
+          <% if experience.published == true %>
+            <a title="This experience has been published from the app.">
+              <svg class="icon__published" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="#7eb347" d="M21.17 36.66l-6.23-11.84 1.01-.53 5.18 9.83 10.91-22.78 1.03.49-11.9 24.83z"/><path fill="#7eb347" d="M24 47.09A23.09 23.09 0 1 1 47.09 24 23.12 23.12 0 0 1 24 47.09zm0-45A21.95 21.95 0 1 0 45.95 24 22 22 0 0 0 24 2.05z"/></svg>
+            </a>
+          <% end %>
+          <p class="u-meta-text">
+            <%= "Last Updated #{experience.updated_at.strftime("%-m/%-d/%Y")}" %> | <%= "Created #{experience.created_at.strftime("%-m/%-d/%Y")}" %>
+
+            <% if is_coordinator %>
+              <br>
+              <%= link_to "Delete Experience", experience_path(experience), method: :delete, remote: true, data: { confirm: 'Are you sure you want to delete this experience?  All data associated with the experience will also be deleted.' }, class: 'delete-experience' %>
+            <% end %>
+            | <%= link_to "Clone Experience", clone_experience_path(experience), method: :post, class: 'delete-experience' %>
+          </p>
+          <p class="experience-card__location">
+            <strong>Location: <%= experience.location %></strong>
+          </p>
+          <p class="experience-card__description">
+            Description: <%= experience.description %>
+          </p>
+          <div class="experience-card__footer u-text-center">
+            <div class="experience-card__footer-stat">
+              <%= link_to experience_path(experience, tab: 'segments') do %>
+                <span class="experience-card__footer-stat-number">
+                  <%= experience.segment_count(current_user, is_coordinator) %>
+                </span>
+                SEGMENTS
+              <% end %>
+            </div><!-- /footer-stat-->
+            <div class="experience-card__footer-stat">
+              <%= link_to experience_path(experience, tab: 'shadowers') do %>
+                <span class="experience-card__footer-stat-number">
+                  <%= experience.shadower_count %>
+                </span>
+                SHADOWERS
+              <% end %>
+            </div><!-- footer-stat-->
+            <div class="experience-card__footer-stat">
+              <%= link_to experience_path(experience, tab: 'reports') do %>
+                <span class="experience-card__footer-stat-number">
+                  <%= experience.reports_count %>
+                </span>
+                REPORTS
+              <% end %>
+            </div><!-- /footer-stat-->
+          </div><!-- /footer-->
+        </div><!-- /experience-card-->
+      <% end %>
+      <div class="experience-card add-experience u-text-center">
+
+        <!-- Button trigger modal -->
+          <a class="" data-toggle="modal" data-target="#js-add-experience-modal">
+            <span class="add-experience__plus">+</span>
+                Add a New Experience
+          </a>
+
+
+
+      </div><!-- /experience-card-->
+    </div><!-- /experience-loop-->
+
+  <div class="experience-pagination u-container u-text-center">
+    <%= will_paginate @experiences %>
+  </div>
+</main>
+
+
+<!-- Modal -->
+<div class="modal fade" id="js-add-experience-modal" tabindex="-1" role="dialog" aria-labelledby="js-add-experience-modalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="js-add-shadower-modalLabel">Create a New Experience</h4>
+      </div>
+      <div class="modal-body">
+        <div class='error-container alert notice'></div>
+        <%= form_for @experience, remote: true, class: "form__horizontal" do |f| %>
+          <%= f.hidden_field :created_by_id, value: current_user.id %>
+          <%= f.hidden_field :organization_id, value: @organization.id %>
+          <div class="form-group">
+            <%= f.text_field :name, placeholder: "Name Your Experience" %>
+          </div>
+          <div class="form-group">
+            <%= f.text_field :location, placeholder: "Where will your experience take place?" %>
+          </div>
+          <div class="form-group">
+            <%= f.text_area :description, placeholder: "Describe your experience in a few sentences", rows: 5 %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <%= f.submit 'Create Experience', class: "btn btn-primary" %>
+        </div>  
+      <% end %>
+    </div><!-- /modal-content-->
+  </div><!-- /modal-dialogue-->
+</div><!-- /modal-->
+
+<script>
+  $( document ).ready( function() {
+    $('.nav-item-experiences').addClass('active-nav-item');
+  });
+</script>

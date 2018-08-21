@@ -1,0 +1,32 @@
+
+<main class="main u-container">
+	<div class="u-container">
+	  <h1 class="page-title">Forgot Your Password?</h1>
+	  <p class="page-subtitle">Enter your email and we will help you get back into your account</p>
+	  <section class="grid_primary">
+
+			<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "form__horizontal u-container" }) do |f| %>
+			  <%= devise_error_messages! %>
+
+			  <div class="form__horizontal-group">
+			    <%= f.label :email %>
+			    <%= f.email_field :email, autofocus: true, placeholder: "Enter Your Email Address" %>
+			  </div>
+
+			  <div class="form__horizontal-group-submit">
+			    <%= f.submit "Reset My Password", :class => "btn btn-primary" %>
+					<%= link_to "Have your password? Sign in »", new_session_path(resource_name) %><br />
+			  </div>
+			<% end %>
+		</section>
+	  <aside class="grid_aside">
+	    <div class="sidebar sidebar__login u-card">
+	      <h3 class="sidebar__title">Don't have a GoShadow Account?</h3>
+	      <p>
+	        Sample content explaining that Shadowing can be applied toany industry and organization, and to help get the most of GoShadow, sign up for a free demo with a Shadowing Specialist.<br>
+	        <%= link_to "Sign up for a free trial »", new_registration_path(resource_name) %>
+	      </p>
+	    </div>
+	  </aside>
+	</div>
+</main>

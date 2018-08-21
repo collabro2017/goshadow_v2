@@ -1,0 +1,70 @@
+.page-table__header{
+	@include display(flex);
+	@include rem(margin-bottom, 40px);
+	@include justify-content(space-between);
+	@include align-items(center);
+}
+
+.page-table__header h1{
+	margin: 0px;
+}
+
+p.license-status{
+	@include rem(font-size, 22px);
+	@include rem(margin, 0px 0px 10px);
+}
+
+.shadower-table{
+	width: 100%;
+	background: #ffffff;
+	border-radius: $border-radius;
+	box-shadow: $box-shadow;
+}
+
+.shadower-table__header{
+	background-color: $brand-green-darkest;
+	color: #ffffff;
+}
+
+.shadower-table thead:nth-of-type(1) th:first-child{
+	border-top-left-radius: $border-radius;
+}
+
+.shadower-table thead:nth-of-type(1) th:last-child{
+	border-top-right-radius: $border-radius;
+}
+
+.shadower-table th,
+.shadower-table td{
+	text-align: left;
+	@include rem(padding, 20px);
+}
+
+.shadower-table tr:nth-child(2n){
+	background-color: #f2f2f2;
+}
+
+.shadower-table tr:last-child td:first-child{
+	border-bottom-left-radius: $border-radius;
+}
+
+.shadower-table tr:last-child td:last-child{
+	border-bottom-right-radius: $border-radius;
+}
+
+.shadower-table__invited-on{
+	display: block;
+	color: $brand-gray-placeholder;
+}
+
+.add-shadower-message-container .alert{
+	@include rem(margin, 15px 20px);
+}
+
+.shadower-table .active-row{
+	font-weight: bold;
+}
+
+.delete-link{
+	color: #848484;
+}

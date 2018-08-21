@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>GoShadow | <%= @report.name %></title>
+    <%= wicked_pdf_stylesheet_link_tag 'application' %>
+  </head>
+  <body class="report" onload="number_pages()">
+    <header class="report-header">
+        <%= wicked_pdf_image_tag 'logo_report.png', class: "report-logo" %>
+
+      <h1 class="report-title">
+        <%= @report.name %>
+        <small class="report-exported_on">
+          Exported on <%= date_time_to_date(@report.created_at) %>
+        </small>
+      </h1>
+      
+      <p>
+        <strong>Location: </strong>
+        <%= @experience.location %>
+      </p>
+
+      <div class="report-meta">
+        <div class="report-meta__column">
+          <p>
+            <strong>Experience Description:</strong>
+            <%= @experience.description %>
+          </p>
+        </div>
+        <div class="report-meta__column">
+          <p>
+            <strong>Report Description:</strong>
+             A high-level report, representing the chronological journey though an entire experience. The flow map provides a complete view of the experience, including time stamped people and places, and the identification of recorded opportunities and accolades. 
+          </p>
+        </div>
+      </div>
+    </header>
+    <section class="report-body">
+      <% if @report.data['segments'].present? %>
+        <div class="report-body__header">
+          <p>
+            <strong>
+              Start:
+            </strong>
+            <%= @report.data['start_time'] %>
+          </p>
+        </div>
+        <div class="cefm-wrapper">
+          <% @report.data['segments'].each do |data_set| %>
+                <div class="cefm-place__group-header">
+                  <h2 class="cefm__segment-name"><%= data_set['segment_name'] %></h2>
+                  <p class="cefm__segment-meta">
+                    <%= "Started at #{data_set['created_at_time']} on #{data_set['created_at_date']} | Accolades: #{data_set['positive_note_count']} | Opportunities: #{data_set['negative_note_count']}" %>
+                  </p>
+                </div>
+                <% data_set['references'].each do |reference| %>
+                  <div class="cefm-group">
+                    <div class="cefm-place__group">
+                      <div class="cefm-place">
+                        <%= wicked_pdf_image_tag 'icon_report-place--white.svg', class: 'report-icon__place' %>
+                        <span>
+                          <h2><%= reference['place_name'] %></h2>
+                          <p>
+                            <% unless reference['created_at_time'].blank? %>
+                              <span class="cefm__created">
+                                <%= reference['created_at_time'] %> for <%= convert_seconds_to_time(reference['seconds']) %> by <%= reference['created_by'] %>
+                              </span>
+                            <% end %>
+                          </p>
+                        </span>
+                      </div><!-- /cefm-place-->
+                      <% reference['persons'].each do |person| %>
+                        <div class="cefm-person__group">
+                          <div class="cefm-person__bg-arrows">
+                          </div>
+                          <div class="cefm-person">
+                            <%= wicked_pdf_image_tag 'icon_report-person--white.svg', class: 'report-icon__person' %>
+                            <span>
+                              <h2><%= person['name'] %></h2>
+                              <p>
+                                <% unless reference['created_at_time'].blank? %>
+                                  <span class="cefm__created">
+                                    <%= reference['created_at_time'] %> for <%= convert_seconds_to_time(reference['seconds']) %> by <%= reference['created_by'] %>
+                                  </span>
+                                <% end %>
+                              </p>
+                            </span>
+                          </div><!-- cefm-person-->
+                        </div><!-- cefm-person__group-->
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+
+          <% end %>
+        </div><!-- cefm-wrapper-->
+      </div>
+
+        <div class="report-body__footer">
+          <p>
+            <strong>
+              End:
+            </strong>
+            <%= @report.data['end_time'] %>
+          </p>
+        </div>
+
+      <% else %>
+        <h2>No Data Available</h2>
+      <% end %>
+    </section>
+    <footer class="report-footer">
+        &copy; <%= Time.now.year %> GoShadow LLC and AMD3 Consulting. All Rights Reserved. Learn more at <a href="http://goshadow.org">GoShadow.org</a>.
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+<% if @errors.present? %>
+  
+  $('.message-container').html("<%= escape_javascript(@errors) %>");
+
+<% else %>
+
+  $('#place_name').val('');
+  $('#group_id').val('')
+  var places = $('.js-add-place-row');
+  var lastPerson = places[places.length - 1];
+  $(lastPerson).after("<%= escape_javascript( render 'organizations/place_row', place: @place) %>");
+  $('.message-container').html('Place Created.');
+  
+<% end %>

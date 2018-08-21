@@ -1,0 +1,72 @@
+<main class="main u-container">
+  <h1><%= @organization.name %> Places</h1>
+
+  <%= render 'organizations/place_search' %>
+
+
+
+
+  <div class="reference-tabs">
+    <div class="reference-tab active">
+      <%= link_to 'Places', places_organization_path(@organization) %>
+    </div><!-- reference-tab-->
+    <div class="reference-tab">
+      <%= link_to 'Groups', place_groups_organization_path(@organization) %>
+    </div><!-- reference-tab-->
+    <a class="launch-add-to-group-modal u-pull-right" data-toggle="modal" data-target="#js-add-to-group-modal">
+      Add to Group
+    </a>
+
+  </div>
+
+  <div class='places-data-container'>
+    <div class="reference-table">
+      <!-- DO NOT DELETE THE BELOW DIV NEED IN CASE OF NO PLACE CREATED FOR THE ORGANIZATION! -->
+      <div class="place-container add-new-place">
+        <a class="" data-toggle="modal" data-target="#js-add-place-modal">
+          Add Place
+        </a>
+      </div>
+      <div class='js-add-place-row'></div>
+      <% @places.each do |place| %>
+        <%= render 'organizations/place_row', place: place %>
+      <% end %>
+      <%= javascript_include_tag 'places' %>
+    </div><!--reference-table -->
+  </div><!-- places-data-container-->
+
+  <%= render 'organizations/add_to_group_modal', group_type: 'places', groups: @organization.place_groups %>
+
+  <script>
+    $( document ).ready( function() {
+      $('.nav-item-places').addClass('active-nav-item');
+    });
+  </script>
+</main>
+
+
+<!-- Modal -->
+<div class="modal fade" id="js-add-place-modal" tabindex="-1" role="dialog" aria-labelledby="js-add-segment-modalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="js-add-segment-modalLabel">Create a New Place</h4>
+      </div>
+      <div class="modal-body">
+        <div class='message-container alert notice'></div>
+        <%= form_for [@new_place], remote: true, url: places_path do |f| %>
+          <%= f.hidden_field :created_by_id, value: current_user.id %>
+          <%= f.hidden_field :organization_id, value: @organization.id %>
+          <div class="form-group">
+            <%= f.text_field :name, placeholder: "Name Your Place" %>
+          </div>
+          <div class="form-group">
+            <%= select_tag 'group_id', options_for_select(@place_groups.map { |group| [ group.name, group.id ] }), include_blank: 'Add to Group' %>
+          </div>
+          <%= f.submit 'Create Place', class: "btn btn-primary" %>
+        <% end %>
+      </div><!-- /modal-content-->
+    </div><!-- /modal-dialogue-->
+  </div><!-- /modal-->
+</div>

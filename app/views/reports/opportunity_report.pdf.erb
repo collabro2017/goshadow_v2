@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+	    <title>GoShadow | <%= @report.name %></title>
+		<%= wicked_pdf_stylesheet_link_tag 'application' %>
+	</head>
+	<body class="report">
+		<header class="report-header">
+		    <%= wicked_pdf_image_tag 'logo_report.png', class: "report-logo" %>
+
+			<h1 class="report-title">
+				<%= @report.name %>
+				<small class="report-exported_on">
+					Exported on <%= date_time_to_date(@report.created_at) %>
+				</small>
+			</h1>
+
+			<p>
+				<strong>Location: </strong>
+				<%= @experience.location %>
+			</p>
+
+			<div class="report-meta">
+				<div class="report-meta__column">
+					<p>
+						<strong>Experience Description:</strong>
+						<%= @experience.description %>
+					</p>
+				</div>
+				<div class="report-meta__column">
+					<p>
+						<strong>Report Description:</strong>
+						A report consisting of each recorded “thumbs down” reaction, along with time stamped notes. 
+					</p>
+				</div>
+			</div>
+		</header>
+
+		<section class="report-body">
+			<div class="report-body__header">
+				<h3 class="report-subtitle">
+					Opportunities for Improvement
+				</h3>
+				<%= wicked_pdf_image_tag 'icon_opportunity-outlined.svg', class: 'report-icon__opportunity' %>
+			</div>
+
+			<% if @report.data.present? %>
+			  <% @report.data.each do |data_set| %>
+			  	<div class="u-card opp-report__single">
+			  		<div class="opp-report__note">
+				  		<div class="opp-report__meta">
+				  			<div class="opp-report__time"><%= data_set['note']['segment_name'] %> | <%= data_set['note']['start_time'] %>
+					  		</div>
+					  		<div class="opp-report__duration">
+					  			<%= wicked_pdf_image_tag 'icon_opportunity-outlined.svg', class: 'report-icon__opportunity' %>
+					  		</div>
+					  	</div>
+					  	<% if data_set['note']['image_url'] %>
+						  	<div class="opp-report__asset">
+		  						<%= image_tag data_set['note']['image_url'] %>
+		  					</div>
+		  				<% end %>
+	  					<p><%= data_set['note']['text'] %></p>
+					</div>
+			  		<div class="opp-report__references">
+					    <% data_set['references'].each do |reference| %>
+					    <div class="opp-report__reference <%= reference['type'] %>">
+					    	<div class="opp-report__reference-icon">
+						    	<% if reference['type'] == "Person" %>
+						    		<%= wicked_pdf_image_tag 'icon_report-place--white.svg', class: 'report-icon__place' %>
+						    	<% else %>
+						    		<%= wicked_pdf_image_tag 'icon_report-person--white.svg', class: 'report-icon__place' %>
+						    	<% end %>
+						    </div>
+						    <div class="opp-report__reference-meta">
+						    	<div class="opp-report__reference-time">
+							      	<%= reference['start'] %>
+							      	<%= wicked_pdf_image_tag 'icon_duration--white.svg', class: 'report-icon__duration-svg' %>
+							      	<%= convert_seconds_to_time( reference['seconds'] ) %>
+							    </div>
+							    <div class="opp-report__reference-label">
+							      	<strong>
+							      		<%= reference['name'] %>
+							      	</strong>
+						      	</div>
+						    </div>
+					     </div>
+					    <% end %>
+					</div>
+				</div><!-- /opp-report__single-->
+			  <% end %>
+
+
+
+			<% else %>
+			  <h2>No Opportunities</h2>
+			<% end %>
+		</section>

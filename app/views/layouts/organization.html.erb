@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <%= render 'shared/head' %>
+  <body>
+
+    <div id="outer-wrap">
+      <div id="inner-wrap">
+
+        <nav class="nav-primary" itemscope itemtype="http://schema.org/SiteNavigationElement">
+          <div class="u-container">
+            <div class="site-brand">
+              <%= link_to(root_path) do %>
+                <%= image_tag 'logo_white.svg', class: 'nav-primary__brand', alt: 'GoShadow Logo' %>
+              <% end %>
+            </div>
+            <a class="navbar-toggle u-show-mobile">
+              <svg class="icon icon-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 112.5"><path fill="#ffffff" d="M9 39h72v12H9zM9 60h72v12H9zM9 18h72v12H9z"/></svg>
+            </a>
+            <div class="js-nav-collapse">
+            <%= image_tag current_user.avatar_url, class: 'nav-item__avatar u-show-mobile' %>
+              <ul class="nav-items nav-items__left">
+                <li class="nav-item nav-item-experiences"><%= link_to 'Experiences', experiences_organization_path(@organization) %></li>
+                <li class="nav-item nav-item-shadowers"><%= link_to 'Shadowers', shadowers_organization_path(@organization) %></li>
+                <li class="nav-item nav-item-persons"><%= link_to 'People', persons_organization_path(@organization) %></li>
+                <li class="nav-item nav-item-places"><%= link_to 'Places', places_organization_path(@organization) %></li>
+              </ul>
+              <ul class="nav-items nav-items__right">
+
+                <li class="nav-item">
+                  <a href="http://goshadow.org/support">Support</a>
+                </li>
+                <% if is_coordinator %>
+                  <li class="nav-item">
+                    <%= link_to @organization.name, organization_settings_path(@organization) %>
+                  </li>
+                <% end %>
+                <li class="nav-item nav-item__has-dropdown">
+                    <a href='#' class='js-dropdown-toggle dropdown-toggle u-hide-mobile' role='button' aria-haspopup='true' aria-expanded='false'>
+                      <%= image_tag current_user.avatar_url, class: 'nav-item__avatar u-hide-mobile' %>
+                      <%= current_user.name %> <span class='caret'></span>
+                    </a>
+                    <ul class="nav-item__dropdown">
+                      <li class="nav-item">
+                        <%= link_to 'Your Settings', edit_user_path(current_user) %>
+                      </li>
+                      <% if current_user.organizations.count > 1 %>
+                        <li class="nav-item">
+                          <%= link_to 'Change Organization', root_path %>
+                        </li>
+                      <% end %>
+                      <li class="nav-item"><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+                    </ul>
+                </li>
+              </ul>
+            </div><!-- js-nav-collapse-->
+          </div><!-- u-container-->
+        </nav>
+
+        <% if @organization.remaining_trial_time > 0 %>
+          <div class="free-trial">
+            <div class="u-container">
+              <%= "#{@organization.remaining_trial_time} days remaining in your free trial" %>
+              <strong>
+                <%= link_to "Sign Up Today »", new_organization_subscription_path(@organization) %>
+              </strong>
+            </div>
+          </div>
+        <% end %>
+        <%= yield %>
+        <footer class="footer u-container u-text-center">
+          &copy; <%= Time.now.year %> GoShadow LLC and AMD3 Consulting. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Support</a>
+        </footer>
+      </div><!-- inner-wrap-->
+    </div><!-- outer-wrap-->
+  </body>
+</html>

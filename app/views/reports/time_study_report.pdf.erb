@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+	    <title>GoShadow | <%= @report.name %></title>
+		<%= wicked_pdf_stylesheet_link_tag 'application' %>
+	</head>
+	<body class="report">
+		<header class="report-header">
+		    <%= wicked_pdf_image_tag 'logo_report.png', class: "report-logo" %>
+
+			<h1 class="report-title">
+				<%= @report.name %>
+				<small class="report-exported_on">
+					Exported on <%= date_time_to_date(@report.created_at) %>
+				</small>
+			</h1>
+
+			<p>
+				<strong>Location: </strong>
+				<%= @experience.location %>
+			</p>
+
+			<div class="report-meta">
+				<div class="report-meta__column">
+					<p>
+						<strong>Experience Description:</strong>
+						<%= @experience.description %>
+					</p>
+				</div>
+				<div class="report-meta__column">
+					<p>
+						<strong>Report Description:</strong>
+						A comprehensive record of the time spent within each place and with each person encountered during an experience.
+					</p>
+				</div>
+			</div>
+		</header>
+
+		<section class="report-body">
+			<div class="time-study__column">
+				<div class="time-study__column-header">
+					<h3 class="report-subtitle">
+						People
+					</h3>
+
+					<h3 class="time-study__total-time">
+						<%= convert_seconds_to_time(@report.data['people_total_time']) %>
+					</h3>
+				</div>
+
+				<div class="time-study__column-body u-card">
+					<% @report.data['people'].each do |place| %>
+						<div class="time-study__column-row places">
+							<div>
+				    			<%= wicked_pdf_image_tag 'icon_report-person.svg', class: 'report-icon__person' %>
+				    		</div>
+			    			<div>
+						  		<%= place['name'] %>
+						  	</div>
+					  		<div class="u-text-black time">
+						  		<%= convert_seconds_to_time(place['time_spent']) %>
+						  	</div>
+					  	</div>
+					<% end %>
+				</div>
+			</div>
+			<div class="time-study__column">
+				<div class="time-study__column-header">
+
+					<h3 class="report-subtitle">
+						Places
+					</h3>
+
+					<h3 class="time-study__total-time">
+						<%= convert_seconds_to_time(@report.data['places_total_time']) %>
+					</h3>
+				</div>
+
+				<div class="time-study__column-body u-card">
+					<% @report.data['places'].each do |place| %>
+						<div class="time-study__column-row">
+							<div>
+				    			<%= wicked_pdf_image_tag 'icon_report-place.svg', class: 'report-icon__place' %>
+				    		</div>
+			    			<div>
+						  		<%= place['name'] %>
+						  	</div>
+					  		<div class="u-text-black time">
+						  		<%= convert_seconds_to_time(place['time_spent']) %>
+						  	</div>
+						</div>
+					<% end %>
+				</div>
+			</div>
+
+		</section>
+		<footer class="report-footer">
+	      &copy; <%= Time.now.year %> GoShadow LLC and AMD3 Consulting. All Rights Reserved. Learn more at <a href="http://goshadow.org">GoShadow.org</a>.
+		</footer>
+	</body>
+</html>

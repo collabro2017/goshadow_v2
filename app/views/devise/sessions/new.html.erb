@@ -1,0 +1,40 @@
+<main class="main u-container">
+  <h1 class="page-title">Welcome Back</h1>
+  <p class="page-subtitle">Sign into your GoShadow account</p>
+  <%= render 'shared/flash_message' %>
+  <section class="grid_primary">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form__horizontal u-container"}) do |f| %>
+      <div class="form__horizontal-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, placeholder: "Enter Your Email Address" %>
+      </div>
+
+      <div class="form__horizontal-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: "off", placeholder: "Enter Your Password" %>
+      </div>
+
+      <% if devise_mapping.rememberable? -%>
+        <div class="form__horizontal-group-checkbox">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end -%>
+
+      <div class="form__horizontal-group-submit">
+        <%= f.submit "Sign Into GoShadow", :class => "btn btn-primary" %>
+        <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+        
+      </div>
+    <% end %>
+  </section>
+  <aside class="grid_aside">
+    <div class="sidebar sidebar__login u-card">
+      <h3 class="sidebar__title">Don't have a GoShadow Account?</h3>
+      <p>
+        Sign up today for a FREE 30-day GoShadow trial. Enjoy full access to all app and platform functionality, create experiences, shadow segments and pull reports!<br><br>
+        <%= link_to "Sign up for a free trial »", new_registration_path(resource_name) %>
+      </p>
+    </div>
+  </aside>
+</main>

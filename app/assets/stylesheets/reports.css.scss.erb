@@ -1,0 +1,500 @@
+@import "bourbon";
+@import "neat";
+@import "base/_variables.scss";
+@import "base/_mixins.scss";
+
+$bg-person: #04b3dc;
+
+
+/* REPORTS 
+==================================================================== */
+
+body.report{
+	background: #ffffff;
+}
+
+// Header
+.report-title{
+	font-size: 24px;
+	color: $brand-green-dark;
+	margin-bottom: 10px;
+}
+
+small.report-exported_on{
+	color: #a8aaad;
+	display: inline-block;
+	font-size: 12px;
+	font-weight: 300;
+	margin-left: 10px;
+}
+
+.report-logo{
+	width: 160px;
+	height: 48px;
+	float: right;
+}
+
+// Report Meta Details
+
+.report-meta{
+	@include outer-container();
+	margin-bottom: 20px;
+}
+
+.report-meta__column{
+	@include span-columns(6);
+}
+
+.report-meta__column p{
+	font-weight: 400;
+}
+
+//Report Body
+
+.report-body{
+	@include outer-container();
+	background-color: #f2f2f2;
+	border-top: 1px solid #c7c8c9;
+	padding: 25px;
+}
+
+//Report Footer
+
+.report-footer{
+	border-top: 1px solid #cccccc;
+	padding-top: 15px;
+	margin-top: 15px;
+	color: #939598;
+}
+
+// Time Study
+
+.time-study__column{
+	@include span-columns(6);
+}
+
+.time-study__column-header{
+	@include display(flex);
+	padding: 0px 15px 0px 0px;
+}
+
+h3.report-subtitle{
+	color: $brand-green-dark;
+	margin: 0px 0px 10px;
+	@include flex(1);
+}
+
+h3.time-study__total-time{
+	margin: 0px auto 10px 0px ;
+	color: $brand-green-dark;
+	align-self: flex-end;
+	@include flex(1);
+	text-align: right;
+}
+
+.time-study__column-body{
+	border: 1px solid #dddddd;
+}
+
+.time-study__column-row{
+	@include display(flex);
+	@include align-items(center);
+	border-bottom: 1px solid #dddddd;
+	color: #04b3dc;
+	font-weight: 700;
+	padding: 15px 0;
+	&:first-child{
+		padding-top: 5px;
+	}
+	&:last-child{
+		border-bottom: 0px;
+		padding-bottom: 5px;
+	}
+}
+
+.time-study__column-row img{
+	margin: 0 10px 0 0;
+}
+
+.time-study__column-row div{
+	margin: 0px;
+}
+
+.time-study__column-row div.time{
+	//@include align-self(flex-end);
+	margin: 0px auto 0px 0px;
+	text-align: right;
+	@include flex(1);
+}
+
+.report-icon__person{
+	height: 20px;
+	width: 40px;
+}
+
+.report-icon__place{
+	height: 22px;
+	width: 40px;
+}
+
+// Opportunity Report
+
+.report-body__header{
+	@include display(flex);
+	margin-bottom: 10px;
+}
+
+.report-body__header p,
+.report-body__footer p{
+	font-size: 10px;
+	color: #5e5f5f;
+}
+
+.report-body__footer {
+	margin-top: 30px;
+}
+
+.report-icon__opportunity{
+	width: 40px;
+	height: 20px;
+}
+
+.opp-report__single{
+	@include outer-container();
+	//@include display(flex);
+	margin-bottom: 20px;
+	// Prevents cells from being cut off by PDF
+	page-break-before: auto;  
+    page-break-inside: avoid;
+}
+
+.opp-report__meta{
+	@include display(flex);
+	@include align-items(center);
+	margin-bottom: 5px;
+}
+
+.opp-report__time{
+	font-weight: 700;
+	color: $brand-green-dark;
+	font-size: 14px;
+	@include rem(margin-right, 0px);
+}
+
+.opp-report__duration{
+	font-size: 14px;
+	color: #848484;
+}
+
+.report-icon__duration{
+	width: 12px;
+	height: 12px;
+	display: inline-block;
+	margin-right: 2px;
+}
+
+.opp-report__duration .report-icon__opportunity{
+	width: 24px;
+	height: 12px;
+	display: inline-block;
+	margin-right: 2px;
+}
+
+.opp-report__asset{
+	float: left;
+	padding: 0px 20px 10px 0px;
+
+}
+
+.opp-report__asset img{
+	width: 200px;
+	height: auto;
+}
+
+.opp-report__note{
+	@include span-columns(7);
+	font-size: 14px;
+	color: $brand-black;
+	line-height: 1.5;
+}
+
+.opp-report__references{
+	@include span-columns(5);
+}
+
+.opp-report__reference-icon{
+	margin-right: 10px;
+}
+
+.opp-report__reference-time span{
+	margin-right: 20px;
+}
+
+.report-icon__duration-svg{
+	height: 10px;
+	width: 16px;
+}
+
+.opp-report__reference{
+	@include align-items(center);
+	@include display(flex);
+	color: #ffffff;
+	margin-bottom: 10px;
+	padding: 10px;
+	&:last-child{
+		margin-bottom: 0px;
+	}
+}
+
+.opp-report__reference.Person{
+	background-color: #03a7d1;
+}
+
+.opp-report__reference.Place{
+	background-color: #1486aa;
+}
+
+.opp-report__reference-label{
+	margin-top: 5px;
+	font-weight: 700;
+}
+
+// CEFM
+
+.cefm-person__group,
+.cefm-place__group{
+	@include outer-container();
+}
+
+.cefm-place{
+	@include span-columns(6);
+	background-color: #014d6c;
+	padding: 20px 0;
+	width: 50%;
+	box-sizing: border-box;
+	position: relative;
+	z-index: 3;
+	margin-top: 20px;
+}
+
+// Removes margin from first place
+.cefm-group:nth-of-type(1) .cefm-place{
+	margin-top: 0px;
+}
+
+.cefm-person{
+	@include span-columns(6);
+	background-color: $bg-person;
+}
+
+.cefm-person__group:last-child .cefm-person{
+	margin-bottom: 0px;
+}
+
+.cefm-person__bg-arrows{
+	//background-image: asset-data-url('bg_cefm-arrows.svg');
+	background-image: asset-data-url('bg_cefm-arrows--last-in-group');
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 70px;
+	@include span-columns(6);
+	position: relative;
+	z-index: 1;
+	// Prevents cells from being cut off by PDF
+	page-break-before: auto;  
+    page-break-inside: avoid;
+}
+
+// Adds ending arrow to round out the section 
+.cefm-person__group:last-child .cefm-person__bg-arrows{
+	background-image: asset-data-url('bg_cefm-arrows--last-in-group');
+}
+
+// Adds ending arrow to round out the section 
+.cefm-group:last-child .cefm-person__bg-arrows{
+	background-image: asset-data-url('bg_cefm-arrows--last');
+}
+
+.cefm-place h2,
+.cefm-person h2{
+	padding: 0px 0px 0px 10px;
+	color: #ffffff;
+	font-size: 16px;
+	font-weight: 700;
+	margin: 0px;
+}
+
+.cefm-person,
+.cefm-place{
+	@include display(flex);
+	@include align-items(center);
+	margin-top: 20px;
+	padding: 15px 0;
+	// Prevents cells from being cut off by PDF
+	page-break-before: auto;  
+    page-break-inside: avoid;
+    @include flex-wrap(wrap);
+}
+
+
+.page .cefm-person__bg-arrows:first-child{
+	background-color: blue;
+}
+
+.cefm-person img,
+.cefm-place img{
+	margin-left: 10px;
+}
+
+.cefm__created{
+	padding: 0px 0px 0px 10px;
+	color: #ffffff;
+	font-size: 12px;
+	display: block;
+	max-width: 240px;
+}
+
+.cefm-place__group-header:first-child{
+	margin-top: 0px;
+}
+
+.cefm-group:first-child .cefm-place__group-header{
+	margin-top: 0px;
+}
+
+.cefm-place__group-header.margin-bottom{
+	margin-bottom: 20px;
+}
+
+
+.cefm-column-labels{
+	@include outer-container();
+}
+
+.cefm-column-label{
+	@include span-columns(6);
+}
+
+.cefm-column-label h3{
+	margin-bottom: 0px;
+}
+
+.cefm-column-label:last-child h3{
+	color: $bg-person;
+}
+
+.cefm-place__group-header{
+	background: $brand-gray-text;
+	padding: 10px 15px 1px;
+	color: #ffffff;
+	margin: 50px 0px 0px;
+	page-break-before: auto;  
+    page-break-inside: avoid;
+}
+
+h2.cefm__segment-name{
+	font-size: 20px;
+	margin: 2px 0px 3px;
+}
+
+.comp__note{
+	background: #ffffff;
+	border-radius: $border-radius;
+	padding: 15px 10px;
+	margin-bottom: 20px;
+	border: 1px solid #dddddd;
+	@include display(flex);
+	// Prevents cells from being cut off by PDF
+	page-break-before: auto;  
+    page-break-inside: avoid;
+}
+
+.comp__note-meta{
+	width: 200px;
+}
+
+.comp__note-meta--created{
+	font-weight: 700;
+}
+
+.comp__note-meta--times{
+	@include display(flex);
+	@include align-items(flex-start);
+}
+
+.comp__note-meta--times .report-icon__opportunity{
+	width: 30px;
+	height: 15px;
+}
+
+.comp__note-meta--refs{
+	margin-top: 10px;
+	@include display(flex);
+}
+
+.comp__note-meta--refs div{
+	margin-right: 20px;
+}
+
+.comp__note-meta--refs h4{
+	margin: 0px;
+}
+
+h4.ref-people{
+	color: $bg-person;
+}
+
+h4.ref-place{
+	color: #1486aa;
+}
+
+.comp__note-text{
+	margin-left: 20px;
+	width: 325px;
+}
+
+.comp__note-image img{
+	width: 60px;
+	height: auto;
+	margin-left: 20px;
+}
+
+.comp__note-citation{
+	font-size: 12px;
+	color: #bbbbbb;
+	display: block;
+	margin-bottom: 10px;
+}
+
+.comp__note.Person{
+	background: $bg-person;
+	color: #ffffff;
+	border: 0px;
+}
+
+.comp__note.Place{
+	background: #1486aa;
+	color: #ffffff;
+	border: 0px;
+}
+
+.comp__icon{
+	margin-right: 10px;
+}
+
+.comp__time{
+	@include display(flex);
+}
+
+.comp__time-created{
+	display: inline-block;
+	margin-right: 20px;
+	font-weight: 700;
+	color: #afd4e8;
+}
+
+.comp__content{
+	font-weight: 700;
+	margin: 5px 0px;
+}
+

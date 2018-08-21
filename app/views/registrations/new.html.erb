@@ -1,0 +1,58 @@
+<main class="main u-container">
+  <h1 class="page-title">Register for Goshadow</h1>
+  <p class="page-subtitle">Fully functional, and no credit card required!</p>
+    <%= render 'shared/flash_message' %>
+  <section class="grid_primary">
+    <%= form_for( @user, url: registrations_path(@user), html: { class: "form__horizontal u-container" } ) do |user_form| %>
+      <div class="form__horizontal-group">
+        <%= user_form.label :first_name %>
+        <%= user_form.text_field :first_name, placeholder: "Enter Your First Name" %>
+      </div>
+      <div class="form__horizontal-group">
+        <%= user_form.label :last_name %>
+        <%= user_form.text_field :last_name, placeholder: "Enter Your Last Name" %>
+      </div>
+      <%= user_form.fields_for :user_organizations do |user_org_form| %>
+        <%= user_org_form.hidden_field :role, value: UserOrganization::COORDINATOR %>
+        <%= user_org_form.fields_for :organization do |org_form| %>
+          <div class="form__horizontal-group">
+            <%= org_form.label :name, "Organization Name" %>
+            <%= org_form.text_field :name, placeholder: "Enter Your Organization Name" %>
+          </div>
+        <% end %>
+      <% end %>
+      <div class="form__horizontal-group">
+        <%= user_form.label :email %>
+        <%= user_form.text_field :email, placeholder: "Enter Your Email Address"  %>
+      </div>
+      <div class="form__horizontal-group">
+        <%= user_form.label :password %>
+        <%= user_form.password_field :password, placeholder: "Enter Your Password" %>
+      </div>
+      <div class="form__horizontal-group">
+        <%= user_form.label :password_confirmation %>
+        <%= user_form.password_field :password_confirmation, placeholder: " Confirm Your Password" %>
+      </div>
+      <div class="form__horizontal-group-submit">
+        <%= user_form.submit "Create Your Account", class: "btn btn-primary" %>
+        <%= link_to('Already have a GoShadow Account? Sign in »', new_user_session_path)  %>
+      </div>
+    <% end %>
+  </section>
+  <aside class="grid_aside">
+    <div class="sidebar sidebar__login u-card">
+      <h3 class="sidebar__title">Sign up for a Free Shadowing Demo</h3>
+      <p>
+        Sample content explaining that Shadowing can be applied toany industry and organization, and to help get the most of GoShadow, sign up for a free demo with a Shadowing Specialist.<br>
+        <a href="#">Sign Up Now »</a>
+      </p>
+    </div>
+    <div class="sidebar sidebar__login u-card">
+      <h3 class="sidebar__title">GoShadow for Enterprise</h3>
+      <p>
+        Sample content explaining that Shadowing can be applied toany industry and organization, and to help get the most of GoShadow, sign up for a free demo with a Shadowing Specialist.<br>
+        <a href="#">Sign Up Now »</a>
+      </p>
+    </div>
+  </aside>
+</main>

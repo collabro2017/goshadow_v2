@@ -1,0 +1,8 @@
+$('.exper-sub-nav').removeClass('active-exper-tab');
+$('.segment-exper-tab').addClass('active-exper-tab');
+
+$(".exper-sub-nav-content").html("<%= escape_javascript( render 'experiences/segments', 
+  experience: @experience,
+  new_segment: @new_segment,
+  segments: @segments ) %>"
+);

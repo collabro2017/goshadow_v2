@@ -1,0 +1,16 @@
+/* SIDEBARS 
+All sidebar styles
+==================================================================== */
+
+.sidebar{
+	@include rem(margin-bottom, 30px);
+}
+
+h3.sidebar__title{
+	@include rem(font-size, 18px);
+	@include rem(margin, 0px 0px 10px);
+}
+
+.sidebar p:last-child{
+	margin-bottom: 0px;
+}

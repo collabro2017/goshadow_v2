@@ -1,0 +1,13 @@
+<% if @error.present? %>
+  
+  $('.note-form-message-container').html("<%= escape_javascript(@error) %>");
+
+<% else %>
+  
+
+  $('#note_text').val('');
+  $('#note_seconds').val('');
+  $('.note-form-message-container').html("Added!");
+  $('.note-list').html("<%= escape_javascript( render 'segments/note_list', notes: @notes, segment: @segment, new_note: true) %>")
+
+<% end %>

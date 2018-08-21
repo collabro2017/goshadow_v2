@@ -1,0 +1,55 @@
+<div class="experience-header">
+	<div class="u-container">
+        <%= render 'shared/flash_message' %>
+		<%= link_to "« Back to Experiences", experiences_organization_path(@organization), class: "breadcrumb" %>
+		<div class="experience-header__title-group">
+			<h2 class="experience-header__title">
+				<%= best_in_place @experience, :name, activator: "#editExperienceName", as: :input %>
+				<% if is_coordinator %>
+					<a href='#' class="inline-edit-link" id="editExperienceName">
+						Edit Name
+					</a>
+				<% end %>
+			</h2>
+			<p class="u-meta-text">
+				<%= "Last Updated #{@experience.updated_at.strftime("%-m/%-d/%Y")}" %> | <%= "Created #{@experience.created_at.strftime("%-m/%-d/%Y")}" %>
+			</p>
+		</div><!-- experience-header__title-group -->
+		<p class="experience-card__location">
+			<% if @experience.location.blank? %>
+				<% if is_coordinator %>
+					<span class="coordinator-edit-link">
+						<%= best_in_place @experience, :location, as: :input, place_holder: 'Enter a Location' %>
+					</span>
+				<% else %>
+					No location specified.
+				<% end %>
+			<% else %>
+				Location: <%= best_in_place @experience, :location, activator: "#editExperienceLocation", as: :input, place_holder: 'Add Location' %>
+				<% if is_coordinator %>
+					<a href='#' class="inline-edit-link" id="editExperienceLocation">
+						<%= @experience.location.blank? ? "Add" : "Edit" %> Location
+					</a>
+				<% end %>
+			<% end %>
+		</p>
+		<p class="experience-card__description">
+			<% if @experience.description.blank? %>
+				<% if is_coordinator %>
+					<span class="coordinator-edit-link">
+						<%= best_in_place @experience, :description, as: :input, place_holder: 'Enter a Description' %>
+					</span>
+				<% else %>
+					No description specified.
+				<% end %>
+			<% else %>
+				Description: <%= best_in_place @experience, :description, activator: "#editExperienceDescription", as: :input, place_holder: 'No description given' %>
+				<% if is_coordinator %>
+					<a href='#' class="inline-edit-link" id="editExperienceDescription">
+						<%= @experience.description.blank? ? "Add" : "Edit" %> Description
+					</a>
+				<% end %>
+			<% end %>
+		</p>
+	</div>
+</div>

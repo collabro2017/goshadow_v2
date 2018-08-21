@@ -1,0 +1,210 @@
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<%= javascript_tag "Stripe.publishableKey = '#{Rails.configuration.stripe[:publishable_key]}';", type: 'text/javascript' %>
+
+<main class="main u-container">
+  <h1 class="page-title">Your Subscription</h1>
+  <p class="page-subtitle">Update your GoShadow subscription details</p>
+  <section class="grid_primary">
+
+    <div class="pricing-table">
+
+      <div class="pricing-column">
+        <div class="pricing-plan">
+          Solo
+        </div><!-- pricing-plan-->
+        <div class="pricing-body">
+          <h3 class="pricing-license">
+            Single License
+          </h3>
+          <p class="pricing-price">
+            $99.99
+          </p>
+          <p class="pricing-interval">
+            per month
+          </p>
+          <ul class="pricing-features">
+            <li>Mobile App</li>
+            <li>Online Platform</li>
+            <li>Unlimited Experiences</li>
+            <li>Unlimited reports</li>
+            <li>Online Customer Support</li>
+          </ul>
+        </div><!-- pricing-body-->
+        <div class="pricing-footer">
+          <button class="btn btn-primary pricing-solo smooth-scroll">
+            Select Plan
+          </button>
+        </div><!-- pricing-footer-->
+      </div><!-- pricing-column-->
+
+      <div class="pricing-column">
+        <div class="pricing-plan">
+          Team
+        </div><!-- pricing-plan-->
+        <div class="pricing-body">
+          <h3 class="pricing-license">
+            10 Licenses
+          </h3>
+          <p class="pricing-price">
+            $950.00
+          </p>
+          <p class="pricing-interval">
+            per month/paid yearly
+          </p>
+          <ul class="pricing-features">
+            <li>Mobile App</li>
+            <li>Online Platform</li>
+            <li>Unlimited Experiences</li>
+            <li>Unlimited reports</li>
+            <li>Online Training</li>
+            <li>Customized Reports</li>
+            <li>Premium Customer Support</li>
+          </ul>
+        </div><!-- pricing-body-->
+        <div class="pricing-footer">
+          <button class="btn btn-primary pricing-team">
+            Select Plan
+          </button>
+        </div><!-- pricing-footer-->
+      </div><!-- pricing-column-->
+
+      <div class="pricing-column">
+        <div class="pricing-plan">
+          Facility
+        </div><!-- pricing-plan-->
+        <div class="pricing-body">
+          <h3 class="pricing-license">
+            25 Licenses
+          </h3>
+          <p class="pricing-price">
+            $1875.00
+          </p>
+          <p class="pricing-interval">
+            per month/paid yearly
+          </p>
+          <ul class="pricing-features">
+            <li>Mobile App</li>
+            <li>Online Platform</li>
+            <li>Unlimited Experiences</li>
+            <li>Unlimited reports</li>
+            <li>Online Training</li>
+            <li>Customized Reports</li>
+            <li>Pre-loaded Experiences</li>
+            <li>Premium Customer Support</li>
+          </ul>
+        </div><!-- pricing-body-->
+        <div class="pricing-footer">
+          <button class="btn btn-primary pricing-facility">
+            Select Plan
+          </button>
+        </div><!-- pricing-footer-->
+      </div><!-- pricing-column-->
+
+      <div class="pricing-column">
+        <div class="pricing-plan">
+          Enterprise
+        </div><!-- pricing-plan-->
+        <div class="pricing-body">
+          <h3 class="pricing-license">
+            For more than 25 licenses, please contact <a href="mailto:sales@goshadow.org" target="_blank">Sales@GoShadow.org</a>
+          </h3>
+        </div><!-- pricing-body-->
+        <div class="pricing-footer">
+          <a href="mailto:sales@goshadow.org" class="btn btn-primary" target="_blank">
+            Contact Us
+          </a>
+        </div><!-- pricing-footer-->
+      </div><!-- pricing-column-->
+    </div><!-- pricing-table-->
+
+    <div class="settings-info" id="billing-info">
+      <h3>Billing Info</h3>
+      <p>Your current billing information. For monthly invoices, please see the sidebar for more information.</p>
+    </div><!-- additional-services-->
+    <%= form_tag( "organizations/#{@organization.id}/subscriptions", id: 'newSubscriptionForm', class: "form__horizontal u-container") do |f| %>
+
+    <div class="form__horizontal-group">
+      <label>Your Plan</label>
+      <%= select_tag 'plan_id', options_for_select(@subscription_plans), class: 'select2-dropdown plan', include: 'blank' %>
+    </div>
+    <div class="form__horizontal-group">
+      <label>Billing Email</label>
+      <%= text_field_tag 'email', @organization.billing_email, class: 'form-control billing-email', placeholder: 'Billing Email' %>
+    </div>
+    <div class="form__horizontal-group">
+      <label>Card Number</label>
+      <%= text_field_tag :number, nil, class: 'form-control credit-card-number', placeholder: 'Card Number' %>
+    </div>
+    <div class="form__horizontal-group">
+      <%= label_tag 'Security Code' %>
+      <%= text_field_tag :number, nil, class: 'form-control cvc-code', placeholder: 'Security Code' %>
+    </div>
+    <div class="form__horizontal-group">
+      <%= label_tag 'Expiration Month' %>
+      <%= select_month nil, { add_month_numbers: true }, { name: nil, class: 'exp-month form-control' } %>
+    </div>
+    <div class="form__horizontal-group">
+      <%= label_tag 'Expiration Year' %>
+      <%= select_year nil, { start_year: Date.today.year, end_year: Date.today.year + 15 }, { name: nil, class: 'exp-year form-control' } %>
+    </div>
+    <div class="form__horizontal-group">
+      <%= button_tag 'Update Subscription', class: 'btn btn-primary submit-payment' %>
+    </div>
+      <div class='message-container'>
+      </div>
+  <% end %>
+  </section>
+  <aside class="grid_aside">
+    <div class="sidebar sidebar__login u-card">
+      <h3 class="sidebar__title">Additional Service Offerings</h3>
+      <p>
+        For additional services, such as app and dashboard customization, branding, setup and onsite training, pilot creation, customizrd data presenttation and more, please contact <a href="mailto:sales@goshadow.org">sales@goshadow.org</a>
+      </p>
+    </div>
+  </aside>
+</main>
+<script>
+  
+  $(document).ready(function() {
+
+    $('.submit-payment').on( 'click', function(e) {
+
+      e.preventDefault();
+      
+      var card = {
+        number: $('.credit-card-number').val(),
+        cvc: $('.cvc-code').val(),
+        expMonth: $('.exp-month').val(),
+        expYear: $('.exp-year').val()
+      };
+
+      Stripe.createToken(card, stripeResponseHandler);
+    
+    });
+
+  });
+
+
+  function stripeResponseHandler(status, response) {
+    
+    if (response.error) {
+      $('.message-container').html(response.error.message);
+    } else {
+      
+      var organizationID = <%= @organization.id %>;
+
+      $.ajax({
+        type: 'post',
+        dataType: 'JSON',
+        url: '/organizations/' + organizationID + '/subscriptions',
+        data: { stripe_token: response.id, billing_email: $('.billing-email').val(), plan_id: $('.plan').val() },
+        success: function(data) {
+          window.location.replace('/organizations/' + data.organization.id + '/settings?subscription_message=Subscription Created');
+        }, error: function() {
+          $('.message-container').html('Select Plan and add valid billing email.');
+        }
+      });
+    }
+  }
+
+</script>

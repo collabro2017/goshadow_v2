@@ -1,0 +1,23 @@
+
+<%= render 'shared/experience_header' %>
+
+<nav class="experience-navigation">
+	<div class="u-container">
+    <%= link_to 'Segments', experience_segments_path(@experience), remote: true, class: 'exper-sub-nav segment-exper-tab' %>
+    <%= link_to 'Shadowers', experience_shadowers_path(@experience), remote: true, class: 'exper-sub-nav shadower-exper-tab' %>
+		<%= link_to 'Reports', experience_reports_path(@experience), remote: true, class: 'exper-sub-nav report-exper-tab' %>
+	</div>
+</nav>
+
+<div class='exper-sub-nav-content'>
+</div>
+
+<script>
+  $( document ).ready( function() {
+    $('.nav-item-experiences').addClass('active-nav-item');
+    $.ajax({
+      type: 'GET',
+      url: '/experiences/' + <%= @experience.id %> + '/<%= @tab %>'
+    });
+  });
+</script>

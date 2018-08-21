@@ -1,0 +1,25 @@
+/* ALERTS 
+All flash messages
+==================================================================== */
+
+.alert{
+	@include rem(padding, 20px);
+	@include rem(margin, 0px 0 40px);
+	border-radius: $border-radius;
+	color: #ffffff;
+	&.alert{
+		background-color: $brand-red;
+	}
+	&.notice{
+		background-color: #7eb347;
+	}
+}
+
+.alert:empty{
+	display: none !important;
+}
+
+
+.experience-header .alert{
+	@include rem(margin-top, -20px);
+}

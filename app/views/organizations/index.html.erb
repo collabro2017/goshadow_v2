@@ -1,0 +1,20 @@
+<main class="main organization-index">
+	<%= render 'shared/flash_message' %>
+	<div class="organization-index__container">
+		<div class="organization-index__header">
+			<h3>Choose an Organzation</h3>
+		</div>
+		<% @organizations.each do |organization| %>
+			<div class="organization__container">
+		      <%= link_to experiences_organization_path(organization) do %>
+		      	<%= image_tag organization.logo_url, class: 'org-avatar' %>
+		      	<%= organization.name %>
+		      <% end %>
+		    </div>
+		<% end %>
+		<div class="organization__container">
+	      <%= link_to 'Create A New Organization', new_organization_path %>
+	    </div>
+	</div>
+</main>
+

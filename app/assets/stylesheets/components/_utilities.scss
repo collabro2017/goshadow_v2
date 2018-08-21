@@ -1,0 +1,71 @@
+/* UTILITIES 
+Shortcut classes for commonly used styling. Prefix all classes here 
+with "u-", eg. "u-text-center".
+==================================================================== */
+
+// Display // ---------------
+.u-center-block{
+  @include center-block();
+}
+
+.u-container{
+  @include outer-container();
+}
+
+.u-card{
+	background: #ffffff;
+	border-radius: $border-radius;
+	box-shadow: $box-shadow;
+	@include rem(padding, 20px);
+}
+
+.u-pull-right{
+  float: right;
+}
+
+.u-pull-left{
+  float: left;
+}
+
+.u-clearfix{
+  clear: both;
+}
+
+.u-hide-mobile{
+  @include media(max-width $screen-break){
+    display: none;
+  }
+}
+
+.u-show-mobile{
+  display: none;
+  @include media(max-width $screen-break){
+    display: block;
+  }
+}
+
+// Images // ---------------
+.u-img-responsive{
+  max-width: 100%;
+  height: auto;
+}
+
+// Type // ---------------
+.u-text-center{
+  text-align: center;
+}
+
+.u-text-right{
+  text-align: right;
+}
+
+.u-meta-text{
+  @include rem(font-size, 14px);
+  @include rem(margin, 0 0 20px);
+  color: $brand-gray-placeholder;
+  font-weight: 300;
+}
+
+.u-text-black{
+  color: $brand-black !important;
+}
